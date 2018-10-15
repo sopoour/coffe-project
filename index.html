@@ -28,11 +28,12 @@
         <div class="row filters">
             <div class="col-md-6">
                 <div class="filterItems price">
-                    <p>What is the maximum price you want to spend?</p>
+                    <p class="subtitle">What is the maximum price you want to spend (in DKK)?</p>
                     <input type="text" placeholder="Price" id="priceInput">
+                    <span id="priceResult"></span>
                 </div>
                 <div class="filterItems coffeeType">
-                    <p>What coffee type are you up for right now?</p>
+                    <p class="subtitle">What coffee type are you up for right now?</p>
                     <div class="dropdown">
                         <p>Coffee Type:</p>
                         <select>
@@ -44,7 +45,7 @@
                     </div>
                 </div>
                 <div class="filterItems size">
-                    <p>How big is your coffee thirst? - Choose the size of the coffee.</p>
+                    <p class="subtitle">How strong is your coffee thirst? - Choose the size of the coffee.</p>
                     <div class="dropdown">
                         <p>Cup Size:</p>
                         <select>
@@ -58,7 +59,7 @@
             </div>
             <div class="col-md-6">
                 <div class="filterItems size">
-                    <p>What kind of milk do your prefer in your coffee?</p>
+                    <p class="subtitle">What kind of milk do your prefer in your coffee?</p>
                     <div class="dropdown">
                         <p>Milk Type:</p>
                         <select>
@@ -71,11 +72,13 @@
                     </div>
                 </div>
                 <div class="filterItems shots">
-                    <p>How sleepy are you? - Choose the amount of Espresso shots you'd like in your coffee.</p>
+                    <p class="subtitle">How sleepy are you? - Choose the amount of Espresso shots you'd like in your
+                        coffee (from 1 to 4).</p>
                     <input type="text" placeholder="Espresso Shots" id="shotsInput">
+                    <span id="shotsResult"></span>
                 </div>
                 <div class="filterItems iced">
-                    <p>Do you need something refreshing? - Choose it iced.</p>
+                    <p class="subtitle">Do you need something refreshing? - Choose it iced.</p>
 
                 </div>
             </div>

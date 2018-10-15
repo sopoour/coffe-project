@@ -16,6 +16,11 @@ p {
 
 .filterItems {
     padding-top: 20px;
+
+}
+
+.subtitle {
+    font-weight: bold;
 }
 
 .dropdown p {
