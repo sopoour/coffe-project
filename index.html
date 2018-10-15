@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Locfé</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+    <!--Style in CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="row intro">
+            <div class="col-md-12">
+                <h1> Welcome to Locfé</h1>
+                <h4> Please choose your preferred filters to find your favorite coffee nearby.</h4>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="row filters">
+            <div class="col-md-6">
+                <div class="filterItems price">
+                    <p>What is the maximum price you want to spend?</p>
+                    <input type="text" placeholder="Price" id="priceInput">
+                </div>
+                <div class="filterItems coffeeType">
+                    <p>What coffee type are you up for right now?</p>
+                    <div class="dropdown">
+                        <p>Coffee Type:</p>
+                        <select>
+                            <option>Select...</option>
+                            <option>Cappuccino</option>
+                            <option>Latte Macchiato</option>
+                            <option>Filter Coffee</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filterItems size">
+                    <p>How big is your coffee thirst? - Choose the size of the coffee.</p>
+                    <div class="dropdown">
+                        <p>Cup Size:</p>
+                        <select>
+                            <option>Select...</option>
+                            <option>Small</option>
+                            <option>Medium</option>
+                            <option>Large</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="filterItems size">
+                    <p>What kind of milk do your prefer in your coffee?</p>
+                    <div class="dropdown">
+                        <p>Milk Type:</p>
+                        <select>
+                            <option>Select...</option>
+                            <option>Normal</option>
+                            <option>Soy</option>
+                            <option>Almond</option>
+                            <option>Oat</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filterItems shots">
+                    <p>How sleepy are you? - Choose the amount of Espresso shots you'd like in your coffee.</p>
+                    <input type="text" placeholder="Espresso Shots" id="shotsInput">
+                </div>
+                <div class="filterItems iced">
+                    <p>Do you need something refreshing? - Choose it iced.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
