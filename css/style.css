@@ -1,5 +1,7 @@
 body {
     padding: 30px;
+    --green: #34816e;
+    --brown: #473c1f;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -10,19 +12,40 @@ p {
     font-family: 'Lato', sans-serif;
 }
 
+.container {
+    padding: 0 10% 0 10%;
+}
 .intro {
     text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
+.intro img {
+    width: 20%;
+    margin-bottom: 5%;
+}
 .filterItems {
     padding-top: 20px;
-
 }
 
-.subtitle {
-    font-weight: bold;
+option {
+    font-family: 'Lato', sans-serif;
 }
 
-.dropdown p {
-    display: inline-block;
+.btn-login {
+    position: absolute;
+    right: 5px;
+    background-color: var(--green);
+    color: white;
+    padding: 1% 5% 2% 5%;
+    font-family: 'Lato', sans-serif;
+}
+
+.btn-submit {
+    background-color: var(--brown);
+    color: white;
+    padding: 1% 5% 1% 5%;
+    margin-top: 5%;
+    font-family: 'Lato', sans-serif;
 }
