@@ -1,6 +1,7 @@
 body {
     padding: 2%;
     --green: #34816e;
+    --white-faded: rgba(255, 255, 255, 0.6);
     --brown: #473c1f;
 }
 
@@ -28,6 +29,10 @@ p {
 .intro img {
     width: 18%;
     margin-bottom: 3%;
+}
+
+.fa {
+    color: var(--white-faded);
 }
 .filterItems {
     padding-top: 5%;
