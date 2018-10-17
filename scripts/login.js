@@ -5,7 +5,7 @@ var user3 = new User("Jan", "janhää", "jan@gmail.com", "4567");
 var users = [];
 users.push(user1, user2, user3);
 
-var submit = document.getElementById("loginSubmit")
+var submit = document.getElementById("loginSubmit");
 //the function shall be activated when user clicks on login button
 submit.onclick = function () {
     var userName = document.getElementById("userName");
@@ -25,7 +25,7 @@ submit.onclick = function () {
         }
         else if (userName.value === "" || userPassword.value === "") {
             loginResult.innerHTML = "<br> <br>" + "Please type in both username and password!";
-
+            break;
         }
         else {
             loginResult.innerHTML = "<br> <br>" + "Your password or username is incorrect. Please try again!";

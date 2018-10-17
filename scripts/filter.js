@@ -36,7 +36,7 @@ function doFilter() {
     var price = document.getElementById("priceInput").value;
     var type = document.getElementById("typeInput").value;
 
-    if(!price && type=="Select...") {
+    if (!price && type === "Select...") {
         //Do stuff for no input values
         alert("No Input values");
         return null;
@@ -45,19 +45,20 @@ function doFilter() {
     for(var x=0;x<coffees.length;x++) {
         
         var c = coffees[x];
+        //For what is the var lock?
         var lock = false;
         //Price Checker
-        if(c.price<=price && type=="Select...") {
+        if (c.price <= price && type === "Select...") {
             filteredCoffees.push(c);
             lock=true;
         }
         //Type Checker
-        if(c.type==type && !price) {
+        if (c.type === type && !price) {
             filteredCoffees.push(c);
             lock=true;
         }
 
-        if(c.type==type && c.price<=price && !lock) {
+        if (c.type === type && c.price <= price && !lock) {
             filteredCoffees.push(c);
         }
     }
@@ -69,12 +70,14 @@ This builds a yet not-so-nice table with yummy coffees.
 */
 function filterResult() {
     var filteredCoffees=doFilter();
-    if(!filteredCoffees) {
+    //Do we really need this if statement? and for what?
+    if (!filteredCoffees) {
         return null;
     }
     var dvTable = document.getElementById("resultsTable");
     dvTable.innerHTML = "";
-    if(filteredCoffees.length==0) {
+    //how can the function doFilter() have a length?
+    if (filteredCoffees.length === 0) {
         alert("No matching objects");
         return null;
     }
