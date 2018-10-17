@@ -79,7 +79,7 @@ input {
     margin-bottom: 20%;
 }
 
-.form .btn {
+.loginForm .btn {
     background-color: var(--brown);
     color: white;
     padding: 1% 10% 1% 10%;
