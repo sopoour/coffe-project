@@ -1,6 +1,7 @@
 body {
     padding: 2%;
     --green: #34816e;
+    --green-faded: rgba(52, 129, 110, 0.6);
     --white-faded: rgba(255, 255, 255, 0.6);
     --brown: #473c1f;
 }
@@ -42,7 +43,7 @@ option {
     font-family: 'Lato', sans-serif;
 }
 
-.btn-login {
+.btnLogin {
     position: absolute;
     right: 5px;
     background-color: var(--green);
@@ -51,10 +52,37 @@ option {
     font-family: 'Lato', sans-serif;
 }
 
-.btn-submit {
+.btnSubmit {
     background-color: var(--brown);
     color: white;
     padding: 1% 5% 1% 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: 'Lato', sans-serif;
+}
+
+.loginContainer {
+    text-align: center;
+    background-color: var(--green-faded);
+
+    margin-left: 40%;
+    margin-right: 40%;
+    padding: 5% 2% 5% 2%;
+}
+
+input {
+    margin: 5px;
+}
+
+.loginImage {
+    width: 50%;
+    margin-bottom: 20%;
+}
+
+.loginForm .btn {
+    background-color: var(--brown);
+    color: white;
+    padding: 1% 10% 1% 10%;
     margin-top: 5%;
     margin-bottom: 5%;
     font-family: 'Lato', sans-serif;
