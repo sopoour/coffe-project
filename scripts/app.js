@@ -18,7 +18,7 @@ let store3 = new Store("MyPlace","https://www.myplace.com","img/myplace.jpg");
 
 //Push stores to an array
 var stores = [];
-stores.push(store1, store2, store3, store4);
+stores.push(store1, store2, store3);
 
 /* Why doesn't this work? a iterates over all objects in stores... maybe some issue with the objects?
 for (var a in stores) {
