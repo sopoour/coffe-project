@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-function addFavorite() {
-
-}
-=======
 
 // 1. Click on button --> Store favorite choice
 var favorites = [];
@@ -54,4 +49,3 @@ function removeFavorite(selectedCoffee, favorites) {
         alert("Uh Oh. It seems that this coffee wasn't part of your favorites.")
     }
 }
->>>>>>> 7fbfd84c9663107c7887798015e10349e1b35534

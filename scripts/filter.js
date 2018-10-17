@@ -73,7 +73,6 @@ function filterResult() {
         return null;
     }
     if(filteredCoffees.length==0) {
-        alert("Nix drin");
         return null;
     }
     //Creates Table
@@ -101,7 +100,6 @@ function filterResult() {
         b.setAttribute('class','btn coffeeSelect');
         b.setAttribute('value', filteredCoffees[i]);
         b.innerHTML = 'Add To Favorites';
-        b.onclick = addFavorite;
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[]
         var cell1 = row.insertCell(-1);
