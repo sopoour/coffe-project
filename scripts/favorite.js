@@ -1,3 +1,6 @@
+function addFavorite() {
+    alert("Let's Create A Favorite");
+}
 // 1. Click on button --> Store favorite choice
 var favorites
 [" "]
