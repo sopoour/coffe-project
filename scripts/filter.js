@@ -72,7 +72,10 @@ function filterResult() {
     if(!filteredCoffees) {
         return null;
     }
+    var dvTable = document.getElementById("resultsTable");
+    dvTable.innerHTML = "";
     if(filteredCoffees.length==0) {
+        alert("No matching objects");
         return null;
     }
     //Creates Table
@@ -115,8 +118,6 @@ function filterResult() {
 
     //Put table in <div> on HTML
     table.className = "table table-hover";
-    var dvTable = document.getElementById("resultsTable");
-    dvTable.innerHTML = "";
     dvTable.appendChild(table);
 
 }
