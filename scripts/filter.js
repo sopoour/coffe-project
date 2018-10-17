@@ -1,9 +1,9 @@
 /*STORES*/
 
 //Coffee Stores!
-let store1 = new Store("Starbucks", "https://www.starbucks.com", "/img/starbucks.jpg");
-let store2 = new Store("Dunkin Donuts", "https://www.dunkin-donuts.com", "img/dunkin.jpg");
-let store3 = new Store("MyPlace", "https://www.myplace.com", "img/myplace.jpg");
+var store1 = new Store("Starbucks", "https://www.starbucks.com", "/img/starbucks.jpg");
+var store2 = new Store("Dunkin Donuts", "https://www.dunkin-donuts.com", "img/dunkin.jpg");
+var store3 = new Store("MyPlace", "https://www.myplace.com", "img/myplace.jpg");
 
 //Push stores to an array
 var stores = [];
@@ -11,10 +11,10 @@ stores.push(store1, store2, store3);
 
 /*COFFEES*/
 //Generate some great coffees!
-let coffee1 = new Coffee(store1, "Cappuchino", 45);
-let coffee2 = new Coffee(store2, "Cappuchino", 40);
-let coffee3 = new Coffee(store1, "Latte Macchiatto", 30);
-let coffee4 = new Coffee(store3, "Espresso", 14);
+var coffee1 = new Coffee(1,store1, "Cappuccino", 45);
+var coffee2 = new Coffee(2,store2, "Cappuccino", 40);
+var coffee3 = new Coffee(3,store1, "Latte Macchiato", 30);
+var coffee4 = new Coffee(4,store3, "Espresso", 14);
 
 //Push all coffees to an array
 var coffees = [];
@@ -30,11 +30,52 @@ for (var a in stores) {
 
 //FUNCTIONS
 
+function doFilter() {
+    var filteredCoffees=[];
+    
+    var price = document.getElementById("priceInput").value;
+    var type = document.getElementById("typeInput").value;
+
+    if(!price && type=="Select...") {
+        //Do stuff for no input values
+        alert("No Input values");
+        return null;
+    }
+
+    for(var x=0;x<coffees.length;x++) {
+        
+        var c = coffees[x];
+        var lock = false;
+        //Price Checker
+        if(c.price<=price && type=="Select...") {
+            filteredCoffees.push(c);
+            lock=true;
+        }
+        //Type Checker
+        if(c.type==type && !price) {
+            filteredCoffees.push(c);
+            lock=true;
+        }
+
+        if(c.type==type && c.price<=price && !lock) {
+            filteredCoffees.push(c);
+        }
+    }
+    return filteredCoffees;
+}
 
 /*
 This builds a yet not-so-nice table with yummy coffees.
 */
 function filterResult() {
+    var filteredCoffees=doFilter();
+    if(!filteredCoffees) {
+        return null;
+    }
+    if(filteredCoffees.length==0) {
+        alert("Nix drin");
+        return null;
+    }
     //Creates Table
     var table = document.createElement("TABLE");
     table.border = 1;
@@ -52,22 +93,23 @@ function filterResult() {
     }
 
     //Coffee Rows
-    for (var i = 0; i < coffees.length; i++) {
+    for (var i = 0; i < filteredCoffees.length; i++) {
         row = table.insertRow(-1);
 
         var b = document.createElement("BUTTON");
         b.setAttribute('content','test content');
-        b.setAttribute('class','btn');
+        b.setAttribute('class','btn coffeeSelect');
+        b.setAttribute('value', filteredCoffees[i]);
         b.innerHTML = 'Add To Favorites';
         b.onclick = addFavorite;
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[]
         var cell1 = row.insertCell(-1);
-        cell1.innerHTML = coffees[i].type;
+        cell1.innerHTML = filteredCoffees[i].type;
         var cell2 = row.insertCell(-1);
-        cell2.innerHTML = coffees[i].price;
+        cell2.innerHTML = filteredCoffees[i].price;
         var cell3 = row.insertCell(-1);
-        cell3.innerHTML = coffees[i].store.name;
+        cell3.innerHTML = filteredCoffees[i].store.name;
         var cell4 = row.insertCell(-1);
         cell4.appendChild(b);
 
@@ -80,3 +122,4 @@ function filterResult() {
     dvTable.appendChild(table);
 
 }
+

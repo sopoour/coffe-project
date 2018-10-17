@@ -40,13 +40,13 @@
             <div class="col-md-4">
                 <div class="filterItems price">
                     <h6 class="subtitle">Maximum Price (in DKK):</h6>
-                    <input type="text" placeholder="Price" id="priceInput">
+                    <input type="number" placeholder="Price" id="priceInput">
                 </div>
                 <div class="filterItems coffeeType">
                     <div class="dropdown">
                         <h6>Coffee Type:</h6>
                         <label>
-                            <select>
+                            <select id="typeInput">
                                 <option>Select...</option>
                                 <option>Cappuccino</option>
                                 <option>Latte Macchiato</option>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="filterItems submit">
-                    <button class="btn btn-submit" onclick="filterResult()"><i class="fa fa-filter"></i> Filter</button>
+                    <button class="btn btn-submit" id="filterSubmit" onclick="filterResult()"><i class="fa fa-filter"></i> Filter</button>
                 </div>
             </div>
             <div class="col-md-8">

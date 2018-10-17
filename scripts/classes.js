@@ -1,5 +1,6 @@
 class Coffee {
-    constructor(store, type, price) {
+    constructor(id,store, type, price) {
+        this.id=id;
         this.store = store;
         this.type = type;
         this.price = price;
