@@ -1,5 +1,5 @@
 /*COFFEES*/
-//Generate some creat coffees!
+//Generate some great coffees!
 let coffee1 = new Coffee("Starbucks", "Cappuchino",45);
 let coffee2 = new Coffee("Dunkin","Cappuchino",40);
 let coffee3 = new Coffee("7-11","Latte Macchiatto",30);
@@ -64,7 +64,7 @@ function filterResult() {
 
     //Put table in <div> on HTML
     table.className="table table-hover";
-    var dvTable = document.getElementById("ResultsTable");
+    var dvTable = document.getElementById("resultsTable");
         dvTable.innerHTML = "";
         dvTable.appendChild(table);
 
