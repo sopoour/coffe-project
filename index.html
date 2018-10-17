@@ -35,9 +35,11 @@
     </div>
 </header>
 <main>
+    <script src="scripts/classes.js"></script>
+    <script src="scripts/app.js"></script>
     <div class="container">
         <div class="row filters">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="filterItems price">
                     <h6 class="subtitle">Maximum Price (in DKK):</h6>
                     <input type="text" placeholder="Price" id="priceInput">
@@ -57,11 +59,14 @@
                     </div>
                 </div>
                 <div class="filterItems submit">
-                    <button class="btn btn-submit"><i class="fa fa-filter"></i> Filter</button>
+                    <button class="btn btn-submit" onclick="filterResult()"><i class="fa fa-filter"></i> Filter</button>
                 </div>
-                <div class="col-md-6">
-                    <!-- RESULT LIST OF COFFEES-->
+                <div class="col-md-6">   
                     <span id="filterResult"></span>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div id="ResultsTable">
                 </div>
             </div>
         </div>
@@ -70,3 +75,4 @@
 
 </body>
 </html>
+
