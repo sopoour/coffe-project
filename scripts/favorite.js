@@ -16,9 +16,9 @@ function addFavorite(selectedCoffee, favorites)
             favorites.push(selectedCoffee)
         }
         {
-            alert("You have chosen " + favorites.length + " favorite coffee(s")
+            alert("You have chosen " + favorites.length + " favorite coffee(s)")
         }
-
+        ;
     else
         alert("Hey there greedy! This has already been added to your favorites!")
 
@@ -33,5 +33,19 @@ function addFavorite(selectedCoffee, favorites)
 
 function removeFavorite(selectedCoffee, favorites) {
 
-}
 
+    var count = favorites.length;
+    for (var i = 0; i < count; i++) {
+        if (selectedCoffee [i] === favorites)
+        // Removing element by value https://www.hostingadvice.com/how-to/javascript-remove-element-array/
+        {
+            list.favorites(list.indexOf('selectedCoffee.value'), 1)
+        }
+        {
+            alert("You have removed " + selectedCoffee.value + " from your favorite coffees")
+        }
+
+    else
+        alert("Uh Oh. It seems that this coffee wasn't part of your favorites.")
+    }
+}
