@@ -46,6 +46,10 @@ function doFilter() {
         
         var c = coffees[x];
         //For what is the var lock?
+        /*
+        Otherwise it might be that coffees are pushed multiple times to filteredCoffees[].
+        Tough i am still working on a more generic way to do the filter (right now both filters are statically coded, want to have this generic)
+        */
         var lock = false;
         //Price Checker
         if (c.price <= price && type === "Select...") {
@@ -71,12 +75,21 @@ This builds a yet not-so-nice table with yummy coffees.
 function filterResult() {
     var filteredCoffees=doFilter();
     //Do we really need this if statement? and for what?
+    /*
+    I put this in for development/debuging purpose, as this helps me to identify when there is something wrong with doFilter().
+    I work a lot with the chrome dev tools and if this if condition returns true then there is something wrong in doFilter. 
+    return null is just a statement to quit the function in this case.
+    */
     if (!filteredCoffees) {
         return null;
     }
     var dvTable = document.getElementById("resultsTable");
     dvTable.innerHTML = "";
     //how can the function doFilter() have a length?
+    /*
+    ?
+    doFilter() is a function, it has no length attribute, but the returning array of doFilter(filteredCoffees) does
+    */
     if (filteredCoffees.length === 0) {
         alert("No matching objects");
         return null;
@@ -107,7 +120,7 @@ function filterResult() {
         b.setAttribute('value', filteredCoffees[i]);
         b.innerHTML = 'Add To Favorites';
 
-        //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[]
+        //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)
         var cell1 = row.insertCell(-1);
         cell1.innerHTML = filteredCoffees[i].type;
         var cell2 = row.insertCell(-1);
