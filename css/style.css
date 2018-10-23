@@ -3,6 +3,7 @@ body {
     --green: #34816e;
     --green-faded: rgba(52, 129, 110, 0.6);
     --white-faded: rgba(255, 255, 255, 0.6);
+    --brown-faded: rgba(71, 60, 31, 0.6);
     --brown: #473c1f;
 }
 
@@ -43,7 +44,7 @@ option {
     font-family: 'Lato', sans-serif;
 }
 
-.btnLogin {
+#btnLogin {
     position: absolute;
     right: 5px;
     background-color: var(--green);
@@ -52,7 +53,17 @@ option {
     font-family: 'Lato', sans-serif;
 }
 
-.btnSubmit {
+#btnLogout {
+    position: absolute;
+    right: 5px;
+    background-color: var(--brown);
+    color: white;
+    padding: 1% 5% 2% 5%;
+    font-family: 'Lato', sans-serif;
+    display: none;
+}
+
+#filterSubmit {
     background-color: var(--brown);
     color: white;
     padding: 1% 5% 1% 5%;
@@ -64,19 +75,23 @@ option {
 .loginContainer {
     text-align: center;
     background-color: var(--green-faded);
-
-    margin-left: 40%;
-    margin-right: 40%;
+    margin-left: 38%;
+    margin-right: 38%;
     padding: 5% 2% 5% 2%;
+    box-shadow: 5px 5px 8px 0 var(--brown-faded), 0 5px 20px 0 var(--brown-faded);
 }
 
+.loginIntro h5 {
+    color: white;
+    margin-bottom: 15px;
+}
 input {
     margin: 5px;
 }
 
 .loginImage {
     width: 50%;
-    margin-bottom: 20%;
+    margin-bottom: 15%;
 }
 
 .loginForm .btn {
@@ -86,4 +101,8 @@ input {
     margin-top: 5%;
     margin-bottom: 5%;
     font-family: 'Lato', sans-serif;
+}
+
+#loginResult {
+    color: white;
 }

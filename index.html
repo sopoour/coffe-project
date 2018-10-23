@@ -23,8 +23,9 @@
             <div class="col-md-8"></div>
             <div class="col-md-4">
                 <a href="login.html">
-                    <button class="btn btnLogin"><i class="fa fa-unlock-alt"> </i> Login</button>
+                    <button class="btn" id="btnLogin"><i class="fa fa-unlock"> </i> Login</button>
                 </a>
+                <button onload="logoutStyle()" class="btn" id="btnLogout"><i class="fa fa-lock"> </i> Logout</button>
             </div>
         </div>
         <div class="row intro">
@@ -69,6 +70,7 @@
         </div>
     </div>
     <script src="scripts/classes.js"></script>
+    <script src="scripts/login.js"></script>
     <script src="scripts/filter.js"></script>
     <script src="scripts/favorite.js"></script>
 </main>
