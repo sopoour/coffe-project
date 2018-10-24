@@ -23,18 +23,15 @@ submit.onclick = function () {
         return false;
     }
     for (var i = 0; i < users.length; i++) {
+        // users[i].username/.password to check that the same user is compared
         if (userName.value === users[i].username && userPassword.value === users[i].password) {
             //if username and password match set tempIndex to it's actual index
             tempIndex = i;
             users[i].loggedIn = true;
             //store users in localStorage
 
-            alert(users[i].loggedIn);
             //open main filter page on same tab
             window.location = "index.html";
-
-
-
         }
     }
     //this will only happen when the program checked all the users and tempIndex was never set to i but still set to initial -1

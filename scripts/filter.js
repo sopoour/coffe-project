@@ -45,6 +45,7 @@ function doFilter() {
     if (!price && type === "Select...") {
         //Do stuff for no input values
         alert("No Input values");
+        //return means to cancel the function and get out of it again; you could also use false
         return null;
     }
 
@@ -75,10 +76,12 @@ function doFilter() {
     return filteredCoffees;
 }
 
-/*
-This builds a yet not-so-nice table with yummy coffees.
-*/
+
+//This function is for building a able
+
 function filterResult() {
+    //call the actual filtering function
+    //filteredCoffee is an array that stores each coffee and these will be printed in each row
     var filteredCoffees=doFilter();
     //Do we really need this if statement? and for what?
     /*
@@ -100,7 +103,7 @@ function filterResult() {
         alert("No matching objects");
         return null;
     }
-    //Creates Table
+    //Creates Table - capital letters because it's being created
     var table = document.createElement("TABLE");
     table.border = 1;
 
@@ -146,6 +149,7 @@ function filterResult() {
 
     //Put table in <div> on HTML
     table.className = "table table-hover";
+    //appendChild means to push the table within my div with id="resultsTable" (--> this is a child of div)
     dvTable.appendChild(table);
 
 }
