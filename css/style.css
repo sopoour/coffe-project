@@ -60,7 +60,7 @@ option {
     color: white;
     padding: 1% 5% 2% 5%;
     font-family: 'Lato', sans-serif;
-    display: none;
+    visibility: hidden;
 }
 
 #filterSubmit {

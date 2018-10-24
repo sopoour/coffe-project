@@ -23,10 +23,11 @@ class Favorite {
 }
 
 class User {
-    constructor(name, username, email, password) {
+    constructor(name, username, email, password, loggedIn) {
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.loggedIn = loggedIn;
     }
 }
