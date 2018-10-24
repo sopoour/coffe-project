@@ -11,14 +11,19 @@ stores.push(store1, store2, store3);
 
 /*COFFEES*/
 //Generate some great coffees!
-var coffee1 = new Coffee(1,store1, "Cappuccino", 45);
+addCoffee(store1,"Cappuchino",45);
+addCoffee(store2, "Cappuchino",40);
+addCoffee(store3,"Latte Macchiato",30);
+addCoffee(store3, "Espresso",14);
+addCoffee(store2, "Arabica",20);
+/*var coffee1 = new Coffee(1,store1, "Cappuccino", 45);
 var coffee2 = new Coffee(2,store2, "Cappuccino", 40);
 var coffee3 = new Coffee(3,store1, "Latte Macchiato", 30);
-var coffee4 = new Coffee(4,store3, "Espresso", 14);
+var coffee4 = new Coffee(4,store3, "Espresso", 14);*/
 
 //Push all coffees to an array
-var coffees = [];
-coffees.push(coffee1, coffee2, coffee3, coffee4);
+/*var coffees = [];
+coffees.push(coffee1, coffee2, coffee3, coffee4);*/
 
 
 
@@ -30,9 +35,10 @@ for (var a in stores) {
 
 //FUNCTIONS
 
+var coffees=getCoffees();
+
 function doFilter() {
     var filteredCoffees=[];
-    
     var price = document.getElementById("priceInput").value;
     var type = document.getElementById("typeInput").value;
 
@@ -43,7 +49,6 @@ function doFilter() {
     }
 
     for(var x=0;x<coffees.length;x++) {
-        
         var c = coffees[x];
         //For what is the var lock?
         /*
@@ -66,6 +71,7 @@ function doFilter() {
             filteredCoffees.push(c);
         }
     }
+    alert
     return filteredCoffees;
 }
 
@@ -113,11 +119,17 @@ function filterResult() {
     //Coffee Rows
     for (var i = 0; i < filteredCoffees.length; i++) {
         row = table.insertRow(-1);
+        
+        var j = findCoffee(filteredCoffees[i]);
+        if(j<0) {
+            alert("Großer Fehler");
+            return null;
+        }
+        var buttonID = "coffee-"+j;
 
         var b = document.createElement("BUTTON");
-        b.setAttribute('content','test content');
         b.setAttribute('class','btn coffeeSelect');
-        b.setAttribute('value', filteredCoffees[i]);
+        b.setAttribute('id',buttonID);
         b.innerHTML = 'Add To Favorites';
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)
@@ -136,5 +148,14 @@ function filterResult() {
     table.className = "table table-hover";
     dvTable.appendChild(table);
 
+}
+
+function findCoffee(coffee) {
+    for(var x=0;x<coffees.length;x++) {
+        if(coffees[x].price==coffee.price && coffees[x].type==coffee.type && coffees[x].store == coffee.store) {
+            return x;
+        }
+    }
+    return -1;
 }
 
