@@ -1,17 +1,18 @@
 //storing existing users
-/*
+
 var user1 = new User("Sophia", "sopoour", "sophia.auer@gmail.com", "1234", false);
 var user2 = new User("Diana", "dianalemon", "diana@gmail.com", "5678", false);
 var user3 = new User("Jan", "janhää", "jan@gmail.com", "4567", false);
 //push all user in one array
 var users = [];
 users.push(user1, user2, user3);
-*/
-addUser("Sophia", "sopoour", "sophia.auer@gmail.com", "1234", false);
-addUser("Diana", "dianalemon", "diana@gmail.com", "5678", false);
-addUser("Jan", "janhää", "jan@gmail.com", "4567", false);
-var users = getUsers();
 
+/*
+adduser("Sophia", "sopoour", "sophia.auer@gmail.com", "1234", false);
+adduser("Diana", "dianalemon", "diana@gmail.com", "5678", false);
+adduser("Jan", "janhää", "jan@gmail.com", "4567", false);
+var users = getUsers();
+*/
 var submit = document.getElementById("loginSubmit");
 //the function shall be activated when user clicks on login button
 submit.onclick = function () {
@@ -33,8 +34,11 @@ submit.onclick = function () {
             //if username and password match set tempIndex to it's actual index
             tempIndex = i;
             users[i].loggedIn = true;
-            //store users in localStorage
-
+            //store users in localStorage with the changed status of loggedIn
+            //since it is an object you need first stringify so that it actually saves everything what is inside of the object
+            var userString = JSON.stringify(users[i]);
+            //saves the user in local storage with key "user" and value = userString
+            localStorage.setItem("user", userString);
             //open main filter page on same tab
             window.location = "index.html";
         }
@@ -45,7 +49,6 @@ submit.onclick = function () {
     }
 };
 changeButtons();
-
 function changeButtons() {
     for (var i = 0; i < users.length; i++) {
         if (users[i].loggedIn === true) {

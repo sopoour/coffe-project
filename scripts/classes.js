@@ -47,7 +47,8 @@ function addCoffee(store,type,price) {
     var coffee = new Coffee(store,type,price);
     coffees.push(coffee);
 }
-function addUser(name,username,email,password,loggedIn) {
+
+function adduser(name, username, email, password, loggedIn) {
     var user = new User(name,username,email,password,loggedIn);
     users.push(user);
 }
