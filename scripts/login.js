@@ -38,7 +38,7 @@ submit.onclick = function () {
             //since it is an object you need first stringify so that it actually saves everything what is inside of the object
             var userString = JSON.stringify(users[i]);
             //saves the user in local storage with key "user" and value = userString
-            localStorage.setItem("user", userString);
+            localStorage.setItem("user-" + i, userString);
             //open main filter page on same tab
             window.location = "index.html";
         }
@@ -48,10 +48,12 @@ submit.onclick = function () {
         loginResult.innerHTML = "<br> <br>" + "Your password or username is incorrect. Please try again!";
     }
 };
-changeButtons();
+
 function changeButtons() {
     for (var i = 0; i < users.length; i++) {
-        if (users[i].loggedIn === true) {
+        var loggedInUser = localStorage.getItem("user-" + i);
+        JSON.parse(loggedInUser);
+        if (loggedInUser.loggedIn === true) {
             document.getElementById("btnLogin").style.visibility = "hidden";
             document.getElementById("btnLogout").style.visibility = "visible";
         }
@@ -59,3 +61,5 @@ function changeButtons() {
     }
 
 }
+
+window.onload = changeButtons;
