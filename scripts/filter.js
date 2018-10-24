@@ -122,7 +122,7 @@ function filterResult() {
     //Coffee Rows
     for (var i = 0; i < filteredCoffees.length; i++) {
         row = table.insertRow(-1);
-        
+
         var j = findCoffee(filteredCoffees[i]);
         if(j<0) {
             alert("Großer Fehler");
@@ -155,7 +155,9 @@ function filterResult() {
 }
 
 function findCoffee(coffee) {
+    //get index of my coffee within the table
     for(var x=0;x<coffees.length;x++) {
+        //search coffee and compare it will all related columns
         if(coffees[x].price==coffee.price && coffees[x].type==coffee.type && coffees[x].store == coffee.store) {
             return x;
         }
