@@ -28,27 +28,10 @@ addCoffee(store3, "arabica",29);
 addCoffee(store2, "arabica",74);
 addCoffee(store1, "arabica",35);
 
-/*var coffee1 = new Coffee(1,store1, "Cappuccino", 45);
-var coffee2 = new Coffee(2,store2, "Cappuccino", 40);
-var coffee3 = new Coffee(3,store1, "Latte Macchiato", 30);
-var coffee4 = new Coffee(4,store3, "Espresso", 14);*/
-
-//Push all coffees to an array
-/*var coffees = [];
-coffees.push(coffee1, coffee2, coffee3, coffee4);*/
-
-
-
-/* Why doesn't this work? a iterates over all objects in stores... maybe some issue with the objects?
-for (var a in stores) {
-    console.log("This is "+a.name);
-}
-*/
-
 //FUNCTIONS
 
 var coffees=getCoffees();
-//alert("Wir haben "+coffees.length+" Kaffees im System.");
+
 
 function filter(dataType,operation,attributeValue,filterValue) {
     //Returns true or false
