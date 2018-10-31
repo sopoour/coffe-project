@@ -28,9 +28,13 @@ class User {
         this.email = email;
         this.password = password;
         this.loggedIn = loggedIn;
+
     }
 }
 
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem("currentUser"));
+}
 /*
 Global Arrays
 */
