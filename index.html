@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
-<body onload="changeButtons()">
+<body onload="changePage()">
 <header>
     <div class="container">
         <div class="row">
@@ -25,12 +25,15 @@
                 <a href="login.html">
                     <button class="btn" id="btnLogin"><i class="fa fa-unlock"> </i> Login</button>
                 </a>
-                <button class="btn" id="btnLogout"><i class="fa fa-lock"> </i> Logout</button>
+                <button class="btn" id="btnLogout" onclick="logout()"><i class="fa fa-lock"> </i> Logout</button>
             </div>
         </div>
         <div class="row intro">
             <div class="col-md-12">
-                <h1> Welcome to </h1>
+                <div id="overlay" onclick="off()">
+                    <div id="logoutMessage"></div>
+                </div>
+                <h1> Welcome <span id="userNameInput"></span> to </h1>
                 <img src="img/locfeLogo.png">
                 <h5> Please choose your preferred filters to find your favorite coffee nearby:</h5>
             </div>

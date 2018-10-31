@@ -21,7 +21,6 @@ submit.onclick = function () {
     var loginResult = document.getElementById("loginResult");
     //temporary index to check if my user exists or not
     var tempIndex = -1;
-
     //first check if either one of the inputs is empty
     if (userName.value === "" || userPassword.value === "") {
         loginResult.innerHTML = "<br> <br>" + "Please type in both username and password!";
@@ -38,7 +37,8 @@ submit.onclick = function () {
             //since it is an object you need first stringify so that it actually saves everything what is inside of the object
             var userString = JSON.stringify(users[i]);
             //saves the user in local storage with key "user" and value = userString
-            localStorage.setItem("user-" + i, userString);
+            //user + i so that I know which user is logged in
+            localStorage.setItem("currentUser", userString);
             //open main filter page on same tab
             window.location = "index.html";
         }
@@ -49,15 +49,41 @@ submit.onclick = function () {
     }
 };
 
-function changeButtons() {
-    for (var i = 0; i < users.length; i++) {
-        var loggedInUser = localStorage.getItem("user-" + i);
-        JSON.parse(loggedInUser);
-        console.log(loggedInUser);
-        if (loggedInUser.loggedIn === true) {
-            document.getElementById("btnLogin").style.visibility = "hidden";
-            document.getElementById("btnLogout").style.visibility = "visible";
-        }
+function changePage() {
+    //for loop to define the index I have --> used for key name "user" + i
+    var currentUser = getCurrentUser();
+    console.log(currentUser.loggedIn);
+    if (currentUser.loggedIn === true) {
+        document.getElementById("btnLogin").style.visibility = "hidden";
+        document.getElementById("btnLogout").style.visibility = "visible";
+        //add name of user after Welcome when logged in
+        document.getElementById("userNameInput").innerHTML = currentUser.name;
     }
+}
+
+//so that you can't go back to login and login again, redirect immediatley back to index.html
+function preventLogin() {
+    var currentUser = getCurrentUser();
+    if (currentUser.loggedIn === true) {
+        window.location = "index.html";
+    }
+}
+
+function logout() {
+    var currentUser = getCurrentUser();
+    if (currentUser.loggedIn === true) {
+        localStorage.clear();
+        document.getElementById("btnLogin").style.visibility = "visible";
+        document.getElementById("btnLogout").style.visibility = "hidden";
+        document.getElementById("userNameInput").innerHTML = "";
+        document.getElementById("overlay").style.display = "block";
+        var logoutMessage = document.getElementById("logoutMessage");
+        logoutMessage.innerHTML = "You are successfully logged-out! See you soon :)";
+
+    }
+}
+
+function off() {
+    document.getElementById("overlay").style.display = "none";
 }
 
