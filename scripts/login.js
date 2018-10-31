@@ -52,7 +52,6 @@ submit.onclick = function () {
 function changePage() {
     //for loop to define the index I have --> used for key name "user" + i
     var currentUser = getCurrentUser();
-    console.log(currentUser.loggedIn);
     if (currentUser.loggedIn === true) {
         document.getElementById("btnLogin").style.visibility = "hidden";
         document.getElementById("btnLogout").style.visibility = "visible";
@@ -82,7 +81,6 @@ function logout() {
 
     }
 }
-
 function off() {
     document.getElementById("overlay").style.display = "none";
 }
