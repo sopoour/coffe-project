@@ -53,13 +53,11 @@ function changeButtons() {
     for (var i = 0; i < users.length; i++) {
         var loggedInUser = localStorage.getItem("user-" + i);
         JSON.parse(loggedInUser);
+        console.log(loggedInUser);
         if (loggedInUser.loggedIn === true) {
             document.getElementById("btnLogin").style.visibility = "hidden";
             document.getElementById("btnLogout").style.visibility = "visible";
         }
-
     }
-
 }
 
-window.onload = changeButtons;
