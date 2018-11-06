@@ -1,5 +1,4 @@
 //storing existing users
-
 var user1 = new User("Sophia", "sopoour", "sophia.auer@gmail.com", "1234", false);
 var user2 = new User("Diana", "dianalemon", "diana@gmail.com", "5678", false);
 var user3 = new User("Jan", "janhää", "jan@gmail.com", "4567", false);
@@ -32,12 +31,12 @@ authUser.onclick = function () {
         if (userName.value === users[i].username && userPassword.value === users[i].password) {
             //if username and password match set tempIndex to it's actual index
             tempIndex = i;
+            //change the loggedIn status of respective user from false to true so that I can see which user is loggedIn
             users[i].loggedIn = true;
             //store users in localStorage with the changed status of loggedIn
-            //since it is an object you need first stringify so that it actually saves everything what is inside of the object
+            //since it is an object you need first stringify so that it actually shows everything in "value" what is inside of the object
             var userString = JSON.stringify(users[i]);
-            //saves the user in local storage with key "user" and value = userString
-            //user + i so that I know which user is logged in
+            //saves the user in local storage
             localStorage.setItem("currentUser", userString);
             //open main filter page on same tab
             window.location = "index.html";
@@ -50,8 +49,9 @@ authUser.onclick = function () {
 };
 
 function changePage() {
-    //for loop to define the index I have --> used for key name "user" + i
+    //get stored user
     var currentUser = getCurrentUser();
+    //check if true --> CHECK IF THIS IS NEEDEED
     if (currentUser.loggedIn === true) {
         document.getElementById("btnLogin").style.visibility = "hidden";
         document.getElementById("btnLogout").style.visibility = "visible";
@@ -69,7 +69,9 @@ function preventLogin() {
 }
 
 function logout() {
+    //get currentUser from localStorage
     var currentUser = getCurrentUser();
+    //in case currentUser is loggedIn
     if (currentUser.loggedIn === true) {
         localStorage.clear();
         document.getElementById("btnLogin").style.visibility = "visible";
@@ -81,6 +83,8 @@ function logout() {
 
     }
 }
+
+//when click on background of logout message, message disappears
 function off() {
     document.getElementById("overlay").style.display = "none";
 }
