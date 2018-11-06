@@ -13,9 +13,9 @@ adduser("Diana", "dianalemon", "diana@gmail.com", "5678", false);
 adduser("Jan", "janhää", "jan@gmail.com", "4567", false);
 var users = getUsers();
 */
-var submit = document.getElementById("loginSubmit");
+var authUser = document.getElementById("loginSubmit");
 //the function shall be activated when user clicks on login button
-submit.onclick = function () {
+authUser.onclick = function () {
     var userName = document.getElementById("userName");
     var userPassword = document.getElementById("userPassword");
     var loginResult = document.getElementById("loginResult");

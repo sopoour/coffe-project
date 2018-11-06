@@ -55,6 +55,7 @@ function filter(dataType,operation,attributeValue,filterValue) {
             return 0;
         }
    }
+
    else if(dataType=="number") {
        //alert("analyzieren wir den Preis");
         if(filterValue==0) {
