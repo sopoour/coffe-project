@@ -8,9 +8,9 @@ var users = [];
 users.push(user1, user2, user3);
 
 /*
-adduser("Sophia", "sopoour", "sophia.auer@gmail.com", "1234", false);
-adduser("Diana", "dianalemon", "diana@gmail.com", "5678", false);
-adduser("Jan", "janhää", "jan@gmail.com", "4567", false);
+addUser("Sophia", "sopoour", "sophia.auer@gmail.com", "1234", false);
+addUser("Diana", "dianalemon", "diana@gmail.com", "5678", false);
+addUser("Jan", "janhää", "jan@gmail.com", "4567", false);
 var users = getUsers();
 */
 var authUser = document.getElementById("loginSubmit");
