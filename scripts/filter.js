@@ -204,7 +204,6 @@ function filterResult() {
         var b = document.createElement("BUTTON");
         b.setAttribute('class','btn coffeeSelect');
         b.setAttribute('id',buttonID);
-        b.setAttribute("onclick", addFavorite);
         b.innerHTML = 'Add To Favorites';
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)

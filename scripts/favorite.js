@@ -8,16 +8,16 @@ var favorites = [];
 //why is selectedCoffee an array?
 var selectedCoffee = [];
 
+
 // Add event listener to get coffee id from filter as selectedCoffee
 function addFavorite() {
 
 // If item not already in favorites (for loop), add to favorites array (new HTML page with array)
 // 2.1. Add "This has been added to your favorite"
 // 2.2. Display length of array & items of coffee
-    var currentUser = getCurrentUser();
     var count = favorites.length;
     for (var i = 0; i < count; i++) {
-        if (selectedCoffee [i] !== favorites) {
+        if (selectedCoffee [i] === favorites) {
             favorites.push(selectedCoffee);
             alert("You have chosen " + favorites.length + " favorite coffee(s)");
         }
@@ -25,7 +25,6 @@ function addFavorite() {
         alert("Hey there greedy! This has already been added to your favorites!")
 
     }
-
 }
 
 function displayFavorites() {
