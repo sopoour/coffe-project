@@ -1,4 +1,5 @@
 //storing existing users
+
 var user1 = new User("Sophia", "sopoour", "sophia.auer@gmail.com", "1234", false);
 var user2 = new User("Diana", "dianalemon", "diana@gmail.com", "5678", false);
 var user3 = new User("Jan", "janhää", "jan@gmail.com", "4567", false);
@@ -51,9 +52,10 @@ authUser.onclick = function () {
 function changePage() {
     //get stored user
     var currentUser = getCurrentUser();
-    //check if true --> CHECK IF THIS IS NEEDEED
+    //check if true --> CHECK IF YOU COULD DO THAT BETTER
     if (currentUser.loggedIn === true) {
         document.getElementById("btnLogin").style.visibility = "hidden";
+        document.getElementById("btnFavoriteList").style.visibility = "visible";
         document.getElementById("btnLogout").style.visibility = "visible";
         //add name of user after Welcome when logged in
         document.getElementById("userNameInput").innerHTML = currentUser.name;
@@ -76,6 +78,7 @@ function logout() {
         localStorage.clear();
         document.getElementById("btnLogin").style.visibility = "visible";
         document.getElementById("btnLogout").style.visibility = "hidden";
+        document.getElementById("btnFavoriteList").style.visibility = "hidden";
         document.getElementById("userNameInput").innerHTML = "";
         document.getElementById("overlay").style.display = "block";
         var logoutMessage = document.getElementById("logoutMessage");

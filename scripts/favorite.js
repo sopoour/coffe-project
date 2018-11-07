@@ -1,19 +1,23 @@
 
 // 1. Click on button --> Store favorite choice
+
+//array where all favorites are stored
 var favorites = [];
 
+//specific coffee that is to be added or removed
+//why is selectedCoffee an array?
 var selectedCoffee = [];
 
 // Add event listener to get coffee id from filter as selectedCoffee
-function addFavorite(selectedCoffee, favorites)
+function addFavorite() {
 
 // If item not already in favorites (for loop), add to favorites array (new HTML page with array)
 // 2.1. Add "This has been added to your favorite"
 // 2.2. Display length of array & items of coffee
-{
+    var currentUser = getCurrentUser();
     var count = favorites.length;
     for (var i = 0; i < count; i++) {
-        if (selectedCoffee [i] === favorites) {
+        if (selectedCoffee [i] !== favorites) {
             favorites.push(selectedCoffee);
             alert("You have chosen " + favorites.length + " favorite coffee(s)");
         }
@@ -24,6 +28,9 @@ function addFavorite(selectedCoffee, favorites)
 
 }
 
+function displayFavorites() {
+    return document.getElementById("displayFavorites").innerHTML = favorites;
+}
 // 3. Favorite choice is removed from favorite page
 
 // If coffee is in favorites, remove (if not, don't)

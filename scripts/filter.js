@@ -178,7 +178,7 @@ function filterResult() {
 
     //Init Header Row
     var columns = [];
-    columns.push("Type", "Price", "Store");
+    columns.push("Type", "Price", "Store", "Button");
     var row = table.insertRow(-1);
 
     //Fill out Header Row
@@ -201,10 +201,11 @@ function filterResult() {
         } */
         var buttonID = "coffee-";
 
-        /*var b = document.createElement("BUTTON");
+        var b = document.createElement("BUTTON");
         b.setAttribute('class','btn coffeeSelect');
         b.setAttribute('id',buttonID);
-        b.innerHTML = 'Add To Favorites';*/
+        b.setAttribute("onclick", addFavorite);
+        b.innerHTML = 'Add To Favorites';
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)
         var cell1 = row.insertCell(-1);
@@ -213,6 +214,8 @@ function filterResult() {
         cell2.innerHTML = filteredCoffees[i].price;
         var cell3 = row.insertCell(-1);
         cell3.innerHTML = filteredCoffees[i].store.name;
+        var cell4 = row.insertCell(-1);
+        cell4.appendChild(b);
 
     }
 
