@@ -206,15 +206,18 @@ function filterResult() {
         b.setAttribute('class','btn coffeeSelect');
         b.setAttribute('id',buttonID);
         
-        var isFavorite = checkFavorites(filteredCoffees[i](), currentUser);
+        var isFavorite = checkFavorites(filteredCoffees[i], currentUser);
 
         if(isFavorite==true) {
-            b.setAttribute("onclick", removeFavorite());
+            b.onclick = function() { removeFavorite(); };
             b.innerHTML = 'Remove From Favorites';
         }
         else {
-            b.setAttribute("onclick", addFavorite());
-            b.innerHTML = 'Add To Favorites';
+            //b.onclick = function() {addFavorite(currentUser,filteredCoffees[i]);}; 
+            //b.onclick = function() {alert('syntaxcheck');};
+            //b.setAttribute('onclick','addFavorite('+currentUser+','+filteredCoffees[i]+')');
+            b.innerHTML = 'Add '+filteredCoffees[i].type+' to Favorites';
+            b.setAttribute('onClick','addFavorite('+currentUser.username+','+j+')');
         }
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)
@@ -225,6 +228,7 @@ function filterResult() {
         var cell3 = row.insertCell(-1);
         cell3.innerHTML = filteredCoffees[i].store.name;
         var cell4 = row.insertCell(-1);
+        b.onclick = function() {addFavorite(currentUser.username, coffees[j].type)};
         cell4.appendChild(b);
 
     }

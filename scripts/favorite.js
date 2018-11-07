@@ -20,7 +20,7 @@ function displayFavorites() {
 // If coffee is in favorites, remove (if not, don't)
 
 
-function removeFavorite(favorites) {
+/*function removeFavorite(favorites) {
 
     var count = favorites.length;
     for (var i = 0; i < count; i++) {
@@ -35,4 +35,4 @@ function removeFavorite(favorites) {
         else
         alert("Uh Oh. It seems that this coffee wasn't part of your favorites.")
     }
-}
+} */

@@ -62,10 +62,14 @@ function addUser(name, username, email, password) {
 function addFavorite(user,coffee) {
     var favorite = new Favorite(user,coffee);
     favorites.push(favorite);
+    console.log(user+", we have added a "+coffee+" to your favorites.");
 }
 function addStore(name,homepage,picture) {
     var store = new Store(name,homepage,picture);
     stores.push(store);
+}
+function removeFavorite(user,coffee) {
+    alert("in remove");
 }
 
 /*

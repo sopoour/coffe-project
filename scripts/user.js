@@ -1,7 +1,7 @@
 //storing existing users
 addUser("Sophia", "sopoour", "sophia.auer@gmail.com", "1234");
 addUser("Diana", "dianalemon", "diana@gmail.com", "5678");
-addUser("Jan", "janhää", "jan@gmail.com", "4567");
+addUser("Jan", "jaha", "jan@gmail.com", "123");
 var users = getUsers();
 
 var authUser = document.getElementById("loginSubmit");
