@@ -134,7 +134,6 @@ function doFilter() {
                         break;
                     }
                 }
-   
             }
         }
    
@@ -194,12 +193,14 @@ function filterResult() {
         console.log("Kaffee "+i+" ist "+filteredCoffees[i].type);
         row = table.insertRow(-1);
 
-        //var j = findCoffee(filteredCoffees[i]);
-        /*if(j<0) {
+        var j = findCoffee(filteredCoffees[i]);
+
+        //Coffee doesn't exist?
+        if(j<0) {
             alert("Großer Fehler");
             return null;
-        } */
-        var buttonID = "coffee-";
+        } 
+        var buttonID = "c"+j;
 
         var b = document.createElement("BUTTON");
         b.setAttribute('class','btn coffeeSelect');
@@ -226,8 +227,11 @@ function filterResult() {
 
 }
 
-/*function findCoffee(coffee) {
-    //get index of my coffee within the table
+function findCoffee(coffee) {
+    var cStore = coffee.store;
+    var cPrice = coffee.price;
+    var cType = coffee.type;
+    
     for(var x=0;x<coffees.length;x++) {
         //search coffee and compare it will all related columns
         if(coffees[x].price==coffee.price && coffees[x].type==coffee.type && coffees[x].store == coffee.store) {
@@ -235,5 +239,5 @@ function filterResult() {
         }
     }
     return -1;
-} */
+} 
 
