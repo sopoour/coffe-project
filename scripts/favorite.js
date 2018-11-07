@@ -24,11 +24,11 @@ function displayFavorites() {
 
     var count = favorites.length;
     for (var i = 0; i < count; i++) {
-        if (selectedCoffee [i] === favorites)
+        if ((favorites[i].coffee === coffees) && (currentUser === true))
         // Removing element by value https://www.hostingadvice.com/how-to/javascript-remove-element-array/
         {
-            favorites.splice(favorites.indexOf('selectedCoffee.value'), 1);
-            alert("You have removed " + selectedCoffee.value + " from your favorite coffees");
+            favorites.splice(favorites.indexOf(coffees), 1);
+            alert("You have removed " + coffees.value + " from your favorite coffees");
         }
 
 
