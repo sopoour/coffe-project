@@ -205,8 +205,17 @@ function filterResult() {
         var b = document.createElement("BUTTON");
         b.setAttribute('class','btn coffeeSelect');
         b.setAttribute('id',buttonID);
-        b.setAttribute("onclick", addFavorite);
-        b.innerHTML = 'Add To Favorites';
+        
+        var isFavorite = checkFavorites(filteredCoffees[i](), currentUser);
+
+        if(isFavorite==true) {
+            b.setAttribute("onclick", removeFavorite());
+            b.innerHTML = 'Remove From Favorites';
+        }
+        else {
+            b.setAttribute("onclick", addFavorite());
+            b.innerHTML = 'Add To Favorites';
+        }
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)
         var cell1 = row.insertCell(-1);

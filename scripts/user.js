@@ -1,18 +1,9 @@
 //storing existing users
-
-var user1 = new User("Sophia", "sopoour", "sophia.auer@gmail.com", "1234", false);
-var user2 = new User("Diana", "dianalemon", "diana@gmail.com", "5678", false);
-var user3 = new User("Jan", "janhää", "jan@gmail.com", "4567", false);
-//push all user in one array
-var users = [];
-users.push(user1, user2, user3);
-
-/*
-addUser("Sophia", "sopoour", "sophia.auer@gmail.com", "1234", false);
-addUser("Diana", "dianalemon", "diana@gmail.com", "5678", false);
-addUser("Jan", "janhää", "jan@gmail.com", "4567", false);
+addUser("Sophia", "sopoour", "sophia.auer@gmail.com", "1234");
+addUser("Diana", "dianalemon", "diana@gmail.com", "5678");
+addUser("Jan", "janhää", "jan@gmail.com", "4567");
 var users = getUsers();
-*/
+
 var authUser = document.getElementById("loginSubmit");
 //the function shall be activated when user clicks on login button
 authUser.onclick = function () {
@@ -32,8 +23,6 @@ authUser.onclick = function () {
         if (userName.value === users[i].username && userPassword.value === users[i].password) {
             //if username and password match set tempIndex to it's actual index
             tempIndex = i;
-            //change the loggedIn status of respective user from false to true so that I can see which user is loggedIn
-            users[i].loggedIn = true;
             //store users in localStorage with the changed status of loggedIn
             //since it is an object you need first stringify so that it actually shows everything in "value" what is inside of the object
             var userString = JSON.stringify(users[i]);
@@ -50,10 +39,8 @@ authUser.onclick = function () {
 };
 
 function changePage() {
-    //get stored user
-    var currentUser = getCurrentUser();
-    //check if true --> CHECK IF YOU COULD DO THAT BETTER
-    if (currentUser.loggedIn === true) {
+    //if currentUser exists in localStorage change my index file (adding logout button etc.)
+    if (currentUser) {
         document.getElementById("btnLogin").style.visibility = "hidden";
         document.getElementById("btnFavoriteList").style.visibility = "visible";
         document.getElementById("btnLogout").style.visibility = "visible";
@@ -64,17 +51,14 @@ function changePage() {
 
 //so that you can't go back to login and login again, redirect immediatley back to index.html
 function preventLogin() {
-    var currentUser = getCurrentUser();
-    if (currentUser.loggedIn === true) {
+    if (currentUser) {
         window.location = "index.html";
     }
 }
 
 function logout() {
-    //get currentUser from localStorage
-    var currentUser = getCurrentUser();
     //in case currentUser is loggedIn
-    if (currentUser.loggedIn === true) {
+    if (currentUser) {
         localStorage.clear();
         document.getElementById("btnLogin").style.visibility = "visible";
         document.getElementById("btnLogout").style.visibility = "hidden";
