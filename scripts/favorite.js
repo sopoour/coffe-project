@@ -2,11 +2,13 @@
 
 function checkFavorites(favorites, coffee) {
     var currentUser = getCurrentUser();
+    if (favorites.length < 1) {
+        return false
+    }
     for (var i = 0; i < favorites.length; i++) {
         if ((favorites[i].coffee === coffee) && (currentUser === true)) {
             return true
         }
-
         else return false
     }
 }
