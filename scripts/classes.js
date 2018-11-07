@@ -22,19 +22,22 @@ class Favorite {
 }
 
 class User {
-    constructor(name, username, email, password, loggedIn) {
+    constructor(name, username, email, password) {
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.loggedIn = loggedIn;
 
     }
 }
 
+//my stored currentUser
 function getCurrentUser() {
     return JSON.parse(localStorage.getItem("currentUser"));
 }
+
+var currentUser = getCurrentUser();
+
 /*
 Global Arrays
 */
@@ -52,8 +55,8 @@ function addCoffee(store,type,price) {
     coffees.push(coffee);
 }
 
-function adduser(name, username, email, password, loggedIn) {
-    var user = new User(name,username,email,password,loggedIn);
+function addUser(name, username, email, password) {
+    var user = new User(name, username, email, password);
     users.push(user);
 }
 function addFavorite(user,coffee) {

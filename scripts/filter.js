@@ -206,6 +206,8 @@ function filterResult() {
         b.setAttribute('class','btn coffeeSelect');
         b.setAttribute('id',buttonID);
         
+        var isFavorite = checkFavorites(filteredCoffees[i](), currentUser);
+
         if(isFavorite==true) {
             b.setAttribute("onclick", removeFavorite());
             b.innerHTML = 'Remove From Favorites';
