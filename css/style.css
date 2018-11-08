@@ -20,16 +20,19 @@ p {
 }
 .intro {
     text-align: center;
-    margin-top: 5%;
+    margin-top: 10%;
     margin-bottom: 1%;
 }
 
+.intro h1 {
+    font-size: 32px;
+}
 .intro h5 {
-    font-size: 21px;
+    font-size: 18px;
 }
 
 .intro img {
-    width: 18%;
+    width: 15%;
     margin-bottom: 3%;
 }
 
@@ -51,6 +54,7 @@ option {
     color: white;
     padding: 1% 5% 2% 5%;
     font-family: 'Lato', sans-serif;
+
 }
 
 #btnLogout {
@@ -61,6 +65,7 @@ option {
     padding: 1% 5% 2% 5%;
     font-family: 'Lato', sans-serif;
     visibility: hidden;
+    font-size: 14px;
 }
 
 #btnFavoriteList {
@@ -71,6 +76,7 @@ option {
     padding: 1% 5% 2% 5%;
     font-family: 'Lato', sans-serif;
     visibility: hidden;
+    font-size: 14px;
 }
 
 #filterSubmit {
