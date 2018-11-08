@@ -31,7 +31,7 @@ class User {
     }
 }
 
- function getCurrentUser() {
+function getCurrentUser() {
     return JSON.parse(localStorage.getItem("currentUser"));
 }
 var currentUser = getCurrentUser();
