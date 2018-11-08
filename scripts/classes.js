@@ -71,6 +71,7 @@ function addFavorite(ci) {
     location.reload();
     alert('has been added');
 }
+
 function removeFavorite(coffee) {
     //find coffee to be deleted in user's favorite
     var deleteIndex = findCoffee(coffee,currentUser.favorites);

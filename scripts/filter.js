@@ -150,8 +150,6 @@ This builds a table based on given array of coffees. No filtering here.
 */
 
 function filterResult(filteredCoffees) {
-
-
     
     //Do we really need this if statement? and for what?
     /*
@@ -207,7 +205,7 @@ function filterResult(filteredCoffees) {
         var b = document.createElement("BUTTON");
         b.setAttribute('class','btn coffeeSelect');
         b.setAttribute('id',buttonID);
-        
+        //for favorites
         if(currentUser) {
             var isFavorite = checkIfFavorite(filteredCoffees[i]);
 
