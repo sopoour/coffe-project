@@ -295,9 +295,10 @@ function checkIfFavorite(coffee) {
 @returns true if all property values of objectA and objectB are the same
 (-> objects to be considered to be equal in this context)
 @returns false if not
-*/
-//Started to work on it, but couldn't get it done... but let's leave it for now, if it works it would be awesome! 
 
+!!Started to work on it, but couldn't get it to work across several object dimensions... 
+but will get there eventually.
+*/
 function comparer(objectA, objectB) {
     var aProps = Object.getOwnPropertyNames(objectA);
     var bProps = Object.getOwnPropertyNames(objectB);
