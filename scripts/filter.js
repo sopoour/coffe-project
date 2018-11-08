@@ -208,20 +208,23 @@ function filterResult(filteredCoffees) {
         b.setAttribute('class','btn coffeeSelect');
         b.setAttribute('id',buttonID);
         
-        var isFavorite = checkIfFavorite(filteredCoffees[i]);
+        if(currentUser) {
+            var isFavorite = checkIfFavorite(filteredCoffees[i]);
 
-        if(isFavorite==true) {
-            b.setAttribute('onClick','removeFavorite('+j+')');
-            b.innerHTML = 'Remove From Favorites';
+            if(isFavorite==true) {
+                b.setAttribute('onClick','removeFavorite('+j+')');
+                b.innerHTML = 'Remove From Favorites';
+            }
+            else {
+    
+                b.innerHTML = 'Add to Favorites';
+                b.setAttribute('onClick','addFavorite('+j+')');
+            }
         }
-        else if(currentUser) {
 
-            b.innerHTML = 'Add to Favorites';
-            b.setAttribute('onClick','addFavorite('+j+')');
-        }
         else {
             //Link to Login
-            b.innerHTML = 'Login';
+            b.innerHTML = 'Not logged in';
         }
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)
@@ -245,10 +248,7 @@ function filterResult(filteredCoffees) {
 }
 
 function findCoffee(coffee,searchArray) {
-    var cStore = coffee.store;
-    var cPrice = coffee.price;
-    var cType = coffee.type;
-    
+
     for(var x=0;x<searchArray.length;x++) {
         //search coffee and compare it will all related columns
         if(searchArray[x].price==coffee.price && searchArray[x].type==coffee.type && comparer(searchArray[x].store,coffee.store)) {
@@ -320,9 +320,5 @@ function comparer(objectA, objectB) {
 }
 
 function showFavorites() {
-    alert(currentUser.favorites.length);
-    for(var i=0; i<currentUser.favorites.length;i++) {
-        alert(currentUser.favorites[i].type);
-    }
     filterResult(currentUser.favorites);
 }
