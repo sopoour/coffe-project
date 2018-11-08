@@ -269,7 +269,6 @@ function checkIfFavorite(coffee) {
 
     if(user.favorites.length<1) {
         //No favorites yet
-        alert('No favorites yet');
         return false;
     }
 
