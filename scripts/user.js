@@ -6,6 +6,7 @@ var users = getUsers();
 
 var authUser = document.getElementById("loginSubmit");
 //the function shall be activated when user clicks on login button
+
 authUser.onclick = function () {
     var userName = document.getElementById("userName");
     var userPassword = document.getElementById("userPassword");
@@ -38,6 +39,13 @@ authUser.onclick = function () {
     }
 };
 
+/*
+try {
+    authUser.onclick;
+} catch (err){
+    console.log("NUll Error is caught");
+}
+*/
 function changePage() {
     //if currentUser exists in localStorage change my index file (adding logout button etc.)
     if (currentUser) {
@@ -74,5 +82,7 @@ function logout() {
 //when click on background of logout message, message disappears
 function off() {
     document.getElementById("overlay").style.display = "none";
+    //so that especially the tables are reloaded and user can start from scratch
+    location.reload();
 }
 

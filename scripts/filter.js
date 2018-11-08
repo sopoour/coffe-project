@@ -177,7 +177,7 @@ function filterResult(filteredCoffees) {
 
     //Init Header Row
     var columns = [];
-    columns.push("Type", "Price", "Store", "Button");
+    columns.push("Type", "Price", "Store", "Favorite");
     var row = table.insertRow(-1);
 
     //Fill out Header Row
