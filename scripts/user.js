@@ -1,7 +1,7 @@
 //storing existing users
-addUser("Sophia", "sopoour", "sophia.auer@gmail.com", "1234");
-addUser("Diana", "dianalemon", "diana@gmail.com", "5678");
-addUser("Jan", "jaha", "jan@gmail.com", "123");
+addUser("Sophia", "sopoour", "sophia.auer@gmail.com", "1234", []);
+addUser("Diana", "dianalemon", "diana@gmail.com", "5678", []);
+addUser("Jan", "jaha", "jan@gmail.com", "123", []);
 var users = getUsers();
 
 var authUser = document.getElementById("loginSubmit");
@@ -25,9 +25,9 @@ authUser.onclick = function () {
             tempIndex = i;
             //store users in localStorage with the changed status of loggedIn
             //since it is an object you need first stringify so that it actually shows everything in "value" what is inside of the object
-            var userString = JSON.stringify(users[i]);
+
             //saves the user in local storage
-            localStorage.setItem("currentUser", userString);
+            saveUser(users[i]);
             //open main filter page on same tab
             window.location = "index.html";
         }

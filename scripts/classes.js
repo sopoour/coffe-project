@@ -22,21 +22,26 @@ class Favorite {
 }
 
 class User {
-    constructor(name, username, email, password) {
+    constructor(name, username, email, password, favorites) {
         this.name = name;
         this.username = username;
-        this.email = email;
+        this.mael = email;
         this.password = password;
-
+        this.favorites = favorites;
     }
 }
 
-//my stored currentUser
-function getCurrentUser() {
+ function getCurrentUser() {
     return JSON.parse(localStorage.getItem("currentUser"));
 }
-
 var currentUser = getCurrentUser();
+
+/*
+Saves/overrides current local storage
+*/
+function saveUser(user) {
+    localStorage.setItem("currentUser", JSON.stringify(user));
+}
 
 /*
 Global Arrays
@@ -55,22 +60,32 @@ function addCoffee(store,type,price) {
     coffees.push(coffee);
 }
 
-function addUser(name, username, email, password) {
-    var user = new User(name, username, email, password);
+function addUser(name, username, email, password, favorites) {
+    var user = new User(name, username, email, password, favorites);
     users.push(user);
 }
-function addFavorite(user,coffee) {
-    var favorite = new Favorite(user,coffee);
-    favorites.push(favorite);
-    console.log(user+", we have added a "+coffee+" to your favorites.");
+/* ci = coffeeIndex */
+function addFavorite(ci) {
+    currentUser.favorites.push(coffees[ci]);
+    saveUser(currentUser);
+    location.reload();
+    alert('has been added');
+}
+function removeFavorite(coffee) {
+    //find coffee to be deleted in user's favorite
+    var deleteIndex = findCoffee(coffee,currentUser.favorites);
+    //Remove from favorites
+    currentUser.favorites.splice(deleteIndex);
+    //Store user
+    saveUser(currentUser);
+    alert('has been removed');
+    location.reload();
 }
 function addStore(name,homepage,picture) {
     var store = new Store(name,homepage,picture);
     stores.push(store);
 }
-function removeFavorite(user,coffee) {
-    alert("in remove");
-}
+
 
 /*
 GET FUNCTIONS
@@ -88,3 +103,6 @@ function getFavorites() {
 function getStores() {
     return stores;
 }
+
+//var userfavcounter = currentUser.favorites.length;
+var x = document.getElementById("favCounter").innerHTML = '('+currentUser.favorites.length+')';

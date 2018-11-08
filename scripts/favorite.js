@@ -1,20 +1,5 @@
 // Checking favorites to ensure that the coffee is within favorites and the user is the one using the system
 
-function checkFavorites(favorites, coffee) {
-    var currentUser = getCurrentUser();
-    if (favorites.length < 1) {
-        return false
-    }
-    for (var i = 0; i < favorites.length; i++) {
-        if ((favorites[i].coffee === coffee) && (currentUser === true)) {
-            return true
-        }
-        else return false
-    }
-}
-function displayFavorites() {
-    return document.getElementById("displayFavorites").innerHTML = favorites;
-}
 // 3. Favorite choice is removed from favorite page
 
 // If coffee is in favorites, remove (if not, don't)

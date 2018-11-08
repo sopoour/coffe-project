@@ -138,19 +138,21 @@ function doFilter() {
         }
    
     }
-
-    return filteredCoffees; 
+    //Call display function
+    filterResult(filteredCoffees); 
 }
 
 
 
 
-//This function is for building a table
+/*
+This builds a table based on given array of coffees. No filtering here.
+*/
 
-function filterResult() {
-    //call the actual filtering function
-    //filteredCoffee is an array that stores each coffee and these will be printed in each row
-    var filteredCoffees=doFilter();
+function filterResult(filteredCoffees) {
+
+
+    
     //Do we really need this if statement? and for what?
     /*
     I put this in for development/debuging purpose, as this helps me to identify when there is something wrong with doFilter().
@@ -193,7 +195,7 @@ function filterResult() {
         console.log("Kaffee "+i+" ist "+filteredCoffees[i].type);
         row = table.insertRow(-1);
 
-        var j = findCoffee(filteredCoffees[i]);
+        var j = findCoffee(filteredCoffees[i],coffees);
 
         //Coffee doesn't exist?
         if(j<0) {
@@ -206,18 +208,20 @@ function filterResult() {
         b.setAttribute('class','btn coffeeSelect');
         b.setAttribute('id',buttonID);
         
-        var isFavorite = checkFavorites(filteredCoffees[i], currentUser);
+        var isFavorite = checkIfFavorite(filteredCoffees[i]);
 
         if(isFavorite==true) {
-            b.onclick = function() { removeFavorite(); };
+            b.setAttribute('onClick','removeFavorite('+j+')');
             b.innerHTML = 'Remove From Favorites';
         }
+        else if(currentUser) {
+
+            b.innerHTML = 'Add to Favorites';
+            b.setAttribute('onClick','addFavorite('+j+')');
+        }
         else {
-            //b.onclick = function() {addFavorite(currentUser,filteredCoffees[i]);}; 
-            //b.onclick = function() {alert('syntaxcheck');};
-            //b.setAttribute('onclick','addFavorite('+currentUser+','+filteredCoffees[i]+')');
-            b.innerHTML = 'Add '+filteredCoffees[i].type+' to Favorites';
-            b.setAttribute('onClick','addFavorite('+currentUser.username+','+j+')');
+            //Link to Login
+            b.innerHTML = 'Login';
         }
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)
@@ -228,7 +232,7 @@ function filterResult() {
         var cell3 = row.insertCell(-1);
         cell3.innerHTML = filteredCoffees[i].store.name;
         var cell4 = row.insertCell(-1);
-        b.onclick = function() {addFavorite(currentUser.username, coffees[j].type)};
+        //b.onclick = function() {addFavorite(currentUser.username, coffees[j].type)};
         cell4.appendChild(b);
 
     }
@@ -240,17 +244,85 @@ function filterResult() {
 
 }
 
-function findCoffee(coffee) {
+function findCoffee(coffee,searchArray) {
     var cStore = coffee.store;
     var cPrice = coffee.price;
     var cType = coffee.type;
     
-    for(var x=0;x<coffees.length;x++) {
+    for(var x=0;x<searchArray.length;x++) {
         //search coffee and compare it will all related columns
-        if(coffees[x].price==coffee.price && coffees[x].type==coffee.type && coffees[x].store == coffee.store) {
+        if(searchArray[x].price==coffee.price && searchArray[x].type==coffee.type && comparer(searchArray[x].store,coffee.store)) {
             return x;
         }
     }
     return -1;
 } 
 
+/*
+checkIfFavorite
+Checks if a coffee object is already listed as current user's favorite.
+Compares all favorites to var coffee (function called for every row = every filter result coffee)
+@return true/false
+*/
+function checkIfFavorite(coffee) {
+    var user = getCurrentUser();
+
+    if(user.favorites.length<1) {
+        //No favorites yet
+        alert('No favorites yet');
+        return false;
+    }
+
+    //Iterate through all current user's favorites and compare attributes to coffee
+    for (var i=0; i<user.favorites.length; i++) {
+        //Compare store
+        if(comparer(user.favorites[i].store, coffee.store)){
+            //Compare price
+            if(user.favorites[i].price===coffee.price) {
+                //compare type
+                if(user.favorites[i].type===coffee.type) {
+                    return true;
+                }
+            }
+        }
+
+    }
+    /* Coffee is not in favorites -> return false */
+    return false;
+}
+
+/*
+@returns true if all property values of objectA and objectB are the same
+(-> objects to be considered to be equal in this context)
+@returns false if not
+*/
+//Started to work on it, but couldn't get it done... but let's leave it for now, if it works it would be awesome! 
+
+function comparer(objectA, objectB) {
+    var aProps = Object.getOwnPropertyNames(objectA);
+    var bProps = Object.getOwnPropertyNames(objectB);
+
+    if (aProps.length != bProps.length) {
+        return false;
+    }
+    for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+
+        // If values of same property are not equal,
+        // objects are not equivalent
+        if (objectA[propName] !== objectB[propName]) {
+            return false;
+        }
+    }
+
+    //If we made it here, objects have same property levels
+    return true
+}
+
+function showFavorites() {
+    alert(currentUser.favorites.length);
+    for(var i=0; i<currentUser.favorites.length;i++) {
+        alert(currentUser.favorites[i].type);
+    }
+    filterResult(currentUser.favorites);
+}

@@ -26,9 +26,7 @@
                     <button class="btn" id="btnLogin"><i class="fa fa-unlock"> </i> Login</button>
                 </a>
                 <button class="btn" id="btnLogout" onclick="logout()"><i class="fa fa-lock"> </i> Logout</button>
-                <a href="favorites.html" target="_blank">
-                    <button class="btn" id="btnFavoriteList">Your Favorites</button>
-                </a>
+                <button class="btn" id="btnFavoriteList" onclick="showFavorites()">Your Favorites <span id="favCounter"></span></button>
             </div>
         </div>
         <div class="row intro">
@@ -66,7 +64,7 @@
                     </div>
                 </div>
                 <div class="filterItems submit">
-                    <button class="btn btn-submit" id="filterSubmit" onclick="filterResult()"><i class="fa fa-filter"></i> Filter</button>
+                    <button class="btn btn-submit" id="filterSubmit" onclick="doFilter()"><i class="fa fa-filter"></i> Filter</button>
                 </div>
             </div>
             <div class="col-md-8">
