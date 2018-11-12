@@ -29,9 +29,10 @@ try {
                 //since it is an object you need first stringify so that it actually shows everything in "value" what is inside of the object
 
                 //saves the user in local storage
+
                 saveUser(users[i]);
                 //open main filter page on same tab
-                window.location = "index.html";
+                window.open("index.html", "_target");
             }
         }
         //this will only happen when the program checked all the users and tempIndex was never set to i but still set to initial -1

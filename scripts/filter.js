@@ -149,6 +149,7 @@ function doFilter() {
 This builds a table based on given array of coffees. No filtering here.
 */
 
+
 function filterResult(filteredCoffees) {
     
     //Do we really need this if statement? and for what?
@@ -188,7 +189,6 @@ function filterResult(filteredCoffees) {
     }
 
     //Coffee Rows
-
     for (var i = 0; i < filteredCoffees.length; i++) {
         console.log("Kaffee "+i+" ist "+filteredCoffees[i].type);
         row = table.insertRow(-1);
@@ -209,7 +209,7 @@ function filterResult(filteredCoffees) {
         if(currentUser) {
             var isFavorite = checkIfFavorite(filteredCoffees[i]);
 
-            if(isFavorite==true) {
+            if (isFavorite === true) {
                 b.setAttribute('onClick','removeFavorite('+j+')');
                 b.innerHTML = 'Remove From Favorites';
             }
@@ -222,7 +222,8 @@ function filterResult(filteredCoffees) {
 
         else {
             //Link to Login
-            b.innerHTML = 'Not logged in';
+            b.setAttribute("onclick", "redirect()");
+            b.innerHTML = 'Login first';
         }
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)
@@ -235,7 +236,7 @@ function filterResult(filteredCoffees) {
         var cell4 = row.insertCell(-1);
         //b.onclick = function() {addFavorite(currentUser.username, coffees[j].type)};
         cell4.appendChild(b);
-
+        cell4.setAttribute("class", "buttons");
     }
 
     //Put table in <div> on HTML

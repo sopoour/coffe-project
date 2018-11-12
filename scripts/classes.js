@@ -25,7 +25,7 @@ class User {
     constructor(name, username, email, password, favorites) {
         this.name = name;
         this.username = username;
-        this.mael = email;
+        this.email = email;
         this.password = password;
         this.favorites = favorites;
     }
@@ -40,6 +40,9 @@ var currentUser = getCurrentUser();
 Saves/overrides current local storage
 */
 function saveUser(user) {
+    //encrypt password in currentUser
+    user.password = window.btoa(user.password);
+    //save loggedIn user as currentUser in localStorage
     localStorage.setItem("currentUser", JSON.stringify(user));
 }
 
@@ -69,7 +72,12 @@ function addFavorite(ci) {
     currentUser.favorites.push(coffees[ci]);
     saveUser(currentUser);
     location.reload();
-    alert('has been added');
+    alert('Coffee has been added');
+}
+
+//for the case when user is not logged in and clicks on Favorite Button
+function redirect() {
+    window.location = "login.html";
 }
 
 function removeFavorite(coffee) {
