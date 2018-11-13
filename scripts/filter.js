@@ -18,7 +18,6 @@ addCoffee(store1, "Filter Coffee", 13);
 addCoffee(store1, "Americano", 28);
 addCoffee(store1, "Caffé Latte", 28);
 addCoffee(store1, "Cappuccino", 28);
-addCoffee(store1, "Latte Macchiato", 28);
 addCoffee(store1, "Espresso", 22);
 addCoffee(store1, "Doble Espresso", 28);
 addCoffee(store1, "Iced Coffee", 20);
@@ -39,7 +38,7 @@ addCoffee(store5, "caffe Latte", 45);
 addCoffee(store5, "Americano", 37);
 addCoffee(store5, "Espresso", 35);
 addCoffee(store5, "Cappuccino", 45);
-addCoffee(store5, "Latte Macchiato", 40);
+addCoffee(store5, "Caffé Latte", 40);
 addCoffee(store5, "Doble Espresso", 40);
 
 //FUNCTIONS
