@@ -205,26 +205,6 @@ function filterResult(filteredCoffees) {
         var b = document.createElement("BUTTON");
         b.setAttribute('class','btn coffeeSelect');
         b.setAttribute('id',buttonID);
-        //for favorites
-        if(currentUser) {
-            var isFavorite = checkIfFavorite(filteredCoffees[i]);
-
-            if (isFavorite === true) {
-                b.setAttribute('onClick','removeFavorite('+j+')');
-                b.innerHTML = 'Remove From Favorites';
-            }
-            else {
-    
-                b.innerHTML = 'Add to Favorites';
-                b.setAttribute('onClick','addFavorite('+j+')');
-            }
-        }
-
-        else {
-            //Link to Login
-            b.setAttribute("onclick", "redirect()");
-            b.innerHTML = 'Login first';
-        }
 
         //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)
         var cell1 = row.insertCell(-1);
@@ -235,8 +215,34 @@ function filterResult(filteredCoffees) {
         cell3.innerHTML = filteredCoffees[i].store.name;
         var cell4 = row.insertCell(-1);
         //b.onclick = function() {addFavorite(currentUser.username, coffees[j].type)};
-        cell4.appendChild(b);
-        cell4.setAttribute("class", "buttons");
+
+        //create an anchor around the favorite button for login redirection in case user is not logged in
+        var a = document.createElement("A");
+        // anchor is child of td
+        cell4.appendChild(a);
+        // button is child of anchor
+        a.appendChild(b);
+
+        //for favorites
+        if(currentUser) {
+            var isFavorite = checkIfFavorite(filteredCoffees[i]);
+
+            if (isFavorite === true) {
+                b.setAttribute('onClick','removeFavorite('+j+')');
+                b.innerHTML = 'Remove From Favorites';
+            }
+            else {
+                b.innerHTML = 'Add to Favorites';
+                b.setAttribute('onClick','addFavorite('+j+')');
+            }
+        }
+        else {
+            //add a hypertext reference (href) to anchor around favorite buttons
+            //redirection to login page when no user is logged in
+            a.setAttribute("href", "login.html");
+            //b.setAttribute("onclick", "redirect()");
+            b.innerHTML = 'Login first';
+        }
     }
 
     //Put table in <div> on HTML
