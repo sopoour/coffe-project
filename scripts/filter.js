@@ -21,7 +21,6 @@ addCoffee(store1, "cappuccino", 28);
 addCoffee(store1, "macchiato", 28);
 addCoffee(store1, "espresso", 22);
 addCoffee(store1, "doble espresso", 28);
-addCoffee(store1, "cortado", 28);
 addCoffee(store1, "iced coffee", 20);
 addCoffee(store2, "americano", 25);
 addCoffee(store2, "espresso", 20);
