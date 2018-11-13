@@ -1,9 +1,12 @@
 /*STORES*/
 
 //Coffee Stores!
-var store1 = new Store("Starbucks", "https://www.starbucks.com", "/img/starbucks.jpg");
-var store2 = new Store("Dunkin Donuts", "https://www.dunkin-donuts.com", "img/dunkin.jpg");
-var store3 = new Store("MyPlace", "https://www.myplace.com", "img/myplace.jpg");
+var store1 = new Store("7-Eleven", "https://www.7-eleven.dk/", "/img/seveneleven.jpg");
+var store2 = new Store("Upper Crust", "http://www.uppercrust-baguettes.com/", "img/uppercrust.jpg");
+var store3 = new Store("Dunkin Donuts", "http://www.dunkin-donuts.dk/", "img/dunkindonuts.jpg");
+var store4 = new Store("Joe & The Juice", "https://www.joejuice.com/", "img/joeandthejuice.jpg");
+var store5 = new Store("Lagkagehuset", "https://lagkagehuset.dk/", "img/lagkagehuset.jpg");
+
 
 //Push stores to an array
 var stores = [];
@@ -11,22 +14,33 @@ stores.push(store1, store2, store3);
 
 /*COFFEES*/
 //Generate some great coffees!
-addCoffee(store1,"cappuccino",45);
-addCoffee(store2, "cappuccino",40);
-addCoffee(store3,"latte",30);
-addCoffee(store3, "espresso",14);
-addCoffee(store1, "arabica",20);
-addCoffee(store3, "cappuccino",12);
-addCoffee(store2, "espresso",42);
-addCoffee(store2, "latte",500);
-addCoffee(store1, "arabica",5);
-addCoffee(store1, "espresso",12);
-addCoffee(store3, "arabica",43);
-addCoffee(store1, "cappuccino",100);
-addCoffee(store3, "latte",24);
-addCoffee(store3, "arabica",29);
-addCoffee(store2, "arabica",74);
-addCoffee(store1, "arabica",35);
+addCoffee(store1, "Filter Coffee", 13);
+addCoffee(store1, "Americano", 28);
+addCoffee(store1, "Caffé Latte", 28);
+addCoffee(store1, "Cappuccino", 28);
+addCoffee(store1, "Latte Macchiato", 28);
+addCoffee(store1, "Espresso", 22);
+addCoffee(store1, "Doble Espresso", 28);
+addCoffee(store1, "Iced Coffee", 20);
+addCoffee(store2, "Americano", 25);
+addCoffee(store2, "Espresso", 20);
+addCoffee(store2, "Cappuccino", 32);
+addCoffee(store2, "Caffé Latte", 32);
+addCoffee(store3, "Americano", 27);
+addCoffee(store3, "Espresso", 20);
+addCoffee(store3, "Cappuccino", 35);
+addCoffee(store3, "Caffé Latte", 35);
+addCoffee(store3, "Filter Coffee", 25);
+addCoffee(store4, "Caffé Latte", 30);
+addCoffee(store4, "Cappuccino", 40);
+addCoffee(store4, "Espresso", 25);
+addCoffee(store4, "Iced Coffee", 40);
+addCoffee(store5, "caffe Latte", 45);
+addCoffee(store5, "Americano", 37);
+addCoffee(store5, "Espresso", 35);
+addCoffee(store5, "Cappuccino", 45);
+addCoffee(store5, "Latte Macchiato", 40);
+addCoffee(store5, "Doble Espresso", 40);
 
 //FUNCTIONS
 
