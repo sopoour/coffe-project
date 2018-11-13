@@ -43,6 +43,7 @@ function saveUser(user) {
     //encrypt password in currentUser
     user.password = window.btoa(user.password);
     //save loggedIn user as currentUser in localStorage
+    //since it is an object you need first stringify so that it actually shows everything in "value" what is inside of the object
     localStorage.setItem("currentUser", JSON.stringify(user));
 }
 
