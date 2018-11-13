@@ -32,7 +32,7 @@ try {
 
                 saveUser(users[i]);
                 //open main filter page on same tab
-                window.open("index.html", "_target");
+                window.location = "index.html";
             }
         }
         //this will only happen when the program checked all the users and tempIndex was never set to i but still set to initial -1
