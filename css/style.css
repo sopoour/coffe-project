@@ -9,10 +9,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Raleway', sans-serif;
+    color: var(--brown);
 }
 
 p {
     font-family: 'Lato', sans-serif;
+    color: var(--brown);
 }
 
 .container {
@@ -39,13 +41,20 @@ p {
 .fa {
     color: var(--white-faded);
 }
+
+.fas {
+    color: var(--brown-faded);
+}
 .filterItems {
     padding-top: 5%;
 }
 
-option {
+select {
     font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: var(--brown);
 }
+
 
 #btnLogin {
     position: absolute;
@@ -88,20 +97,24 @@ option {
     font-family: 'Lato', sans-serif;
 }
 
+/*
+LOGIN
+*/
 .loginContainer {
     text-align: center;
     background-color: var(--green-faded);
+    border-radius: 5%;
     margin-left: 38%;
     margin-right: 38%;
     padding: 5% 2% 5% 2%;
     box-shadow: 5px 5px 8px 0 var(--brown-faded), 0 5px 20px 0 var(--brown-faded);
 }
-
 .loginIntro h5 {
     color: white;
     margin-bottom: 15px;
 }
-input {
+
+.loginForm input {
     margin: 5px;
 }
 
