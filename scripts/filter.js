@@ -193,18 +193,23 @@ function showCoffees(filteredCoffees) {
     //Create panels fe o in fC
         for(var x=0;x<filteredCoffees.length;x++) {
             var row = document.createElement("ROW");
-            var pcontainer = document.createElement("DIV");
-            pcontainer.className = "col-md-8";
+            var pContainer = document.createElement("DIV");
+            pContainer.className = "col-md-8";
             var panel = document.createElement("DIV");
             panel.className = "panel panel-success";
+            panel.style.borderColor = "var(--green-faded)";
 
             //Header
             var panelHead = document.createElement("DIV");
             panelHead.className = 'panel-heading';
             panelHead.innerHTML = filteredCoffees[x].type;
+            panelHead.style.backgroundColor = "var(--green-faded)";
+            panelHead.style.color = "white";
+            panelHead.style.borderColor = "var(--green-faded)";
             //Body
             var panelBody = document.createElement("DIV");
             panelBody.className = 'panel-body';
+
 
             //Build row
             var panelBodyRow = document.createElement("DIV");
@@ -222,48 +227,70 @@ function showCoffees(filteredCoffees) {
 
 
             //Append
-            row.appendChild(pcontainer);
-            pcontainer.appendChild(panel);
+            row.appendChild(pContainer);
+            pContainer.appendChild(panel);
             panel.appendChild(panelHead);
+            var aCof = document.createElement("A");
+            var bInfo = document.createElement("BUTTON");
+            panelHead.appendChild(aCof);
+            aCof.appendChild(bInfo);
             panel.appendChild(panelBody);
             panelBody.appendChild(panelBodyRow);
             panelBodyRow.appendChild(panelBodyRowPrice);
             panelBodyRow.appendChild(panelBodyRowStore);
-            
-            
-           
-            var fcontainer = document.createElement("DIV");
-            fcontainer.className="col-md-4";
-            
 
-            var b = document.createElement("A");
+            /*
+            POPUP
+            */
+
+            bInfo.innerHTML = "Info";
+            bInfo.setAttribute("class", "btn");
+
+            aCof.setAttribute("data-toggle", "modal");
+            aCof.setAttribute("data-target", "#myPopUp");
+            //Button style
+            bInfo.style.marginLeft = "50%";
+            bInfo.style.textDecoration = "none";
+            bInfo.style.color = "var(--green)";
+
+
+            var fContainer = document.createElement("DIV");
+            fContainer.className = "col-md-4";
+
+            var aFav = document.createElement("A");
+            fContainer.appendChild(aFav);
+            row.appendChild(fContainer);
+            container.appendChild(row);
+            var b = document.createElement("BUTTON");
+            aFav.appendChild(b);
             //FAVORITES
 
-            var j = findCoffee(filteredCoffees[x],coffees);
+            var j = findCoffee(filteredCoffees[x], coffees);
 
-            if(currentUser) {
+            if (currentUser) {
                 var isFavorite = checkIfFavorite(filteredCoffees[x]);
-    
+
                 if (isFavorite === true) {
-                    b.setAttribute('onclick','removeFavorite('+j+')');
-                    b.innerHTML = "<i class='fas fa-star'></i>";
+                    aFav.setAttribute('onclick', 'removeFavorite(' + j + ')');
+                    aFav.innerHTML = "<i class='fas fa-star'></i>";
                 }
                 else {
-                    b.setAttribute('onclick','addFavorite('+j+')');
-                    b.innerHTML = "<i class='far fa-star'></i>";
+                    aFav.setAttribute('onclick', 'addFavorite(' + j + ')');
+                    aFav.innerHTML = "<i class='far fa-star'></i>";
                 }
             }
             else {
-                alert("here me now");
+                //alert("here me now");
                 //add a hypertext reference (href) to anchor around favorite buttons
                 //redirection to login page when no user is logged in
-                b.setAttribute("href", "login.html");
+                aFav.setAttribute("href", "login.html");
+                b.setAttribute("class", "btn");
+                b.style.backgroundColor = "var(--green-faded)";
+                b.style.color = "white";
                 //b.setAttribute("onclick", "redirect()");
-                b.innerHTML = 'Login first';
+                b.innerHTML = 'No Login, No Favorite  <i class="far fa-hand-point-up"></i>';
             }
-            fcontainer.appendChild(b);
-            row.appendChild(fcontainer);
-            container.appendChild(row);
+
 
         }
     //Append
