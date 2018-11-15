@@ -192,6 +192,9 @@ function showCoffees(filteredCoffees) {
         }
     //Create panels fe o in fC
         for(var x=0;x<filteredCoffees.length;x++) {
+            var row = document.createElement("ROW");
+            var pcontainer = document.createElement("DIV");
+            pcontainer.className = "col-md-8";
             var panel = document.createElement("DIV");
             panel.className = "panel panel-success";
 
@@ -219,7 +222,8 @@ function showCoffees(filteredCoffees) {
 
 
             //Append
-            
+            row.appendChild(pcontainer);
+            pcontainer.appendChild(panel);
             panel.appendChild(panelHead);
             panel.appendChild(panelBody);
             panelBody.appendChild(panelBodyRow);
@@ -228,7 +232,39 @@ function showCoffees(filteredCoffees) {
             
             
            
-            container.appendChild(panel);
+            var fcontainer = document.createElement("DIV");
+            fcontainer.className="col-md-4";
+            
+
+            var b = document.createElement("A");
+            //FAVORITES
+
+            var j = findCoffee(filteredCoffees[x],coffees);
+
+            if(currentUser) {
+                var isFavorite = checkIfFavorite(filteredCoffees[x]);
+    
+                if (isFavorite === true) {
+                    b.setAttribute('onclick','removeFavorite('+j+')');
+                    b.innerHTML = "<i class='fas fa-star'></i>";
+                }
+                else {
+                    b.setAttribute('onclick','addFavorite('+j+')');
+                    b.innerHTML = "<i class='far fa-star'></i>";
+                }
+            }
+            else {
+                alert("here me now");
+                //add a hypertext reference (href) to anchor around favorite buttons
+                //redirection to login page when no user is logged in
+                b.setAttribute("href", "login.html");
+                //b.setAttribute("onclick", "redirect()");
+                b.innerHTML = 'Login first';
+            }
+            fcontainer.appendChild(b);
+            row.appendChild(fcontainer);
+            container.appendChild(row);
+
         }
     //Append
         
