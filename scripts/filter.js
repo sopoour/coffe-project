@@ -230,11 +230,11 @@ function filterResult(filteredCoffees) {
         //b.onclick = function() {addFavorite(currentUser.username, coffees[j].type)};
 
         //create an anchor around the favorite button for login redirection in case user is not logged in
-        var a = document.createElement("A");
+        var aFav = document.createElement("A");
         // anchor is child of td
-        cell4.appendChild(a);
+        cell4.appendChild(aFav);
         // button is child of anchor
-        a.appendChild(b);
+        aFav.appendChild(b);
 
         //for favorites
         if(currentUser) {
@@ -252,7 +252,7 @@ function filterResult(filteredCoffees) {
         else {
             //add a hypertext reference (href) to anchor around favorite buttons
             //redirection to login page when no user is logged in
-            a.setAttribute("href", "login.html");
+            aFav.setAttribute("href", "login.html");
             //b.setAttribute("onclick", "redirect()");
             b.innerHTML = 'Login first';
         }
