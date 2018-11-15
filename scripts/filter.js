@@ -247,6 +247,7 @@ function showCoffees(filteredCoffees) {
             bInfo.setAttribute("class", "btn");
 
             aCof.setAttribute("data-toggle", "modal");
+            //ADD CUSTOMIZED CONTENT REGARDING STORES
             aCof.setAttribute("data-target", "#myPopUp");
             //Button style
             bInfo.style.marginLeft = "50%";
