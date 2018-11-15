@@ -6,9 +6,7 @@
     <link rel="shortcut icon" type="image/png" href="../img/locfeLogo.png">
     <title>Locfé</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
@@ -17,6 +15,9 @@
     <!-- Font Awesome icons-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+   </body>
+
 </head>
 <!-- change the index.html page when user is logged in -->
 <body onload="changePage()">
@@ -76,30 +77,10 @@
                     <button class="btn btn-submit" id="filterSubmit" onclick="doFilter()"><i class="fa fa-filter"></i> Filter</button>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div id="resultsTable">
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Modal -->
-    <div class="popUp fade" id="myPopUp" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Some text in the modal.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
         </div>
     </div>
     <script src="../scripts/classes.js"></script>

@@ -45,13 +45,28 @@ addCoffee(store5, "Double Espresso", 40);
 
 var coffees=getCoffees();
 
+/**
+ * 
+ * FILTER compares attributeValue with filterValue.
+ * Attribute Value is a parameter from an existing coffee object in the system, filterValue is passed from the input fields.
+ * The function will try to find a match between filterValue and attributeValue, and has three return options:
+ * 1 -> Coffee matches current filter
+ * 2 -> Coffee does not match current filter
+ * 0 -> input field is not set (so don't include this into the filter)
+ * This filter supports two data types: "text" and "number".
+ * If "number" is chosen, it will require an operator to compare.
+ * 
+ * @param {accepts text and number} dataType 
+ * @param {accepts equals/smaller/smalerequals/equals/greaterequals/greater} operation 
+ * @param {gets the value of the coffee object that we are currntly iterating on} attributeValue 
+ * @param {gets the value from the input field that is to be compared} filterValue 
+ * 
+ */
+
 
 function filter(dataType,operation,attributeValue,filterValue) {
-    //Returns true or false
-    /*
-    Accepted values for comparison: text -> equals // number -> smaller, smallerequals, equals, greaterequals, greater
-    If unaccepted input -> return false and alert error
-    */
+
+    //TEXT
    if(dataType=="text") {
        //alert("analyzieren wir den Typ");
         if(filterValue===attributeValue) {
@@ -69,11 +84,12 @@ function filter(dataType,operation,attributeValue,filterValue) {
         }
    }
 
+   //NUMBER
    else if(dataType=="number") {
-       //alert("analyzieren wir den Preis");
         if(filterValue==0) {
             return 2; //Kein Input
         }
+            //Comper = True/False (True if filterValue ==attributeValue, False if not)
            var comper;
            switch(operation) {
             case "equals":
@@ -86,7 +102,6 @@ function filter(dataType,operation,attributeValue,filterValue) {
                 comper = filterValue<=attributeValue;
                 break;
             case "greaterequals":
-                //alert("hier ist jetzt die situation: "+filterValue+" >= "+attributeValue+" ??");
                 comper = filterValue>=attributeValue;
                 break;
             case "greater":
@@ -94,43 +109,47 @@ function filter(dataType,operation,attributeValue,filterValue) {
                 break;
            }
            if(comper) {
-               //lert("und das gibt true!");
                return 1; //True
            }
-           //alert("und das gibt false");
     }
-    //alert("gibt 0 zurück, weil passt ned");
-    return 0; //Passt ned
+    return 0;
 }
 
 function doFilter() {
+    //Initialize empty array of filtered coffees
     var filteredCoffees=[];
+
+    //Get Input values from HTML
     var price = document.getElementById("priceInput").value;
     var typeContainer = document.getElementById("typeInput");
     var type = typeContainer.options[typeContainer.selectedIndex].value;
 
-    //alert("type is "+type);
+    //If no Input
     if (!price && !type) {
-        //Do stuff for no input values
-        //alert("No Input values");
-        //return means to cancel the function and get out of it again; you could also use false
+        //Returns without a result
         return null;
     }
 
+    //coffeeIndexes helps to map the coffees array to the filterResults array
     var coffeeIndexes = [];
 
+    //Iterate through all existing coffee objects
     for(var x=0;x<coffees.length;x++) {
         //alert(x+" schauen wir uns an, ist "+coffees[x].type+" und kostet "+coffees[x].price);
+        
+        //Create an empty array of filters
         var filters = [];
+
+        //Add filters (add all input fields)
         filters.push(filter("number","greaterequals",coffees[x].price,price)); //Price
         filters.push(filter("text","equals",coffees[x].type,type)); //Type
 
+        
         for(var a=0;a<filters.length;a++) {
-            if(filters[a]==1) {
+            if(filters[a]>=1) {
                 //for all other filters
                 if(filters.length==1) {
                     //Only one, so let's add it directly
-                    //alert("Füge index "+x+" hinzu...");
                     filteredCoffees.push(coffees[x]);
                     break;
                 }
@@ -152,7 +171,7 @@ function doFilter() {
    
     }
     //Call display function
-    filterResult(filteredCoffees); 
+    showCoffees(filteredCoffees); 
 }
 
 
@@ -162,6 +181,59 @@ function doFilter() {
 This builds a table based on given array of coffees. No filtering here.
 */
 
+function showCoffees(filteredCoffees) {
+    //Get div container
+        var container = document.getElementById('resultsTable');
+        container.innerHTML = '';
+    //Check if fC = 0, display message
+        if(filteredCoffees.length==0) {
+            container.innerHTML = '<p>No matching coffees :( Try again!</p>';
+            return;
+        }
+    //Create panels fe o in fC
+        for(var x=0;x<filteredCoffees.length;x++) {
+            var panel = document.createElement("DIV");
+            panel.className = "panel panel-success";
+
+            //Header
+            var panelHead = document.createElement("DIV");
+            panelHead.className = 'panel-heading';
+            panelHead.innerHTML = filteredCoffees[x].type;
+            //Body
+            var panelBody = document.createElement("DIV");
+            panelBody.className = 'panel-body';
+
+            //Build row
+            var panelBodyRow = document.createElement("DIV");
+            panelBodyRow.className = "row";
+
+            //Build price column
+            var panelBodyRowPrice = document.createElement("DIV");
+            panelBodyRowPrice.className = "col-md-6";
+            panelBodyRowPrice.innerHTML = filteredCoffees[x].price+" dkk";
+
+            //Build store column
+            var panelBodyRowStore = document.createElement("DIV");
+            panelBodyRowStore.className = "col-md-6";
+            panelBodyRowStore.innerHTML= filteredCoffees[x].store.name;
+
+
+            //Append
+            
+            panel.appendChild(panelHead);
+            panel.appendChild(panelBody);
+            panelBody.appendChild(panelBodyRow);
+            panelBodyRow.appendChild(panelBodyRowPrice);
+            panelBodyRow.appendChild(panelBodyRowStore);
+            
+            
+           
+            container.appendChild(panel);
+        }
+    //Append
+        
+    //return
+} 
 
 function filterResult(filteredCoffees) {
     
