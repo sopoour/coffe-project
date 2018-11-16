@@ -84,3 +84,13 @@ var currentUser = getCurrentUser();
 
 //var userfavcounter = currentUser.favorites.length;
 var x = document.getElementById("favCounter").innerHTML = '(' + currentUser.favorites.length + ')';
+
+//POPUP
+
+function modalContent(ci) {
+    var title = document.getElementsByClassName("modal-title");
+    var body = document.getElementsByClassName("modal-body");
+    title.innerHTML = coffees[ci].store.name;
+    body.innerHTML = coffees[ci].store.picture;
+    body.innerHTML = coffees[ci].store.homepage;
+}

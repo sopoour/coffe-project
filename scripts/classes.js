@@ -12,6 +12,7 @@ class Store {
         this.homepage=homepage;
         this.picture=picture;
     }
+
 }
 
 class Favorite {

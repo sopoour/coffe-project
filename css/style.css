@@ -13,6 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
+
     font-family: 'Lato', sans-serif;
     color: var(--brown);
 }
@@ -33,6 +34,11 @@ p {
     font-size: 18px;
 }
 
+h6 {
+    font-size: 15px;
+    color: var(--brown);
+}
+
 .intro img {
     width: 17%;
     margin-bottom: 3%;
@@ -44,6 +50,8 @@ p {
 
 .fas {
     color: var(--brown-faded);
+    border-color: var(--brown-faded);
+    text-decoration: none;
 }
 .filterItems {
     padding-top: 5%;
@@ -51,7 +59,8 @@ p {
 
 select {
     font-family: 'Lato', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: normal;
     color: var(--brown);
 }
 

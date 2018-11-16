@@ -9,8 +9,8 @@ var store5 = new Store("Lagkagehuset", "https://lagkagehuset.dk/", "img/lagkageh
 
 
 //Push stores to an array
-var stores = [];
-stores.push(store1, store2, store3);
+//Do we need this???:
+var stores = [store1, store2, store3, store4, store5];
 
 /*COFFEES*/
 //Generate some great coffees!
@@ -218,7 +218,7 @@ function showCoffees(filteredCoffees) {
             //Build price column
             var panelBodyRowPrice = document.createElement("DIV");
             panelBodyRowPrice.className = "col-md-6";
-            panelBodyRowPrice.innerHTML = filteredCoffees[x].price+" dkk";
+            panelBodyRowPrice.innerHTML = filteredCoffees[x].price + " DKK";
 
             //Build store column
             var panelBodyRowStore = document.createElement("DIV");
@@ -242,15 +242,19 @@ function showCoffees(filteredCoffees) {
             /*
             POPUP
             */
-
+            var j = findCoffee(filteredCoffees[x], coffees);
             bInfo.innerHTML = "Info";
             bInfo.setAttribute("class", "btn");
 
             aCof.setAttribute("data-toggle", "modal");
             //ADD CUSTOMIZED CONTENT REGARDING STORES
+            //document.getElementById("myPopUp").setAttribute("id", j);
+
             aCof.setAttribute("data-target", "#myPopUp");
+            //modalContent(j);
             //Button style
-            bInfo.style.marginLeft = "50%";
+            bInfo.style.cssFloat = "right";
+            bInfo.style.padding = "0.2% 5% 0.2% 5%";
             bInfo.style.textDecoration = "none";
             bInfo.style.color = "var(--green)";
 
@@ -266,7 +270,6 @@ function showCoffees(filteredCoffees) {
             aFav.appendChild(b);
             //FAVORITES
 
-            var j = findCoffee(filteredCoffees[x], coffees);
 
             if (currentUser) {
                 var isFavorite = checkIfFavorite(filteredCoffees[x]);
@@ -278,6 +281,7 @@ function showCoffees(filteredCoffees) {
                 else {
                     aFav.setAttribute('onclick', 'addFavorite(' + j + ')');
                     aFav.innerHTML = "<i class='far fa-star'></i>";
+                    aFav.style.color = "var(--brown-faded)";
                 }
             }
             else {
@@ -474,5 +478,5 @@ function comparer(objectA, objectB) {
 }
 
 function showFavorites() {
-    filterResult(currentUser.favorites);
+    showCoffees(currentUser.favorites);
 }
