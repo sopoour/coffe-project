@@ -1,5 +1,6 @@
 class Coffee {
-    constructor(store, type, price) {
+    constructor(id,store, type, price) {
+        this.id=id;
         this.store = store;
         this.type = type;
         this.price = price;
@@ -16,14 +17,16 @@ class Store {
 }
 
 class Favorite {
-    constructor(user, coffee) {
-        this.user=user;
-        this.coffee=coffee;
+    constructor(id,userID, coffeeID) {
+        this.id=id;
+        this.userID=userID;
+        this.coffeeID=coffeeID;
     }
 }
 
 class User {
-    constructor(name, username, email, password, favorites) {
+    constructor(id,name, username, email, password, favorites) {
+        this.id=id;
         this.name = name;
         this.username = username;
         this.email = email;

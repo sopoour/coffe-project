@@ -8,39 +8,39 @@ var store4 = new Store("Joe & The Juice", "https://www.joejuice.com/", "img/joea
 var store5 = new Store("Lagkagehuset", "https://lagkagehuset.dk/", "img/lagkagehuset.jpg");
 
 
-//Push stores to an array
-//We don't need it but you could use it if you iterate through stores at some point
-//var stores = [store1, store2, store3, store4, store5];
-var stores = [store1,store2,store3,store4,store5];
+/**
+ * Not directly neccessary so far, maybe within the popup... let's see
+ */
+//var stores = [store1,store2,store3,store4,store5];
 
 /*COFFEES*/
 //Generate some great coffees!
-addCoffee(store1, "Filter Coffee", 13);
-addCoffee(store1, "Americano", 28);
-addCoffee(store1, "Caffé Latte", 28);
-addCoffee(store1, "Cappuccino", 28);
-addCoffee(store1, "Espresso", 22);
-addCoffee(store1, "Double Espresso", 28);
-addCoffee(store1, "Iced Coffee", 20);
-addCoffee(store2, "Americano", 25);
-addCoffee(store2, "Espresso", 20);
-addCoffee(store2, "Cappuccino", 32);
-addCoffee(store2, "Caffé Latte", 32);
-addCoffee(store3, "Americano", 27);
-addCoffee(store3, "Espresso", 20);
-addCoffee(store3, "Cappuccino", 35);
-addCoffee(store3, "Caffé Latte", 35);
-addCoffee(store3, "Filter Coffee", 25);
-addCoffee(store4, "Caffé Latte", 30);
-addCoffee(store4, "Cappuccino", 40);
-addCoffee(store4, "Espresso", 25);
-addCoffee(store4, "Iced Coffee", 40);
-addCoffee(store5, "Caffé Latte", 45);
-addCoffee(store5, "Americano", 37);
-addCoffee(store5, "Espresso", 35);
-addCoffee(store5, "Cappuccino", 45);
-addCoffee(store5, "Caffé Latte", 40);
-addCoffee(store5, "Double Espresso", 40);
+addCoffee(1,store1, "Filter Coffee", 13);
+addCoffee(2,store1, "Americano", 28);
+addCoffee(3,store1, "Caffé Latte", 28);
+addCoffee(4,store1, "Cappuccino", 28);
+addCoffee(5,store1, "Espresso", 22);
+addCoffee(6,store1, "Double Espresso", 28);
+addCoffee(7,store1, "Iced Coffee", 20);
+addCoffee(8,store2, "Americano", 25);
+addCoffee(9,store2, "Espresso", 20);
+addCoffee(10,store2, "Cappuccino", 32);
+addCoffee(11,store2, "Caffé Latte", 32);
+addCoffee(12,store3, "Americano", 27);
+addCoffee(13,store3, "Espresso", 20);
+addCoffee(14,store3, "Cappuccino", 35);
+addCoffee(15,store3, "Caffé Latte", 35);
+addCoffee(16,store3, "Filter Coffee", 25);
+addCoffee(17,store4, "Caffé Latte", 30);
+addCoffee(18,store4, "Cappuccino", 40);
+addCoffee(19,store4, "Espresso", 25);
+addCoffee(20,store4, "Iced Coffee", 40);
+addCoffee(21,store5, "Caffé Latte", 45);
+addCoffee(22,store5, "Americano", 37);
+addCoffee(23,store5, "Espresso", 35);
+addCoffee(24,store5, "Cappuccino", 45);
+addCoffee(25,store5, "Caffé Latte", 40);
+addCoffee(26,store5, "Double Espresso", 40);
 
 //FUNCTIONS
 
@@ -81,7 +81,7 @@ function filter(dataType,operation,attributeValue,filterValue) {
 
    //NUMBER
     else if (dataType === "number") {
-        if (filterValue === 0) {
+        if (filterValue == 0) {
             return 2; //No Input
         }
         //compare = True/False (True if filterValue ==attributeValue, False if not)
@@ -120,7 +120,13 @@ function doFilter() {
     var price = parseInt(document.getElementById("priceInput").value); //value = give me what is inside of priceInput
     var typeContainer = document.getElementById("typeInput"); //the whole dropdown
     var type = typeContainer.options[typeContainer.selectedIndex].value;//to get the exact option the user chose
-
+    /**
+     * When no price is set as input, NaN is passed when converting the number.
+     * So if NaN is set, set price to 0 to filter to work.
+     */
+    if(isNaN(price)) {
+        price = 0;
+    }
     //Iterate through all existing coffee objects
     for(var x=0;x<coffees.length;x++) {
         //Create an empty array of filters
@@ -184,6 +190,7 @@ function showCoffees(filteredCoffees) {
         }
     //Create panels fe o in fC
         for(var x=0;x<filteredCoffees.length;x++) {
+            //Create Row
             var row = document.createElement("ROW");
             var pContainer = document.createElement("DIV");
             pContainer.className = "col-md-8";
@@ -194,10 +201,12 @@ function showCoffees(filteredCoffees) {
             //Header
             var panelHead = document.createElement("DIV");
             panelHead.className = 'panel-heading';
+            //Write Coffee Type
             panelHead.innerHTML = filteredCoffees[x].type;
             panelHead.style.backgroundColor = "var(--green-faded)";
             panelHead.style.color = "white";
             panelHead.style.borderColor = "var(--green-faded)";
+
             //Body
             var panelBody = document.createElement("DIV");
             panelBody.className = 'panel-body';
@@ -210,6 +219,7 @@ function showCoffees(filteredCoffees) {
             //Build price column
             var panelBodyRowPrice = document.createElement("DIV");
             panelBodyRowPrice.className = "col-md-6";
+            //Write Coffee PRice
             panelBodyRowPrice.innerHTML = filteredCoffees[x].price + " DKK";
 
             //Build store column
@@ -235,7 +245,8 @@ function showCoffees(filteredCoffees) {
             POPUP
             */
             //var coffeeIndex = filteredCoffees[x].id;
-            var j = findCoffee(filteredCoffees[x], coffees);
+            var fcID = filteredCoffees[x].id;
+            //var j = findCoffee(filteredCoffees[x], coffees);
             bInfo.innerHTML = "Info";
             bInfo.setAttribute("class", "btn");
 
@@ -243,9 +254,9 @@ function showCoffees(filteredCoffees) {
             //ADD CUSTOMIZED CONTENT REGARDING STORES
             //PROBLEM: the ID is overwritten so that it only works with the last item
             //I guess I need a loop
-            document.querySelector(".modal").setAttribute("id", j);
+            document.querySelector(".modal").setAttribute("id", fcID);
 
-            aCof.setAttribute("data-target", "#" + j);
+            aCof.setAttribute("data-target", "#" + fcID);
             var title = document.getElementById("popUpTitle");
             var body = document.getElementById("popUpBody");
             title.innerHTML = filteredCoffees[x].store.name;
@@ -273,17 +284,19 @@ function showCoffees(filteredCoffees) {
             //var toolTipText = document.createElement("SPAN");
             //toolTip.appendChild(toolTipText);
             //toolTipText.setAttribute("class", "tooltiptext");
+
+
             //FAVORITES
 
             if (currentUser) {
                 var isFavorite = checkIfFavorite(filteredCoffees[x]);
 
                 if (isFavorite === true) {
-                    aFav.setAttribute('onclick', 'removeFavorite(' + j + ')');
+                    aFav.setAttribute('onclick', 'removeFavorite(' + fcID + ')');
                     aFav.innerHTML = "<i class='fas fa-star'></i>";
                 }
                 else {
-                    aFav.setAttribute('onclick', 'addFavorite(' + j + ')');
+                    aFav.setAttribute('onclick', 'addFavorite(' + fcID + ')');
                     aFav.innerHTML = "<i class='far fa-star'></i>";
                     aFav.style.color = "var(--brown-faded)";
                 }
@@ -424,9 +437,31 @@ function findCoffee(coffee,searchArray) {
 checkIfFavorite
 Checks if a coffee object is already listed as current user's favorite.
 Compares all favorites to var coffee (function called for every row = every filter result coffee)
+INPUT: coffee OBJECT (not id!)
 @return true/false
 */
 function checkIfFavorite(coffee) {
+
+    //Get Favorites
+    var favorites = JSON.parse(localStorage.getItem("favorites"));
+    //No Favorites yet?
+    if(!favorites) {
+        return false;
+    }
+    //Is coffee in there? Coffee ID must match and User ID must match current User
+    for(var x=0;x<favorites.length;x++) {
+        if(favorites[x].coffeeID == coffee.id && favorites[x].userID == getCurrentUser().id) {
+            return true;
+        }
+    }
+    return false;
+    //Return true false
+
+
+
+    /**
+     * Old Code
+     
     var user = getCurrentUser();
 
     if(user.favorites.length<1) {
@@ -448,8 +483,8 @@ function checkIfFavorite(coffee) {
         }
 
     }
-    /* Coffee is not in favorites -> return false */
-    return false;
+
+    return false;*/
 }
 
 /*
