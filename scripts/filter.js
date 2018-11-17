@@ -7,6 +7,7 @@ var store3 = new Store("Dunkin Donuts", "http://www.dunkin-donuts.dk/", "img/dun
 var store4 = new Store("Joe & The Juice", "https://www.joejuice.com/", "img/joeandthejuice.jpg");
 var store5 = new Store("Lagkagehuset", "https://lagkagehuset.dk/", "img/lagkagehuset.jpg");
 
+
 //Push stores to an array
 //We don't need it but you could use it if you iterate through stores at some point
 //var stores = [store1, store2, store3, store4, store5];
@@ -62,7 +63,7 @@ var coffees=getCoffees();
  * 
  */
 
-//DOES THE ACTUAL MATCHING/COMPARING PROCESS
+//DOES THE ACTUAL MATCHING PROCESS
 function filter(dataType,operation,attributeValue,filterValue) {
     //TEXT
     if (dataType === "text") {
@@ -76,16 +77,17 @@ function filter(dataType,operation,attributeValue,filterValue) {
             return 0;
         }
    }
+
    //NUMBER
     else if (dataType === "number") {
         if (filterValue === 0) {
             return 2; //No Input
         }
-        //Compare = True/False (True if filterValue ==attributeValue, False if not)
+        //compare = True/False (True if filterValue ==attributeValue, False if not)
         var compare;
            switch(operation) {
             case "equals":
-                compare = filterValue === attributeValue;
+                compare = filterValue == attributeValue;
                 break;
             case "smaller":
                 compare = filterValue < attributeValue;
@@ -104,18 +106,19 @@ function filter(dataType,operation,attributeValue,filterValue) {
                return 1; //True
            }
     }
-    return 0; //false
+    return 0;
 }
 
-//is evaluating the filter () and creates the list of filteredCoffees
+//is doing the actual filter but doesn't show anything yet
 //CREATES ME A LIST OF MATCHED COFFEES
 function doFilter() {
     //Initialize empty array of filtered coffees
     var filteredCoffees=[];
+
     //Get Input values from HTML
-    var price = document.getElementById("priceInput").value; //value = give me what is inside of priceInput
+    var price = parseInt(document.getElementById("priceInput").value); //value = give me what is inside of priceInput
     var typeContainer = document.getElementById("typeInput"); //the whole dropdown
-    var type = typeContainer.options[typeContainer.selectedIndex].value; //to get the exact option the user chose
+    var type = typeContainer.options[typeContainer.selectedIndex].value;//to get the exact option the user chose
 
     //Iterate through all existing coffee objects
     for(var x=0;x<coffees.length;x++) {
@@ -132,7 +135,6 @@ function doFilter() {
         1 = filter matches
         2 = no filter because of default input ("Select...") and empty price
          */
-
         for (var a = 0; a < filters.length; a++) {
 
             if (filters[a] >= 1) { //for 1 and 2
@@ -166,7 +168,6 @@ function doFilter() {
     //Call display function
     showCoffees(filteredCoffees); 
 }
-
 /*
 This builds a table based on given array of coffees. No filtering here.
 */
@@ -176,7 +177,7 @@ function showCoffees(filteredCoffees) {
         var container = document.getElementById('resultsTable');
         container.innerHTML = '';
     //Check if fC = 0, display message
-        if(filteredCoffees.length==0) {
+    if (filteredCoffees.length === 0) {
             container.innerHTML = '<p>No matching coffees :( Try again!</p>';
             return;
         }
@@ -407,6 +408,7 @@ function filterResult(filteredCoffees) {
 }
 
 function findCoffee(coffee,searchArray) {
+
     for(var x=0;x<searchArray.length;x++) {
         //search coffee and compare it will all related columns
         if(searchArray[x].price==coffee.price && searchArray[x].type==coffee.type && comparer(searchArray[x].store,coffee.store)) {
@@ -424,6 +426,7 @@ Compares all favorites to var coffee (function called for every row = every filt
 */
 function checkIfFavorite(coffee) {
     var user = getCurrentUser();
+
     if(user.favorites.length<1) {
         //No favorites yet
         return false;
