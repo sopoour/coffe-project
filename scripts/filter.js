@@ -10,6 +10,7 @@ var store5 = new Store("Lagkagehuset", "https://lagkagehuset.dk/", "img/lagkageh
 //Push stores to an array
 //We don't need it but you could use it if you iterate through stores at some point
 //var stores = [store1, store2, store3, store4, store5];
+var stores = [store1,store2,store3,store4,store5];
 
 /*COFFEES*/
 //Generate some great coffees!
