@@ -124,14 +124,7 @@ function doFilter() {
     var typeContainer = document.getElementById("typeInput");
     var type = typeContainer.options[typeContainer.selectedIndex].value;
 
-    //If no Input
-    if (!price && !type) {
-        //Returns without a result
-        return null;
-    }
 
-    //coffeeIndexes helps to map the coffees array to the filterResults array
-    var coffeeIndexes = [];
 
     //Iterate through all existing coffee objects
     for(var x=0;x<coffees.length;x++) {
@@ -242,6 +235,7 @@ function showCoffees(filteredCoffees) {
             /*
             POPUP
             */
+            //var coffeeIndex = filteredCoffees[x].id;
             var j = findCoffee(filteredCoffees[x], coffees);
             bInfo.innerHTML = "Info";
             bInfo.setAttribute("class", "btn");
