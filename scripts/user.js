@@ -23,7 +23,6 @@ function authUser() {
             //if username and password match set tempIndex to it's actual index
             tempIndex = i;
             //saves the user in local storage
-
             saveUser(users[i]);
             //open main filter page on same tab
             window.location = "index.html";

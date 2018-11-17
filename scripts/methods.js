@@ -35,7 +35,7 @@ function removeFavorite(coffee) {
     currentUser.favorites.splice(deleteIndex);
     //Store user
     saveUser(currentUser);
-    alert('has been removed');
+    alert('Coffee has been removed');
     location.reload();
 }
 
@@ -88,9 +88,9 @@ var x = document.getElementById("favCounter").innerHTML = '(' + currentUser.favo
 //POPUP
 
 function modalContent(ci) {
-    var title = document.getElementsByClassName("modal-title");
-    var body = document.getElementsByClassName("modal-body");
+    var title = document.getElementById("popUpTitle");
+    var body = document.getElementById("popUpBody");
     title.innerHTML = coffees[ci].store.name;
-    body.innerHTML = coffees[ci].store.picture;
+    //body.innerHTML = coffees[ci].store.picture;
     body.innerHTML = coffees[ci].store.homepage;
 }
