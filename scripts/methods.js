@@ -51,6 +51,7 @@ function addFavorite(coffeeID) {
     }
     else {
         //Save Favorite
+        //var id = findMaxId(favorites)+1;
         var favorite = new Favorite(currentUser.id, coffeeID);
         favorites.push(favorite);
         localStorage.setItem("favorites", JSON.stringify(favorites));
