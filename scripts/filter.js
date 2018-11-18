@@ -87,7 +87,7 @@ function filter(dataType,operation,attributeValue,filterValue) {
         var compare;
            switch(operation) {
             case "equals":
-                compare = filterValue == attributeValue;
+                compare = filterValue === attributeValue;
                 break;
             case "smaller":
                 compare = filterValue < attributeValue;
@@ -114,7 +114,6 @@ function filter(dataType,operation,attributeValue,filterValue) {
 function doFilter() {
     //Initialize empty array of filtered coffees
     var filteredCoffees=[];
-
     //Get Input values from HTML
     var price = parseInt(document.getElementById("priceInput").value); //value = give me what is inside of priceInput
     var typeContainer = document.getElementById("typeInput"); //the whole dropdown
@@ -125,7 +124,6 @@ function doFilter() {
         //Create an empty array of filters
         //you need the filters for each coffee, that's why it's in the for loop
         var filters = [];
-
         //Add filters (add all input fields)
         filters.push(filter("number","greaterequals",coffees[x].price,price)); //Price
         filters.push(filter("text","equals",coffees[x].type,type)); //Type
@@ -236,7 +234,6 @@ function showCoffees(filteredCoffees) {
             var j = findCoffee(filteredCoffees[x], coffees);
             bInfo.innerHTML = "Info";
             bInfo.setAttribute("class", "btn");
-
             aCof.setAttribute("data-toggle", "modal");
             //ADD CUSTOMIZED CONTENT REGARDING STORES
             //PROBLEM: the ID is overwritten so that it only works with the last item
@@ -271,6 +268,7 @@ function showCoffees(filteredCoffees) {
             //var toolTipText = document.createElement("SPAN");
             //toolTip.appendChild(toolTipText);
             //toolTipText.setAttribute("class", "tooltiptext");
+
             //FAVORITES
 
             if (currentUser) {
