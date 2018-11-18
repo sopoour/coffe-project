@@ -41,25 +41,22 @@ function addFavorite(coffeeID) {
     location.reload();
     alert('Coffee has been added');
     */
-    
     //Get Favorites from LS
     var favorites = JSON.parse(localStorage.getItem("favorites"));
     if(!favorites) {
         var favorites = [];
-        var favorite = new Favorite(1,currentUser.id,coffeeID);
+        var favorite = new Favorite(currentUser.id, coffeeID);
         favorites.push(favorite);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
     else {
-        //Set Id
-        var id = findMaxId(favorites)+1;
         //Save Favorite
-        var favorite = new Favorite(id,currentUser.id,coffeeID);
+        var favorite = new Favorite(currentUser.id, coffeeID);
         favorites.push(favorite);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
 
-    alert('Favorite with id '+id+' added successfully. Yey so happy.');
+    alert('Favorite is added successfully. Yey so happy.');
     location.reload();
 }
 
@@ -74,12 +71,12 @@ function removeFavorite(coffeeID) {
 
     //Find favorite with combination of current user & coffee (based on id)
     for(var x=0;x<favorites.length;x++) {
-        if(favorites[x].coffeeID == coffeeID) {
+        if (favorites[x].coffeeID === coffeeID) {
             //Found it, delete it
             favorites.splice(x,1);
         }
     }
-    //Push new favorites to LS
+    //Push updated favorites to LS
     localStorage.setItem("favorites", JSON.stringify(favorites));
     alert("Removed the coffee from your favorites. Please keep me in mind, i am super delicious.");
     location.reload();
@@ -102,7 +99,7 @@ function addStore(name, homepage, picture) {
     stores.push(store);
 }
 
-function findMaxId(objects) {
+/*function findMaxId(objects) {
     if(objects.length===0) {
         return 0;
     }
@@ -114,6 +111,7 @@ function findMaxId(objects) {
     }
     return currentMax;
 }
+*/
 
 /*
 GET FUNCTIONS
@@ -135,7 +133,7 @@ function getFavorites() {
         return output;
     }
     for(var x=0;x<favorites.length;x++) {
-        if(favorites[x].userID == getCurrentUser().id) {
+        if (favorites[x].userID === getCurrentUser().id) {
             output.push(favorites[x]);
         }
     }

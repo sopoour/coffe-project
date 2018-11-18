@@ -62,7 +62,7 @@ function preventLogin() {
 function logout() {
     //in case currentUser is loggedIn
     if (currentUser) {
-        localStorage.clear();
+        localStorage.removeItem("currentUser");
         document.getElementById("btnLogin").style.visibility = "visible";
         document.getElementById("btnLogout").style.visibility = "hidden";
         document.getElementById("btnFavoriteList").style.visibility = "hidden";

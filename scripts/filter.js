@@ -357,14 +357,12 @@ function filterResult(filteredCoffees) {
 
     //Coffee Rows
     for (var i = 0; i < filteredCoffees.length; i++) {
-        console.log("Kaffee "+i+" ist "+filteredCoffees[i].type);
         row = table.insertRow(-1);
 
         var j = findCoffee(filteredCoffees[i],coffees);
 
         //Coffee doesn't exist?
         if(j<0) {
-            alert("Großer Fehler");
             return null;
         } 
         var buttonID = "c"+j;
@@ -447,7 +445,7 @@ function checkIfFavorite(coffee) {
     }
     //Is coffee in there? Coffee ID must match and User ID must match current User
     for(var x=0;x<favorites.length;x++) {
-        if(favorites[x].coffeeID == coffee.id && favorites[x].userID == getCurrentUser().id) {
+        if (favorites[x].coffeeID === coffee.id && favorites[x].userID === getCurrentUser().id) {
             return true;
         }
     }
@@ -496,7 +494,7 @@ function comparer(objectA, objectB) {
     var aProps = Object.getOwnPropertyNames(objectA);
     var bProps = Object.getOwnPropertyNames(objectB);
 
-    if (aProps.length != bProps.length) {
+    if (aProps.length !== bProps.length) {
         return false;
     }
     for (var i = 0; i < aProps.length; i++) {
@@ -514,5 +512,21 @@ function comparer(objectA, objectB) {
 }
 
 function showFavorites() {
-    showCoffees(currentUser.favorites);
+    var favorites = getFavorites();
+    //showCoffees function needs an array of coffee as input, right now favorites is only an array of ids
+    //Solution: match coffeeID in favorites with ids in coffees
+    var favoritesArray = [];
+    //since getFavorites is only an array of ids, I now have to create a new array which pushes me all the
+    // coffees whose ID is in favorites
+    for (var x = 0; x < favorites.length; x++) {
+        for (var y = 0; y < coffees.length; y++) {
+            //match the coffeeID with the id inside of all coffees
+            if (favorites[x].coffeeID === coffees[y].id) {
+                //in case there is a match add this coffee to my favoritesArray
+                favoritesArray.push(coffees[y]);
+            }
+        }
+    }
+    //display my favorites list
+    showCoffees(favoritesArray);
 }
