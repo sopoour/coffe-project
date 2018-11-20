@@ -1,7 +1,4 @@
-//storing existing users
-addUser(1,"Sophia", "sopoour", "sophia.auer@gmail.com", "1234", []);
-addUser(2,"Diana", "dianalemon", "diana@gmail.com", "5678", []);
-addUser(3,"Jan", "jaha", "jan@gmail.com", "123", []);
+
 var users = getUsers();
 
 //the function shall be activated when user clicks on login button
