@@ -33,15 +33,12 @@ function findCoffee(id) {
     return null;
 }
 
-/* ci = coffeeIndex */
+/**
+ *  Adds a Favorite 
+ * Input: coffee ID (not a coffee object)
+ * */
 function addFavorite(coffeeID) {
-    /**Old Logic (favorites as user attribute)
-     * currentUser.favorites.push(coffees[ci]);
-    saveUser(currentUser);
-    location.reload();
-    alert('Coffee has been added');
-    */
-    //Get Favorites from LS
+    //Get Favorites from Local Storage
     var favorites = JSON.parse(localStorage.getItem("favorites"));
     if(!favorites) {
         var favorites = [];
@@ -49,9 +46,9 @@ function addFavorite(coffeeID) {
         favorites.push(favorite);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
+
     else {
         //Save Favorite
-        //var id = findMaxId(favorites)+1;
         var favorite = new Favorite(currentUser.id, coffeeID);
         favorites.push(favorite);
         localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -62,7 +59,7 @@ function addFavorite(coffeeID) {
 }
 
 /**
- * 
+ * Removes favorite
  * INPUT: coffee object
  */
 function removeFavorite(coffeeID) {
@@ -81,38 +78,13 @@ function removeFavorite(coffeeID) {
     localStorage.setItem("favorites", JSON.stringify(favorites));
     alert("Removed the coffee from your favorites. Please keep me in mind, i am super delicious.");
     location.reload();
-    /**
-     * OLD CODE
-     
-    //find coffee to be deleted in user's favorite
-    var deleteIndex = findCoffee(coffee, currentUser.favorites);
-    //Remove from favorites
-    currentUser.favorites.splice(deleteIndex);
-    //Store user
-    saveUser(currentUser);
-    alert('Coffee has been removed');
-    location.reload();
-    */
+
 }
 
 function addStore(name, homepage, picture) {
     var store = new Store(name, homepage, picture);
     stores.push(store);
 }
-
-/*function findMaxId(objects) {
-    if(objects.length===0) {
-        return 0;
-    }
-    var currentMax=0;
-    for (var x=0;x<objects.length;x++) {
-        if(objects[x].id > currentMax) {
-            currentMax = objects[x].id;
-        }
-    }
-    return currentMax;
-}
-*/
 
 /*
 GET FUNCTIONS

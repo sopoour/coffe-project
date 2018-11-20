@@ -81,7 +81,7 @@ function filter(dataType,operation,attributeValue,filterValue) {
 
    //NUMBER
     else if (dataType === "number") {
-        if (filterValue === 0) {
+        if (filterValue === -1) {
             return 2; //No Input
         }
         //compare = True/False (True if filterValue ==attributeValue, False if not)
@@ -124,7 +124,7 @@ function doFilter() {
      * So if NaN is set, set price to 0 to filter to work.
      */
     if(isNaN(price)) {
-        price = 0;
+        price = -1;
     }
     //Iterate through all existing coffee objects
     for(var x=0;x<coffees.length;x++) {
