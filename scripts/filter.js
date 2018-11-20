@@ -81,8 +81,13 @@ function filter(dataType,operation,attributeValue,filterValue) {
 
    //NUMBER
     else if (dataType === "number") {
-        if (filterValue === 0) {
-            return 2; //No Input
+        //to show all coffees when filterValue is empty
+        if (filterValue === "x") {
+            return 2;
+        }
+        //to have no match when typing in 0
+        if (filterValue < 0) {
+            return 0; //No Input
         }
         //compare = True/False (True if filterValue ==attributeValue, False if not)
         var compare;
@@ -121,10 +126,11 @@ function doFilter() {
     var type = typeContainer.options[typeContainer.selectedIndex].value;//to get the exact option the user chose
     /**
      * When no price is set as input, NaN is passed when converting the number.
-     * So if NaN is set, set price to 0 to filter to work.
+     * So if NaN is set, set price to string x to filter to
+     * Since you can't type in a string in price input this is gonna have no match
      */
     if(isNaN(price)) {
-        price = 0;
+        price = "x";
     }
     //Iterate through all existing coffee objects
     for(var x=0;x<coffees.length;x++) {
@@ -209,7 +215,6 @@ function showCoffees(filteredCoffees) {
             var panelBody = document.createElement("DIV");
             panelBody.className = 'panel-body';
 
-
             //Build row
             var panelBodyRow = document.createElement("DIV");
             panelBodyRow.className = "row";
@@ -225,15 +230,13 @@ function showCoffees(filteredCoffees) {
             panelBodyRowStore.className = "col-md-6";
             panelBodyRowStore.innerHTML= filteredCoffees[x].store.name;
 
-
             //Append
             row.appendChild(pContainer);
             pContainer.appendChild(panel);
             panel.appendChild(panelHead);
-            var aCof = document.createElement("A");
+
             var bInfo = document.createElement("BUTTON");
-            panelHead.appendChild(aCof);
-            aCof.appendChild(bInfo);
+            panelHead.appendChild(bInfo);
             panel.appendChild(panelBody);
             panelBody.appendChild(panelBodyRow);
             panelBodyRow.appendChild(panelBodyRowPrice);
@@ -246,19 +249,29 @@ function showCoffees(filteredCoffees) {
             var fcID = filteredCoffees[x].id;
             //var j = findCoffee(filteredCoffees[x], coffees);
             bInfo.innerHTML = "Info";
-            bInfo.setAttribute("class", "btn");
-            aCof.setAttribute("data-toggle", "modal");
-            //ADD CUSTOMIZED CONTENT REGARDING STORES
-            //PROBLEM: the ID is overwritten so that it only works with the last item
-            //I guess I need a loop
-            document.querySelector(".modal").setAttribute("id", fcID);
+            bInfo.setAttribute("class", "btn btnInfo");
 
-            aCof.setAttribute("data-target", "#" + fcID);
-            var title = document.getElementById("popUpTitle");
-            var body = document.getElementById("popUpBody");
-            title.innerHTML = filteredCoffees[x].store.name;
-            //body.innerHTML = coffees[ci].store.picture;
-            body.innerHTML = filteredCoffees[x].store.homepage;
+
+            //CREATE MODAL
+            createModal(container, fcID);
+            //ADD CUSTOMIZED CONTENT REGARDING STORES
+            var modals = document.getElementsByClassName("modal");
+            console.log(modals.length);
+            for (var i = 0; i < modals.length; i++) {
+                modals[i].setAttribute("id", fcID);
+                var title = document.getElementById("popUpTitle" + fcID);
+                var body = document.getElementById("popUpBody" + fcID);
+                title.innerHTML = filteredCoffees[x].store.name;
+                //body.innerHTML = coffees[ci].store.picture;
+                body.innerHTML = filteredCoffees[x].store.homepage;
+            }
+            var btnInfo = document.getElementsByClassName("btnInfo");
+            console.log(btnInfo.length);
+            for (var j = 0; j < btnInfo.length; j++) {
+                bInfo.setAttribute("data-target", "#" + fcID);
+                bInfo.setAttribute("data-toggle", "modal");
+            }
+
             //modalContent(j);
             //Button style
             bInfo.style.cssFloat = "right";
