@@ -137,6 +137,7 @@ var currentUser = getCurrentUser();
 //var userfavcounter = currentUser.favorites.length;
 var x = document.getElementById("favCounter").innerHTML = '(' + getFavorites().length + ')';
 //var x = 0;
+
 //POPUP
 
 function modalContent(ci) {
@@ -145,4 +146,44 @@ function modalContent(ci) {
     title.innerHTML = coffees[ci].store.name;
     //body.innerHTML = coffees[ci].store.picture;
     body.innerHTML = coffees[ci].store.homepage;
+}
+
+function createModal(container, ci) {
+    var modal = document.createElement("DIV");
+    modal.setAttribute("class", "modal fade");
+    modal.setAttribute("role", "dialog");
+    container.appendChild(modal);
+    var modalDialog = document.createElement("DIV");
+    modalDialog.setAttribute("class", "modal-dialog");
+    modal.appendChild(modalDialog);
+    var modalContent = document.createElement("DIV");
+    modalContent.setAttribute("class", "modal-content");
+    modalDialog.appendChild(modalContent);
+    var modalHeader = document.createElement("DIV");
+    modalHeader.setAttribute("class", "modal-header");
+    modalContent.appendChild(modalHeader);
+    var crossBtn = document.createElement("BUTTON");
+    crossBtn.setAttribute("type", "button");
+    crossBtn.setAttribute("class", "close");
+    crossBtn.setAttribute("data-dismiss", "modal");
+    crossBtn.innerHTML = "&times;";
+    var modalTitle = document.createElement("H4");
+    modalTitle.setAttribute("class", "modal-title");
+    modalTitle.setAttribute("id", "popUpTitle" + ci);
+    modalHeader.appendChild(crossBtn);
+    modalHeader.appendChild(modalTitle);
+    var modalBody = document.createElement("DIV");
+    modalBody.setAttribute("class", "modal-body");
+    modalBody.setAttribute("id", "popUpBody" + ci);
+    modalContent.appendChild(modalBody);
+    var modalText = document.createElement("P");
+    modalBody.appendChild(modalText);
+    var modalFooter = document.createElement("DIV");
+    modalFooter.setAttribute("class", "modal-footer");
+    modalContent.appendChild(modalFooter);
+    var closeBtn = document.createElement("BUTTON");
+    closeBtn.setAttribute("type", "button");
+    closeBtn.setAttribute("class", "btn btn-default");
+    closeBtn.setAttribute("data-dismiss", "modal");
+    closeBtn.innerHTML = "Close";
 }
