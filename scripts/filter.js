@@ -151,8 +151,11 @@ function showCoffees(filteredCoffees) {
         }
     //Create panels fe o in fC
         for(var x=0;x<filteredCoffees.length;x++) {
+            var fcID = filteredCoffees[x].id;
             //Create Row
             var row = document.createElement("ROW");
+            //give each filteredCoffee row the fcID --> used for Modal
+            row.setAttribute("id", fcID);
             var pContainer = document.createElement("DIV");
             pContainer.className = "col-md-8";
             var panel = document.createElement("DIV");
@@ -192,49 +195,32 @@ function showCoffees(filteredCoffees) {
             pContainer.appendChild(panel);
             panel.appendChild(panelHead);
 
-            var bInfo = document.createElement("BUTTON");
-            panelHead.appendChild(bInfo);
+
             panel.appendChild(panelBody);
             panelBody.appendChild(panelBodyRow);
             panelBodyRow.appendChild(panelBodyRowPrice);
             panelBodyRow.appendChild(panelBodyRowStore);
 
             /*
-            POPUP
-            */
-            //var coffeeIndex = filteredCoffees[x].id;
-            var fcID = filteredCoffees[x].id;
-            //var j = findCoffee(filteredCoffees[x], coffees);
-            bInfo.innerHTML = "Info";
+            MODAL
+             */
+            //Info Button
+            var bInfo = document.createElement("BUTTON");
+            panelHead.appendChild(bInfo);
+            bInfo.innerHTML = "Info of Store";
             bInfo.setAttribute("class", "btn btnInfo");
-
-            //CREATE MODAL
+            //Create Modal (HTML DOM) --> in methods.js
             createModal(container, fcID);
-            //ADD CUSTOMIZED CONTENT REGARDING STORES
-            var modals = document.getElementsByClassName("modal");
-            console.log(modals.length);
-            for (var i = 0; i < modals.length; i++) {
-                modals[i].setAttribute("id", fcID);
-                var title = document.getElementById("popUpTitle" + fcID);
-                var body = document.getElementById("popUpBody" + fcID);
-                title.innerHTML = filteredCoffees[x].store.name;
-                //body.innerHTML = coffees[ci].store.picture;
-                body.innerHTML = filteredCoffees[x].store.homepage;
-            }
-            var btnInfo = document.getElementsByClassName("btnInfo");
-            console.log(btnInfo.length);
-            for (var j = 0; j < btnInfo.length; j++) {
-                bInfo.setAttribute("data-target", "#" + fcID);
-                bInfo.setAttribute("data-toggle", "modal");
-            }
-
-            //modalContent(j);
-            //Button style
+            //Content of Modal based on fcID --> function in the button of this file
+            modalContents(filteredCoffees[x], fcID);
+            //Button style for Modal
             bInfo.style.cssFloat = "right";
             bInfo.style.padding = "0.2% 5% 0.2% 5%";
             bInfo.style.textDecoration = "none";
             bInfo.style.color = "var(--green)";
-
+            /*
+            FAVORITES
+             */
             //FAVORITE BUTTON
             var fContainer = document.createElement("DIV");
             fContainer.className = "col-md-4";
@@ -272,9 +258,8 @@ function showCoffees(filteredCoffees) {
 
 
         }
-    //Append
-        
-    //return
+    //ID matching for Modal data-toggle --> function in the bottom of this file
+    doModal();
 } 
 /*
 checkIfFavorite
@@ -321,3 +306,36 @@ function showFavorites() {
 
 //FAVORITE COUNTER AT FAVORITE BUTTON
 var x = document.getElementById("favCounter").innerHTML = '(' + getFavorites().length + ')';
+
+
+/*
+MODAL FUNCTIONS
+ */
+function doModal() {
+    var modals = document.getElementsByClassName("modal");
+    var rows = document.getElementsByTagName("row");
+    //Loop through all divs with the class name "modal"
+    for (var m = 0; m < modals.length; m++) {
+        //add to each div the same id as the row (=filteredCoffee) has
+        modals[m].id = rows[m].id;
+    }
+    var btnInfo = document.getElementsByClassName("btnInfo");
+    //Loop through all info Buttons
+    for (var n = 0; n < btnInfo.length; n++) {
+        //Add to each button the data-target with the same ID as the modal has in order to toggle the modal
+        btnInfo[n].setAttribute("data-target", "#" + modals[n].id);
+        btnInfo[n].setAttribute("data-toggle", "modal");
+    }
+}
+
+function modalContents(coffee, coffeeID) {
+    var modals = document.getElementsByClassName("modal");
+    //loop through modals and insert content of filteredCoffee
+    for (var i = 0; i < modals.length; i++) {
+        var title = document.getElementById("popUpTitle" + coffeeID);
+        var body = document.getElementById("popUpBody" + coffeeID);
+        title.innerHTML = coffee.store.name;
+        body.innerHTML = "<p>Get to know more about the store:</p>" + coffee.store.homepage;
+
+    }
+}

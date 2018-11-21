@@ -13,7 +13,6 @@ class Store {
         this.homepage=homepage;
         this.picture=picture;
     }
-
 }
 
 class Favorite {
@@ -40,7 +39,7 @@ addUser(2, "Diana", "dianalemon", "diana@gmail.com", "5678");
 addUser(3, "Jan", "jaha", "jan@gmail.com", "123");
 
 //STORE OBJECTS
-addStore("7-Eleven", "https://www.7-eleven.dk/", "/img/seveneleven.jpg");
+addStore("7-Eleven", "https://www.7-eleven.dk/", "img/seveneleven.jpg");
 addStore("Upper Crust", "http://www.uppercrust-baguettes.com/", "img/uppercrust.jpg");
 addStore("Dunkin Donuts", "http://www.dunkin-donuts.dk/", "img/dunkindonuts.jpg");
 addStore("Joe & The Juice", "https://www.joejuice.com/", "img/joeandthejuice.jpg");

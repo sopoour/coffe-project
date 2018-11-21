@@ -123,41 +123,51 @@ function modalContent(ci) {
 }
 
 function createModal(container, ci) {
+    //Whole modal
     var modal = document.createElement("DIV");
     modal.setAttribute("class", "modal fade");
     modal.setAttribute("role", "dialog");
-    container.appendChild(modal);
     var modalDialog = document.createElement("DIV");
     modalDialog.setAttribute("class", "modal-dialog");
-    modal.appendChild(modalDialog);
+    //Content of Modal
     var modalContent = document.createElement("DIV");
     modalContent.setAttribute("class", "modal-content");
-    modalDialog.appendChild(modalContent);
+    //Header with cross button
     var modalHeader = document.createElement("DIV");
     modalHeader.setAttribute("class", "modal-header");
-    modalContent.appendChild(modalHeader);
     var crossBtn = document.createElement("BUTTON");
     crossBtn.setAttribute("type", "button");
     crossBtn.setAttribute("class", "close");
     crossBtn.setAttribute("data-dismiss", "modal");
     crossBtn.innerHTML = "&times;";
+    //Title
     var modalTitle = document.createElement("H4");
     modalTitle.setAttribute("class", "modal-title");
     modalTitle.setAttribute("id", "popUpTitle" + ci);
-    modalHeader.appendChild(crossBtn);
-    modalHeader.appendChild(modalTitle);
+    //Body
     var modalBody = document.createElement("DIV");
     modalBody.setAttribute("class", "modal-body");
     modalBody.setAttribute("id", "popUpBody" + ci);
-    modalContent.appendChild(modalBody);
     var modalText = document.createElement("P");
-    modalBody.appendChild(modalText);
+    //Footer with Close Button
     var modalFooter = document.createElement("DIV");
     modalFooter.setAttribute("class", "modal-footer");
-    modalContent.appendChild(modalFooter);
     var closeBtn = document.createElement("BUTTON");
     closeBtn.setAttribute("type", "button");
     closeBtn.setAttribute("class", "btn btn-default");
     closeBtn.setAttribute("data-dismiss", "modal");
     closeBtn.innerHTML = "Close";
+
+    //Append
+    container.appendChild(modal);
+    modal.appendChild(modalDialog);
+    modalDialog.appendChild(modalContent);
+    modalContent.appendChild(modalHeader);
+    modalHeader.appendChild(crossBtn);
+    modalHeader.appendChild(modalTitle);
+    modalContent.appendChild(modalBody);
+    modalBody.appendChild(modalText);
+    modalContent.appendChild(modalFooter);
+    modalFooter.appendChild(closeBtn);
 }
+
