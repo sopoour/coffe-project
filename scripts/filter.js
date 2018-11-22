@@ -209,9 +209,9 @@ function showCoffees(filteredCoffees) {
             panelHead.appendChild(bInfo);
             bInfo.innerHTML = "Info of Store";
             bInfo.setAttribute("class", "btn btnInfo");
-            //Create Modal (HTML DOM) --> in methods.js
+            //Create Modal (HTML DOM) --> function in the bottom of this file
             createModal(container, fcID);
-            //Content of Modal based on fcID --> function in the button of this file
+            //Content of Modal based on fcID --> function in the bottom of this file
             modalContents(filteredCoffees[x], fcID);
             //Button style for Modal
             bInfo.style.cssFloat = "right";
@@ -258,7 +258,7 @@ function showCoffees(filteredCoffees) {
 
 
         }
-    //ID matching for Modal data-toggle --> function in the bottom of this file
+    //ID matching for correct Modal data-target and -toggle --> function in the bottom of this file
     doModal();
 } 
 /*
@@ -311,6 +311,58 @@ var x = document.getElementById("favCounter").innerHTML = '(' + getFavorites().l
 /*
 MODAL FUNCTIONS
  */
+
+//HTML DOM to create the modal in HTML
+function createModal(container, ci) {
+    //Whole modal
+    var modal = document.createElement("DIV");
+    modal.setAttribute("class", "modal fade");
+    modal.setAttribute("role", "dialog");
+    var modalDialog = document.createElement("DIV");
+    modalDialog.setAttribute("class", "modal-dialog");
+    //Content of Modal
+    var modalContent = document.createElement("DIV");
+    modalContent.setAttribute("class", "modal-content");
+    //Header with cross button
+    var modalHeader = document.createElement("DIV");
+    modalHeader.setAttribute("class", "modal-header");
+    var crossBtn = document.createElement("BUTTON");
+    crossBtn.setAttribute("type", "button");
+    crossBtn.setAttribute("class", "close");
+    crossBtn.setAttribute("data-dismiss", "modal");
+    crossBtn.innerHTML = "&times;";
+    //Title
+    var modalTitle = document.createElement("H4");
+    modalTitle.setAttribute("class", "modal-title");
+    modalTitle.setAttribute("id", "popUpTitle" + ci);
+    //Body
+    var modalBody = document.createElement("DIV");
+    modalBody.setAttribute("class", "modal-body");
+    modalBody.setAttribute("id", "popUpBody" + ci);
+    var modalText = document.createElement("P");
+    //Footer with Close Button
+    var modalFooter = document.createElement("DIV");
+    modalFooter.setAttribute("class", "modal-footer");
+    var closeBtn = document.createElement("BUTTON");
+    closeBtn.setAttribute("type", "button");
+    closeBtn.setAttribute("class", "btn btn-default");
+    closeBtn.setAttribute("data-dismiss", "modal");
+    closeBtn.innerHTML = "Close";
+
+    //Append
+    container.appendChild(modal);
+    modal.appendChild(modalDialog);
+    modalDialog.appendChild(modalContent);
+    modalContent.appendChild(modalHeader);
+    modalHeader.appendChild(crossBtn);
+    modalHeader.appendChild(modalTitle);
+    modalContent.appendChild(modalBody);
+    modalBody.appendChild(modalText);
+    modalContent.appendChild(modalFooter);
+    modalFooter.appendChild(closeBtn);
+}
+
+//ID matching for correct data-target of modal
 function doModal() {
     var modals = document.getElementsByClassName("modal");
     var rows = document.getElementsByTagName("row");
@@ -328,6 +380,7 @@ function doModal() {
     }
 }
 
+//Customized modal content based on filteredCoffee
 function modalContents(coffee, coffeeID) {
     var modals = document.getElementsByClassName("modal");
     //loop through modals and insert content of filteredCoffee
