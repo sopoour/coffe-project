@@ -13,8 +13,8 @@ function addCoffee(id,store, type, price) {
     coffees.push(coffee);
 }
 
-function addUser(name, username, email, password, favorites) {
-    var user = new User(name, username, email, password, favorites);
+function addUser(id, name, username, email, password) {
+    var user = new User(id, name, username, email, password);
     users.push(user);
 }
 

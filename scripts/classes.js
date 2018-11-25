@@ -23,20 +23,21 @@ class Favorite {
 }
 
 class User {
-    constructor(id,name, username, email, password, favorites) {
+    constructor(id, name, username, email, password) {
         this.id=id;
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.favorites = favorites;
     }
 }
 
 //USER OBJECTS
-addUser(1, "Sophia", "sopoour", "sophia.auer@gmail.com", "1234");
-addUser(2, "Diana", "dianalemon", "diana@gmail.com", "5678");
-addUser(3, "Jan", "jaha", "jan@gmail.com", "123");
+addUser(1, "Sophia", "sopoour", "sophia.auer@gmail.com", "_Ek~N_=vYfd.d8XJ");
+addUser(2, "Diana", "dianalemon", "diana@gmail.com", "94Dg!mqPB+\\W]Wj)");
+addUser(3, "Jan", "jaha", "jan@gmail.com", "j-f%4WjRK<JuNEv,");
+addUser(4, "Henrik", "henny", "henrik@gmail.com", "5_[d<D%Ku<j~rCLp");
+addUser(5, "Marten", "marty", "marten@gmail.com", "W3L[*TR4b9eZk@CY");
 
 //STORE OBJECTS
 addStore("7-Eleven", "https://www.7-eleven.dk/", "img/seveneleven.jpg");
