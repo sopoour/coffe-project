@@ -38,6 +38,7 @@ addUser(2, "Diana", "dianalemon", "diana@gmail.com", "94Dg!mqPB+\\W]Wj)");
 addUser(3, "Jan", "jaha", "jan@gmail.com", "j-f%4WjRK<JuNEv,");
 addUser(4, "Henrik", "henny", "henrik@gmail.com", "5_[d<D%Ku<j~rCLp");
 addUser(5, "Marten", "marty", "marten@gmail.com", "W3L[*TR4b9eZk@CY");
+addUser(6, "Jan", "Jamey", "jan.a@gmail.com", "XYT.eZ*mMB'J#5s8");
 
 //STORE OBJECTS
 addStore("7-Eleven", "https://www.7-eleven.dk/", "img/seveneleven.jpg");

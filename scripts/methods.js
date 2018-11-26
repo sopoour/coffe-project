@@ -26,6 +26,7 @@ function addStore(name, homepage, picture) {
 function addFavorite(coffeeID) {
     //Get Favorites from LS
     var favorites = JSON.parse(localStorage.getItem("favorites"));
+    //in case there is no favorites array in LS
     if(!favorites) {
         var favorites = [];
         var favorite = new Favorite(currentUser.id, coffeeID);

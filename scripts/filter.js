@@ -389,6 +389,5 @@ function modalContents(coffee, coffeeID) {
         var body = document.getElementById("popUpBody" + coffeeID);
         title.innerHTML = coffee.store.name;
         body.innerHTML = "<p>Get to know more about the store:</p>" + coffee.store.homepage;
-
     }
 }
