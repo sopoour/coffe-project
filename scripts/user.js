@@ -6,14 +6,16 @@ function authUser() {
     var userName = document.getElementById("userName");
     var userPassword = document.getElementById("userPassword");
     var loginResult = document.getElementById("loginResult");
-    //temporary index to check if my user exists or not
-    var tempIndex = -1;
+    
     //first check if either one of the inputs is empty
-    if (userName.value === "" || userPassword.value === "") {
+       if (userName.value === "" || userPassword.value === "") {
         loginResult.innerHTML = "<br> <br>" + "Please type in both username and password!";
         //return false to get out of the function and wait for a new action
         return false;
     }
+    //temporary index to check if my user exists or not
+    var tempIndex = -1;
+
     for (var i = 0; i < users.length; i++) {
         // users[i].username/.password to check that the same user is compared
         if (userName.value === users[i].username && userPassword.value === users[i].password) {
