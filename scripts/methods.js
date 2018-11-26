@@ -20,17 +20,9 @@ function addUser(name, username, email, password, favorites) {
     users.push(user);
 }
 
-/**
- * returns coffee object based on given id.
- * returns null if no coffee object with given id exists.
- */
-function findCoffee(id) {
-    for(var x=0;x<coffees.length;x++) {
-        if(coffees[x].id == id) {
-            return coffees[x];
-        }
-    }
-    return null;
+function addStore(name, homepage, picture) {
+    var store = new Store(name, homepage, picture);
+    stores.push(store);
 }
 
 /**
@@ -59,6 +51,21 @@ function addFavorite(coffeeID) {
 }
 
 /**
+ * returns coffee object based on given id.
+ * returns null if no coffee object with given id exists.
+ */
+function findCoffee(id) {
+    for(var x=0;x<coffees.length;x++) {
+        if(coffees[x].id == id) {
+            return coffees[x];
+        }
+    }
+    return null;
+}
+
+
+
+/**
  * Removes favorite
  * INPUT: coffee object
  */
@@ -81,10 +88,7 @@ function removeFavorite(coffeeID) {
 
 }
 
-function addStore(name, homepage, picture) {
-    var store = new Store(name, homepage, picture);
-    stores.push(store);
-}
+
 
 /*
 GET FUNCTIONS
