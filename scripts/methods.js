@@ -42,49 +42,6 @@ function addFavorite(coffeeID) {
     location.reload();
 }
 
-<<<<<<< HEAD
-/**
- * returns coffee object based on given id.
- * returns null if no coffee object with given id exists.
- */
-function findCoffee(id) {
-    for(var x=0;x<coffees.length;x++) {
-        if(coffees[x].id == id) {
-            return coffees[x];
-        }
-    }
-    return null;
-}
-
-
-
-/**
- * Removes favorite
- * INPUT: coffee object
- */
-function removeFavorite(coffeeID) {
-
-    //Get favorites
-    var favorites = JSON.parse(localStorage.getItem("favorites"));
-
-    //Find favorite with combination of current user & coffee (based on id)
-    for(var x=0;x<favorites.length;x++) {
-        if (favorites[x].coffeeID === coffeeID) {
-            //Found it, delete it
-            favorites.splice(x,1);
-        }
-    }
-    //Push updated favorites to LS
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-    alert("Removed the coffee from your favorites. Please keep me in mind, i am super delicious.");
-    location.reload();
-
-}
-
-
-
-=======
->>>>>>> 1b2805963811dee313989d9bf58072567462b1a0
 /*
 GET FUNCTIONS
 */
