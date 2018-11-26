@@ -1,46 +1,3 @@
-/*STORES*/
-
-//Coffee Stores!
-var store1 = new Store("7-Eleven", "https://www.7-eleven.dk/", "/img/seveneleven.jpg");
-var store2 = new Store("Upper Crust", "http://www.uppercrust-baguettes.com/", "img/uppercrust.jpg");
-var store3 = new Store("Dunkin Donuts", "http://www.dunkin-donuts.dk/", "img/dunkindonuts.jpg");
-var store4 = new Store("Joe & The Juice", "https://www.joejuice.com/", "img/joeandthejuice.jpg");
-var store5 = new Store("Lagkagehuset", "https://lagkagehuset.dk/", "img/lagkagehuset.jpg");
-
-
-/**
- * Not directly neccessary so far, maybe within the popup... let's see
- */
-//var stores = [store1,store2,store3,store4,store5];
-
-/*COFFEES*/
-//Generate some great coffees!
-addCoffee(1,store1, "Filter Coffee", 13);
-addCoffee(2,store1, "Americano", 28);
-addCoffee(3,store1, "Caffé Latte", 28);
-addCoffee(4,store1, "Cappuccino", 28);
-addCoffee(5,store1, "Espresso", 22);
-addCoffee(6,store1, "Double Espresso", 28);
-addCoffee(7,store1, "Iced Coffee", 20);
-addCoffee(8,store2, "Americano", 25);
-addCoffee(9,store2, "Espresso", 20);
-addCoffee(10,store2, "Cappuccino", 32);
-addCoffee(11,store2, "Caffé Latte", 32);
-addCoffee(12,store3, "Americano", 27);
-addCoffee(13,store3, "Espresso", 20);
-addCoffee(14,store3, "Cappuccino", 35);
-addCoffee(15,store3, "Caffé Latte", 35);
-addCoffee(16,store3, "Filter Coffee", 25);
-addCoffee(17,store4, "Caffé Latte", 30);
-addCoffee(18,store4, "Cappuccino", 40);
-addCoffee(19,store4, "Espresso", 25);
-addCoffee(20,store4, "Iced Coffee", 40);
-addCoffee(21,store5, "Caffé Latte", 45);
-addCoffee(22,store5, "Americano", 37);
-addCoffee(23,store5, "Espresso", 35);
-addCoffee(24,store5, "Cappuccino", 45);
-addCoffee(25,store5, "Caffé Latte", 40);
-addCoffee(26,store5, "Double Espresso", 40);
 
 //FUNCTIONS
 
@@ -194,8 +151,11 @@ function showCoffees(filteredCoffees) {
         }
     //Create panels fe o in fC
         for(var x=0;x<filteredCoffees.length;x++) {
+            var fcID = filteredCoffees[x].id;
             //Create Row
             var row = document.createElement("ROW");
+            //give each filteredCoffee row the fcID --> used for Modal
+            row.setAttribute("id", fcID);
             var pContainer = document.createElement("DIV");
             pContainer.className = "col-md-8";
             var panel = document.createElement("DIV");
@@ -235,72 +195,45 @@ function showCoffees(filteredCoffees) {
             pContainer.appendChild(panel);
             panel.appendChild(panelHead);
 
-            var bInfo = document.createElement("BUTTON");
-            panelHead.appendChild(bInfo);
+
             panel.appendChild(panelBody);
             panelBody.appendChild(panelBodyRow);
             panelBodyRow.appendChild(panelBodyRowPrice);
             panelBodyRow.appendChild(panelBodyRowStore);
 
             /*
-            POPUP
-            */
-            //var coffeeIndex = filteredCoffees[x].id;
-            var fcID = filteredCoffees[x].id;
-            //var j = findCoffee(filteredCoffees[x], coffees);
-            bInfo.innerHTML = "Info";
+            MODAL
+             */
+            //Info Button
+            var bInfo = document.createElement("BUTTON");
+            panelHead.appendChild(bInfo);
+            bInfo.innerHTML = "Info of Store";
             bInfo.setAttribute("class", "btn btnInfo");
-
-
-            //CREATE MODAL
+            //Create Modal (HTML DOM) --> function in the bottom of this file
             createModal(container, fcID);
-            //ADD CUSTOMIZED CONTENT REGARDING STORES
-            var modals = document.getElementsByClassName("modal");
-            console.log(modals.length);
-            for (var i = 0; i < modals.length; i++) {
-                modals[i].setAttribute("id", fcID);
-                var title = document.getElementById("popUpTitle" + fcID);
-                var body = document.getElementById("popUpBody" + fcID);
-                title.innerHTML = filteredCoffees[x].store.name;
-                //body.innerHTML = coffees[ci].store.picture;
-                body.innerHTML = filteredCoffees[x].store.homepage;
-            }
-            var btnInfo = document.getElementsByClassName("btnInfo");
-            console.log(btnInfo.length);
-            for (var j = 0; j < btnInfo.length; j++) {
-                bInfo.setAttribute("data-target", "#" + fcID);
-                bInfo.setAttribute("data-toggle", "modal");
-            }
-
-            //modalContent(j);
-            //Button style
+            //Content of Modal based on fcID --> function in the bottom of this file
+            modalContents(filteredCoffees[x], fcID);
+            //Button style for Modal
             bInfo.style.cssFloat = "right";
             bInfo.style.padding = "0.2% 5% 0.2% 5%";
             bInfo.style.textDecoration = "none";
             bInfo.style.color = "var(--green)";
-
-
+            /*
+            FAVORITES
+             */
+            //FAVORITE BUTTON
             var fContainer = document.createElement("DIV");
             fContainer.className = "col-md-4";
-            //var toolTip = document.createElement("DIV");
-            //toolTip.setAttribute("class", "tooltip");
             var aFav = document.createElement("A");
             fContainer.appendChild(aFav);
-            //toolTip.appendChild(aFav);
             row.appendChild(fContainer);
             container.appendChild(row);
             var b = document.createElement("BUTTON");
             aFav.appendChild(b);
-            //var toolTipText = document.createElement("SPAN");
-            //toolTip.appendChild(toolTipText);
-            //toolTipText.setAttribute("class", "tooltiptext");
-
 
             //FAVORITES
-
             if (currentUser) {
                 var isFavorite = checkIfFavorite(filteredCoffees[x]);
-
                 if (isFavorite === true) {
                     aFav.setAttribute('onclick', 'removeFavorite(' + fcID + ')');
                     aFav.innerHTML = "<i class='fas fa-star'></i>";
@@ -325,122 +258,9 @@ function showCoffees(filteredCoffees) {
 
 
         }
-    //Append
-        
-    //return
+    //ID matching for correct Modal data-target and -toggle --> function in the bottom of this file
+    doModal();
 } 
-
-function filterResult(filteredCoffees) {
-    
-    //Do we really need this if statement? and for what?
-    /*
-    I put this in for development/debuging purpose, as this helps me to identify when there is something wrong with doFilter().
-    I work a lot with the chrome dev tools and if this if condition returns true then there is something wrong in doFilter. 
-    return null is just a statement to quit the function in this case.
-    */
-    if (!filteredCoffees) {
-        return null;
-    }
-    var dvTable = document.getElementById("resultsTable");
-    dvTable.innerHTML = "";
-    //how can the function doFilter() have a length?
-    /*
-    ?
-    doFilter() is a function, it has no length attribute, but the returning array of doFilter(filteredCoffees) does
-    */
-    if (filteredCoffees.length === 0) {
-        alert("No matching objects");
-        return null;
-    }
-    //Creates Table - capital letters because it's being created
-    var table = document.createElement("TABLE");
-    table.border = 1;
-
-    //Init Header Row
-    var columns = [];
-    columns.push("Type", "Price", "Store", "Favorite");
-    var row = table.insertRow(-1);
-
-    //Fill out Header Row
-    for (var i = 0; i < columns.length; i++) {
-        var headerCell = document.createElement("TH");
-        headerCell.innerHTML = columns[i];
-        row.appendChild(headerCell);
-    }
-
-    //Coffee Rows
-    for (var i = 0; i < filteredCoffees.length; i++) {
-        row = table.insertRow(-1);
-
-        var j = findCoffee(filteredCoffees[i],coffees);
-
-        //Coffee doesn't exist?
-        if(j<0) {
-            return null;
-        } 
-        var buttonID = "c"+j;
-
-        var b = document.createElement("BUTTON");
-        b.setAttribute('class','btn coffeeSelect');
-        b.setAttribute('id',buttonID);
-
-        //"Hardcoded", should be smarter/more generic here, but need for a decision on how to iterate through data types in coffees[] (see above)
-        var cell1 = row.insertCell(-1);
-        cell1.innerHTML = filteredCoffees[i].type;
-        var cell2 = row.insertCell(-1);
-        cell2.innerHTML = filteredCoffees[i].price;
-        var cell3 = row.insertCell(-1);
-        cell3.innerHTML = filteredCoffees[i].store.name;
-        var cell4 = row.insertCell(-1);
-        //b.onclick = function() {addFavorite(currentUser.username, coffees[j].type)};
-
-        //create an anchor around the favorite button for login redirection in case user is not logged in
-        var aFav = document.createElement("A");
-        // anchor is child of td
-        cell4.appendChild(aFav);
-        // button is child of anchor
-        aFav.appendChild(b);
-
-        //for favorites
-        if(currentUser) {
-            var isFavorite = checkIfFavorite(filteredCoffees[i]);
-
-            if (isFavorite === true) {
-                b.setAttribute('onClick','removeFavorite('+j+')');
-                b.innerHTML = 'Remove From Favorites';
-            }
-            else {
-                b.innerHTML = 'Add to Favorites';
-                b.setAttribute('onClick','addFavorite('+j+')');
-            }
-        }
-        else {
-            //add a hypertext reference (href) to anchor around favorite buttons
-            //redirection to login page when no user is logged in
-            aFav.setAttribute("href", "login.html");
-            //b.setAttribute("onclick", "redirect()");
-            b.innerHTML = 'Login first';
-        }
-    }
-
-    //Put table in <div> on HTML
-    table.className = "table table-hover";
-    //appendChild means to push the table within my div with id="resultsTable" (--> this is a child of div)
-    dvTable.appendChild(table);
-
-}
-
-function findCoffee(coffee,searchArray) {
-
-    for(var x=0;x<searchArray.length;x++) {
-        //search coffee and compare it will all related columns
-        if(searchArray[x].price==coffee.price && searchArray[x].type==coffee.type && comparer(searchArray[x].store,coffee.store)) {
-            return x;
-        }
-    }
-    return -1;
-} 
-
 /*
 checkIfFavorite
 Checks if a coffee object is already listed as current user's favorite.
@@ -449,7 +269,6 @@ INPUT: coffee OBJECT (not id!)
 @return true/false
 */
 function checkIfFavorite(coffee) {
-
     //Get Favorites
     var favorites = JSON.parse(localStorage.getItem("favorites"));
     //No Favorites yet?
@@ -463,65 +282,6 @@ function checkIfFavorite(coffee) {
         }
     }
     return false;
-    //Return true false
-
-
-
-    /**
-     * Old Code
-
-    var user = getCurrentUser();
-
-    if(user.favorites.length<1) {
-        //No favorites yet
-        return false;
-    }
-
-    //Iterate through all current user's favorites and compare attributes to coffee
-    for (var i=0; i<user.favorites.length; i++) {
-        //Compare store
-        if(comparer(user.favorites[i].store, coffee.store)){
-            //Compare price
-            if(user.favorites[i].price===coffee.price) {
-                //compare type
-                if(user.favorites[i].type===coffee.type) {
-                    return true;
-                }
-            }
-        }
-
-    }
-
-    return false;*/
-}
-
-/*
-@returns true if all property values of objectA and objectB are the same
-(-> objects to be considered to be equal in this context)
-@returns false if not
-
-!!Started to work on it, but couldn't get it to work across several object dimensions... 
-but will get there eventually.
-*/
-function comparer(objectA, objectB) {
-    var aProps = Object.getOwnPropertyNames(objectA);
-    var bProps = Object.getOwnPropertyNames(objectB);
-
-    if (aProps.length !== bProps.length) {
-        return false;
-    }
-    for (var i = 0; i < aProps.length; i++) {
-        var propName = aProps[i];
-
-        // If values of same property are not equal,
-        // objects are not equivalent
-        if (objectA[propName] !== objectB[propName]) {
-            return false;
-        }
-    }
-
-    //If we made it here, objects have same property levels
-    return true
 }
 
 function showFavorites() {
@@ -542,4 +302,93 @@ function showFavorites() {
     }
     //display my favorites list
     showCoffees(favoritesArray);
+}
+
+//FAVORITE COUNTER AT FAVORITE BUTTON
+var x = document.getElementById("favCounter").innerHTML = '(' + getFavorites().length + ')';
+
+
+/*
+MODAL FUNCTIONS
+ */
+
+//HTML DOM to create the modal in HTML
+function createModal(container, ci) {
+    //Whole modal
+    var modal = document.createElement("DIV");
+    modal.setAttribute("class", "modal fade");
+    modal.setAttribute("role", "dialog");
+    var modalDialog = document.createElement("DIV");
+    modalDialog.setAttribute("class", "modal-dialog");
+    //Content of Modal
+    var modalContent = document.createElement("DIV");
+    modalContent.setAttribute("class", "modal-content");
+    //Header with cross button
+    var modalHeader = document.createElement("DIV");
+    modalHeader.setAttribute("class", "modal-header");
+    var crossBtn = document.createElement("BUTTON");
+    crossBtn.setAttribute("type", "button");
+    crossBtn.setAttribute("class", "close");
+    crossBtn.setAttribute("data-dismiss", "modal");
+    crossBtn.innerHTML = "&times;";
+    //Title
+    var modalTitle = document.createElement("H4");
+    modalTitle.setAttribute("class", "modal-title");
+    modalTitle.setAttribute("id", "popUpTitle" + ci);
+    //Body
+    var modalBody = document.createElement("DIV");
+    modalBody.setAttribute("class", "modal-body");
+    modalBody.setAttribute("id", "popUpBody" + ci);
+    var modalText = document.createElement("P");
+    //Footer with Close Button
+    var modalFooter = document.createElement("DIV");
+    modalFooter.setAttribute("class", "modal-footer");
+    var closeBtn = document.createElement("BUTTON");
+    closeBtn.setAttribute("type", "button");
+    closeBtn.setAttribute("class", "btn btn-default");
+    closeBtn.setAttribute("data-dismiss", "modal");
+    closeBtn.innerHTML = "Close";
+
+    //Append
+    container.appendChild(modal);
+    modal.appendChild(modalDialog);
+    modalDialog.appendChild(modalContent);
+    modalContent.appendChild(modalHeader);
+    modalHeader.appendChild(crossBtn);
+    modalHeader.appendChild(modalTitle);
+    modalContent.appendChild(modalBody);
+    modalBody.appendChild(modalText);
+    modalContent.appendChild(modalFooter);
+    modalFooter.appendChild(closeBtn);
+}
+
+//ID matching for correct data-target of modal
+function doModal() {
+    var modals = document.getElementsByClassName("modal");
+    var rows = document.getElementsByTagName("row");
+    //Loop through all divs with the class name "modal"
+    for (var m = 0; m < modals.length; m++) {
+        //add to each div the same id as the row (=filteredCoffee) has
+        modals[m].id = rows[m].id;
+    }
+    var btnInfo = document.getElementsByClassName("btnInfo");
+    //Loop through all info Buttons
+    for (var n = 0; n < btnInfo.length; n++) {
+        //Add to each button the data-target with the same ID as the modal has in order to toggle the modal
+        btnInfo[n].setAttribute("data-target", "#" + modals[n].id);
+        btnInfo[n].setAttribute("data-toggle", "modal");
+    }
+}
+
+//Customized modal content based on filteredCoffee
+function modalContents(coffee, coffeeID) {
+    var modals = document.getElementsByClassName("modal");
+    //loop through modals and insert content of filteredCoffee
+    for (var i = 0; i < modals.length; i++) {
+        var title = document.getElementById("popUpTitle" + coffeeID);
+        var body = document.getElementById("popUpBody" + coffeeID);
+        title.innerHTML = coffee.store.name;
+        body.innerHTML = "<p>Get to know more about the store:</p>" + coffee.store.homepage;
+
+    }
 }
