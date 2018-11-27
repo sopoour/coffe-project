@@ -78,7 +78,7 @@ function doFilter() {
     //Initialize empty array of filtered coffees
     var filteredCoffees=[];
     //Get Input values from HTML
-    var price = parseInt(document.getElementById("priceInput").value); //value = give me what is inside of priceInput
+    var price = parseInt(document.getElementById("priceInput").value); //turn price into an actual integer
     var typeContainer = document.getElementById("typeInput"); //the whole dropdown
     var type = typeContainer.options[typeContainer.selectedIndex].value;//to get the exact option the user chose
     /**
@@ -134,7 +134,7 @@ function doFilter() {
         }
     }
     //Call display function
-    showCoffees(filteredCoffees); 
+    showCoffees(filteredCoffees);
 }
 /*
 This builds a table based on given array of coffees. No filtering here.
@@ -146,7 +146,7 @@ function showCoffees(filteredCoffees) {
         container.innerHTML = '';
     //Check if fC = 0, display message
     if (filteredCoffees.length === 0) {
-            container.innerHTML = '<p>No matching coffees :( Try again!</p>';
+        container.innerHTML = '<h6>No matching coffees :( Try again!</h6>';
             return;
         }
     //Create panels fe o in fC
@@ -391,3 +391,6 @@ function modalContents(coffee, coffeeID) {
         body.innerHTML = "<p>Get to know more about the store:</p>" + coffee.store.homepage;
     }
 }
+
+
+

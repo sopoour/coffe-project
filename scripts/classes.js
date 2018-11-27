@@ -34,7 +34,7 @@ class User {
 
 //USER OBJECTS
 addUser(1, "Sophia", "sopoour", "sophia.auer@gmail.com", "_Ek~N_=vYfd.d8XJ");
-addUser(2, "Diana", "dianalemon", "diana@gmail.com", "94Dg!mqPB+\\W]Wj)");
+addUser(2, "Diana", "dianalemon", "diana@gmail.com", "94Dg!mqPB+#3W]Wj)");
 addUser(3, "Jan", "jaha", "jan@gmail.com", "j-f%4WjRK<JuNEv,");
 addUser(4, "Henrik", "henny", "henrik@gmail.com", "5_[d<D%Ku<j~rCLp");
 addUser(5, "Marten", "marty", "marten@gmail.com", "W3L[*TR4b9eZk@CY");
