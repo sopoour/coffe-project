@@ -182,7 +182,6 @@ function showCoffees(filteredCoffees) {
             pContainer.appendChild(panel);
             panel.appendChild(panelHead);
 
-
             panel.appendChild(panelBody);
             panelBody.appendChild(panelBodyRow);
             panelBodyRow.appendChild(panelBodyRowPrice);
@@ -239,8 +238,6 @@ function showCoffees(filteredCoffees) {
                 aFav.style.color = "white";
                 aFav.innerHTML = 'No Login, No Favorite  <i class="far fa-hand-point-up"></i>';
             }
-
-
         }
     //ID matching for correct Modal data-target and -toggle --> function in the bottom of this file
     doModal();
