@@ -243,12 +243,10 @@ function showCoffees(filteredCoffees) {
                 }
             }
             else {
-                //add a hypertext reference (href) to anchor around favorite buttons
                 //redirection to login page when no user is logged in
                 aFav.setAttribute("href", "login.html");
                 aFav.style.backgroundColor = "var(--green-faded)";
                 aFav.style.color = "white";
-                //b.setAttribute("onclick", "redirect()");
                 aFav.innerHTML = 'No Login, No Favorite  <i class="far fa-hand-point-up"></i>';
             }
 
