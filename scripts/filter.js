@@ -399,8 +399,8 @@ function modalContents(coffee, coffeeID) {
         storeInfoPic.setAttribute("class","col-xs-6");
         var storeInfoText = document.createElement("DIV");
         storeInfoText.setAttribute("class","col-xs-6");
-        storeInfoPic.innerHTML = "<img src="+coffee.store.picture+" width='150px' height='auto' />";
-        storeInfoText.innerHTML = "<a type='button' class='btn btn-default' target='_blank' href="+coffee.store.homepage+"><i class='fa fa-eye'></i> Visit Homepage</a> ";
+    storeInfoPic.innerHTML = "<img class='storeIMG' src=" + coffee.store.picture + " width='150px' height='auto' />";
+    storeInfoText.innerHTML = "<a type='button' class='btn btn-default' target='_blank' href=" + coffee.store.homepage + "><i class='fa fa-eye' style='color: hotpink'></i> Visit Homepage</a> ";
 
         storeInfoRow.appendChild(storeInfoPic);
         storeInfoRow.appendChild(storeInfoText);
