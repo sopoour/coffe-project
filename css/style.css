@@ -163,3 +163,18 @@ LOGIN/LOGOUT
     transform: translate(-50%, -50%);
     font-family: 'Raleway', sans-serif;
 }
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    background-color: hotpink;
+    color: white;
+}
+
+.btn-circle:hover {
+    color: white;
+}

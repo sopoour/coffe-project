@@ -225,23 +225,25 @@ function showCoffees(filteredCoffees) {
             var fContainer = document.createElement("DIV");
             fContainer.className = "col-md-4";
             var aFav = document.createElement("A");
+            aFav.setAttribute("type", "button");
+            aFav.setAttribute("class", "btn");
             fContainer.appendChild(aFav);
             row.appendChild(fContainer);
             container.appendChild(row);
-            var b = document.createElement("BUTTON");
-            aFav.appendChild(b);
 
             //FAVORITES
             if (currentUser) {
                 var isFavorite = checkIfFavorite(filteredCoffees[x]);
                 if (isFavorite === true) {
                     aFav.setAttribute('onclick', 'removeFavorite(' + fcID + ')');
-                    aFav.innerHTML = "<i class='fas fa-star'></i>";
+                    aFav.innerHTML = "<i class='fas fa-star' style='color: white'></i>";
+                    aFav.setAttribute("class", "btn btn-circle");
+                    aFav.style.color = "white";
                 }
                 else {
                     aFav.setAttribute('onclick', 'addFavorite(' + fcID + ')');
                     aFav.innerHTML = "<i class='far fa-star'></i>";
-                    aFav.style.color = "var(--brown-faded)";
+                    aFav.setAttribute("class", "btn btn-circle");
                 }
             }
             else {
@@ -249,11 +251,10 @@ function showCoffees(filteredCoffees) {
                 //add a hypertext reference (href) to anchor around favorite buttons
                 //redirection to login page when no user is logged in
                 aFav.setAttribute("href", "login.html");
-                b.setAttribute("class", "btn");
-                b.style.backgroundColor = "var(--green-faded)";
-                b.style.color = "white";
+                aFav.style.backgroundColor = "var(--green-faded)";
+                aFav.style.color = "white";
                 //b.setAttribute("onclick", "redirect()");
-                b.innerHTML = 'No Login, No Favorite  <i class="far fa-hand-point-up"></i>';
+                aFav.innerHTML = 'No Login, No Favorite  <i class="far fa-hand-point-up"></i>';
             }
 
 
@@ -316,7 +317,7 @@ MODAL FUNCTIONS
 function createModal(container, ci) {
     //Whole modal
     var modal = document.createElement("DIV");
-    modal.setAttribute("class", "modal fade");
+    modal.setAttribute("class", "modal fad");
     modal.setAttribute("role", "dialog");
     var modalDialog = document.createElement("DIV");
     modalDialog.setAttribute("class", "modal-dialog");
