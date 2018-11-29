@@ -104,7 +104,6 @@ function doFilter() {
         2 = no filter because of default input ("Select...") and empty price
          */
         for (var a = 0; a < filters.length; a++) {
-
             if (filters[a] >= 1) { //for 1 and 2
                 //For use case: "Locfe has only one filter"
                 //in case we have only one filter, it doesn't have to iterate through the loop and can skip the rest of the loop
@@ -122,13 +121,11 @@ function doFilter() {
                     for(var b=0;b<filters.length;b++) {
                         if (filters[b] === 0) zeroCounter++;
                     }
-
                     //add only, if other filters are empty, but are not "wrong"/contradicting
                     if (zeroCounter === 0) {
                         filteredCoffees.push(coffees[x]);
                         break;
                     }
-
                 }
             }
         }
@@ -236,12 +233,13 @@ function showCoffees(filteredCoffees) {
                     aFav.setAttribute('onclick', 'removeFavorite(' + fcID + ')');
                     aFav.innerHTML = "<i class='fas fa-star' style='color: white'></i>";
                     aFav.setAttribute("class", "btn btn-circle");
-                    aFav.style.color = "white";
+                    aFav.style.backgroundColor = "hotpink";
                 }
                 else {
                     aFav.setAttribute('onclick', 'addFavorite(' + fcID + ')');
-                    aFav.innerHTML = "<i class='far fa-star'></i>";
+                    aFav.innerHTML = "<i style='color: hotpink' class='far fa-star'></i>";
                     aFav.setAttribute("class", "btn btn-circle");
+                    aFav.style.borderColor = "hotpink";
                 }
             }
             else {
