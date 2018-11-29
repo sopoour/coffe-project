@@ -174,12 +174,10 @@ LOGIN/LOGOUT
     border-radius: 15px;
     text-align: center;
     font-size: 12px;
-    background-color: hotpink;
-    color: white;
 }
 
 .btn-circle:hover {
-    color: white;
+    color: hotpink;
 }
 
 .storeIMG {
