@@ -136,7 +136,7 @@ function showCoffees(filteredCoffees) {
         container.innerHTML = '<h6>No matching coffees :( Try again!</h6>';
             return;
         }
-    //Create panels fe o in fC
+    //Create panels
         for(var x=0;x<filteredCoffees.length;x++) {
             var fcID = filteredCoffees[x].id;
             //Create Row
