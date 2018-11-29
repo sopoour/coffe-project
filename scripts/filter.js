@@ -328,9 +328,8 @@ function doModal() {
     }
 }
 
-//Customized modal content based on filteredCoffee
+//DOM HTML modal creation & Customized modal content based on filteredCoffee
 function modalContents(container,coffee) {
-
         //Whole modal
         var modal = document.createElement("DIV");
         modal.setAttribute("class", "modal fade");
@@ -356,20 +355,18 @@ function modalContents(container,coffee) {
         var modalBody = document.createElement("DIV");
         modalBody.setAttribute("class", "modal-body");
         modalBody.setAttribute("id", "popUpBody" + coffee.id);
+    modalBody.style.textAlign = "center";
         var modalText = document.createElement("P");
         //Footer with Close Button
         var modalFooter = document.createElement("DIV");
         modalFooter.setAttribute("class", "modal-footer");
+    modalFooter.setAttribute("id", "popUpFooter" + coffee.id);
         var closeBtn = document.createElement("BUTTON");
-        closeBtn.setAttribute("type", "button");
         closeBtn.setAttribute("class", "btn btn-default");
         closeBtn.setAttribute("data-dismiss", "modal");
+    closeBtn.style.backgroundColor = "hotpink";
+    closeBtn.style.color = "white";
         closeBtn.innerHTML = "Close";
-    
-        var hpBtn = document.createElement("A");
-        hpBtn.setAttribute("type","button");
-        hpBtn.setAttribute("class","btn btn-default");
-        //hpBtn.setAttribute("href",)
     
         //Append
         container.appendChild(modal);
@@ -383,27 +380,15 @@ function modalContents(container,coffee) {
         modalContent.appendChild(modalFooter);
         modalFooter.appendChild(closeBtn);
 
-    var modals = document.getElementsByClassName("modal");
-    //loop through modals and insert content of filteredCoffee
+    //Content creation
         var title = document.getElementById("popUpTitle" + coffee.id);
         var body = document.getElementById("popUpBody" + coffee.id);
+    var footer = document.getElementById("popUpFooter" + coffee.id);
         title.innerHTML = coffee.store.name;
 
-        var storeInfoRow = document.createElement("DIV");
-        storeInfoRow.setAttribute("class","row");
-        var storeInfoPic = document.createElement("DIV");
-        storeInfoPic.setAttribute("class","col-xs-6");
-        var storeInfoText = document.createElement("DIV");
-        storeInfoText.setAttribute("class","col-xs-6");
-    storeInfoPic.innerHTML = "<img class='storeIMG' src=" + coffee.store.picture + " width='150px' height='auto' />";
-    storeInfoText.innerHTML = "<a type='button' class='btn btn-default' target='_blank' href=" + coffee.store.homepage + "><i class='fa fa-eye' style='color: hotpink'></i> Visit Homepage</a> ";
-
-        storeInfoRow.appendChild(storeInfoPic);
-        storeInfoRow.appendChild(storeInfoText);
-        
-        //body.appendChild(storeInfoRow);
-
-        body.appendChild(storeInfoRow);
+    body.innerHTML = "<h6> Check out where to find your favorite coffee:</h6>"
+    body.innerHTML += "<img class='storeIMG' src=" + coffee.store.picture + " width='150px' height='auto' />";
+    footer.innerHTML += "<a type='button' class='btn btn-default' target='_blank' style='float: left' href=" + coffee.store.homepage + "><i class='fa fa-eye' style='color: hotpink'></i> Visit Homepage</a> ";
 }
 
 

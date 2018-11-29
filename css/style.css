@@ -5,6 +5,7 @@ body {
     --white-faded: rgba(255, 255, 255, 0.6);
     --brown-faded: rgba(71, 60, 31, 0.6);
     --brown: #473c1f;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,6 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 p {
     font-family: 'Lato', sans-serif;
     color: var(--brown);
+
 }
 
 .container {
@@ -31,6 +33,7 @@ p {
 }
 .intro h5 {
     font-size: 18px;
+    line-height: 30px;
 }
 
 h6 {
@@ -177,4 +180,9 @@ LOGIN/LOGOUT
 
 .btn-circle:hover {
     color: white;
+}
+
+.storeIMG {
+    width: 60%;
+    background-color: red;
 }
