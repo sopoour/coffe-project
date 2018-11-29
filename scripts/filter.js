@@ -245,7 +245,6 @@ function showCoffees(filteredCoffees) {
                 }
             }
             else {
-                //alert("here me now");
                 //add a hypertext reference (href) to anchor around favorite buttons
                 //redirection to login page when no user is logged in
                 aFav.setAttribute("href", "login.html");
@@ -349,6 +348,11 @@ function createModal(container, ci) {
     closeBtn.setAttribute("data-dismiss", "modal");
     closeBtn.innerHTML = "Close";
 
+    var hpBtn = document.createElement("A");
+    hpBtn.setAttribute("type","button");
+    hpBtn.setAttribute("class","btn btn-default");
+    //hpBtn.setAttribute("href",)
+
     //Append
     container.appendChild(modal);
     modal.appendChild(modalDialog);
@@ -384,12 +388,25 @@ function doModal() {
 function modalContents(coffee, coffeeID) {
     var modals = document.getElementsByClassName("modal");
     //loop through modals and insert content of filteredCoffee
-    for (var i = 0; i < modals.length; i++) {
         var title = document.getElementById("popUpTitle" + coffeeID);
         var body = document.getElementById("popUpBody" + coffeeID);
         title.innerHTML = coffee.store.name;
-        body.innerHTML = "<p>Get to know more about the store:</p>" + coffee.store.homepage;
-    }
+
+        var storeInfoRow = document.createElement("DIV");
+        storeInfoRow.setAttribute("class","row");
+        var storeInfoPic = document.createElement("DIV");
+        storeInfoPic.setAttribute("class","col-xs-6");
+        var storeInfoText = document.createElement("DIV");
+        storeInfoText.setAttribute("class","col-xs-6");
+        storeInfoPic.innerHTML = "<img src="+coffee.store.picture+" width='150px' height='auto' />";
+        storeInfoText.innerHTML = "<a type='button' class='btn btn-default' target='_blank' href="+coffee.store.homepage+"><i class='fa fa-eye'></i> Visit Homepage</a> ";
+
+        storeInfoRow.appendChild(storeInfoPic);
+        storeInfoRow.appendChild(storeInfoText);
+        
+        //body.appendChild(storeInfoRow);
+
+        body.appendChild(storeInfoRow);
 }
 
 
