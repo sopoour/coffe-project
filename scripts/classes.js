@@ -39,12 +39,6 @@ addUser(3, "Jan", "jaha", "jan@gmail.com", "j-f%4WjRK<JuNEv,");
 addUser(4, "Henrik", "henny", "henrik@gmail.com", "5_[d<D%Ku<j~rCLp");
 addUser(5, "Marten", "marty", "marten@gmail.com", "W3L[*TR4b9eZk@CY");
 addUser(6, "Jan", "Jamey", "jan.a@gmail.com", "XYT.eZ*mMB'J#5s8");
-addUser(1, "Sophia", "sophia", "sophia.auer@gmail.com", "_Ek~N_=vYfd.d8XJ");
-addUser(2, "Diana", "diana", "diana@gmail.com", "94Dg!mqPB+#3W]Wj)");
-addUser(3, "Jan", "jan1", "jan@gmail.com", "j-f%4WjRK<JuNEv,");
-addUser(4, "Henrik", "henrik", "henrik@gmail.com", "5_[d<D%Ku<j~rCLp");
-addUser(5, "Marten", "marten", "marten@gmail.com", "W3L[*TR4b9eZk@CY");
-addUser(6, "Jan", "jan2", "jan.a@gmail.com", "XYT.eZ*mMB'J#5s8");
 
 //STORE OBJECTS
 addStore("7-Eleven", "https://www.7-eleven.dk/", "img/seveneleven.jpg");
