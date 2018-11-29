@@ -1,6 +1,3 @@
-
-//FUNCTIONS
-
 var coffees=getCoffees();
 
 /**
@@ -66,13 +63,11 @@ function filter(dataType,operation,attributeValue,filterValue) {
                 break;
            }
         if (compare) {
-               return 1; //True
+               return 1;
            }
     }
     return 0;
 }
-
-//is doing the actual filter but doesn't show anything yet
 //CREATES ME A LIST OF MATCHED COFFEES
 function doFilter() {
     //Initialize empty array of filtered coffees
@@ -98,11 +93,6 @@ function doFilter() {
         filters.push(filter("number","greaterequals",coffees[x].price,price)); //Price
         filters.push(filter("text","equals",coffees[x].type,type)); //Type
         //each of the filter function returns either 0, 1 or 2 (see filter function)
-        /*
-        0 = filter doesn't match
-        1 = filter matches
-        2 = no filter because of default input ("Select...") and empty price
-         */
         for (var a = 0; a < filters.length; a++) {
             if (filters[a] >= 1) { //for 1 and 2
                 //For use case: "Locfe has only one filter"
