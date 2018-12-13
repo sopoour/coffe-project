@@ -39,13 +39,12 @@ function filter(dataType,operation,attributeValue,filterValue) {
         if (filterValue === "x") {
             return 2;
         }
-        //to have no match when typing in 0
-
-        //!! We figured we don't need it, because we allow "free" coffees. Initially we used this to escape from empty or invalid (string) inputs, but we decided to do this with "x"
+        //IMPROVED: We figured we don't need it, because we anyways return 0 when compare is false.
+        // Initially we used this to escape from empty or invalid (string) inputs, but we decided to do this with "x"
         /*if (filterValue < 0) {
             return 0; //No Input
-        } */
-
+        }
+        */
         //compare = True/False (True if filterValue ==attributeValue, False if not)
         var compare;
            switch(operation) {
@@ -101,9 +100,11 @@ function doFilter() {
         //each of the filter function returns either 0, 1 or 2 (see filter function)
         var zeroCounter = 0;
         for (var a = 0; a < filters.length; a++) {
+            //IMPROVED
             if (filters[a] === 0) {
                 zeroCounter++;
             }
+            //OLD VERSION
             /*if (filters[a] >= 1) { //for 1 and 2
                 //For use case: "Locfe has only one filter"
                 //in case we have only one filter, it doesn't have to iterate through the loop and can skip the rest of the loop
@@ -139,7 +140,6 @@ function doFilter() {
 /*
 This builds a table based on given array of coffees. No filtering here.
 */
-
 function showCoffees(filteredCoffees) {
     //Get div container
         var container = document.getElementById('resultsTable');

@@ -34,7 +34,7 @@ function authUser() {
 }
 
 //the error occurred only on the index.html page and not the login.html
-//this happens because "loginSubmit" is only on login.html and therefore it is null on index.html
+//this happens because "loginSubmit" is only identified on login.html and therefore it is null on index.html
 //try..catch function to ignore null error
 //try {
 //document.getElementById("loginSubmit").addEventListener("click", authUser);

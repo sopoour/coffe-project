@@ -3,7 +3,7 @@ Global Arrays
 */
 var coffees = [];
 var stores = [];
-var favorites = JSON.parse(localStorage.getItem("favorites"));
+var favorites = JSON.parse(localStorage.getItem("favorites")); //[]
 var users = [];
 
 /*
@@ -27,9 +27,9 @@ function addStore(name, homepage, picture) {
     stores.push(store);
 }
 
+//IMPROVED VERSION: Avoiding too much overwriting of variables
 function addFavorite(coffeeID) {
-
-    //Is favorites set? 
+    //Is favorites set?
     if(favorites) {
         var favorite = new Favorite(currentUser.id, coffeeID);
         favorites.push(favorite);
@@ -41,18 +41,30 @@ function addFavorite(coffeeID) {
         favorites.push(favorite);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
-        //Yes?
-            //neuen fav erzeugen
-            //in bestehenden array schreiben (überschreiben)
-        //No
-            //neuen fav erzeugen
-            //favorites initialisieren
-            //in ls schreiben
-
     alert('Favorite is added successfully. Yey so happy.');
     location.reload();
 }
 
+//OLD VERSION
+/*function addFavorite(coffeeID) {
+    //Get Favorites from LS
+    var favorites = JSON.parse(localStorage.getItem("favorites"));
+    if(!favorites) {
+        var favorites = [];
+        var favorite = new Favorite(currentUser.id, coffeeID);
+        favorites.push(favorite);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+    else {
+        //Save Favorite
+        var favorite = new Favorite(currentUser.id, coffeeID);
+        favorites.push(favorite);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+    alert('Favorite is added successfully. Yey so happy.');
+    location.reload();
+}
+*/
 /*
 GET FUNCTIONS
 */
