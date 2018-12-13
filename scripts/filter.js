@@ -96,7 +96,11 @@ function doFilter() {
         filters.push(filter("text","equals",coffees[x].type,type)); //Type
         filters.push(filter("text","equals",coffees[x].store.name,storeName));
         //each of the filter function returns either 0, 1 or 2 (see filter function)
+        var zeroCounter = 0;
         for (var a = 0; a < filters.length; a++) {
+            if(filters[a]==0) {
+                zeroCounter++;
+            }
             /*if (filters[a] >= 1) { //for 1 and 2
                 //For use case: "Locfe has only one filter"
                 //in case we have only one filter, it doesn't have to iterate through the loop and can skip the rest of the loop
@@ -107,21 +111,23 @@ function doFilter() {
                 }
                 //For use case: "Locfe has more than one filter"
                 else {
-                */
                     //counts how many 0s there are
                     var zeroCounter = 0;
                     //Let's look at the other filter results
                     //We're looking if there are no "0" results in my filters array
-            //for(var b=0;b<filters.length;b++) {
-            if (filters[a] === 0) zeroCounter++;
-            //}
+                    for(var b=0;b<filters.length;b++) {
+                        if (filters[b] === 0) zeroCounter++;
+                    }
                     //add only, if other filters are empty, but are not "wrong"/contradicting
                     if (zeroCounter === 0) {
                         filteredCoffees.push(coffees[x]);
                         break;
                     }
-            //}
-            //}
+                }
+            }*/
+        }
+        if(zeroCounter==0) {
+            filteredCoffees.push(coffees[x]);
         }
     }
     //Call display function
