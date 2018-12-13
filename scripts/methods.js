@@ -5,6 +5,10 @@ var coffees = [];
 var stores = [];
 var favorites = JSON.parse(localStorage.getItem("favorites"));
 var users = [];
+
+/*
+Initial check of favorites (dataType correct, else correct it)
+*/
 /*
 ADD FUNCTIONS
 */
@@ -25,14 +29,14 @@ function addStore(name, homepage, picture) {
 
 function addFavorite(coffeeID) {
 
-    //Gibts schon Fav in ls?
+    //Is favorites set? 
     if(favorites) {
         var favorite = new Favorite(currentUser.id, coffeeID);
         favorites.push(favorite);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
     else {
-        favorites = []; //Overrite
+        favorites = [];
         var favorite = new Favorite(currentUser.id, coffeeID);
         favorites.push(favorite);
         localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -63,7 +67,7 @@ function getUsers() {
 function getFavorites() {
     var output = [];
     //Get Favorites from Local Storage
-    var favorites = JSON.parse(localStorage.getItem("favorites"));
+    //var favorites = JSON.parse(localStorage.getItem("favorites"));
     if (!favorites) {
         return output;
     }
@@ -86,7 +90,7 @@ function getStores() {
 //INPUT: coffee object
 function removeFavorite(coffeeID) {
     //Get favorites
-    var favorites = JSON.parse(localStorage.getItem("favorites"));
+    //var favorites = JSON.parse(localStorage.getItem("favorites"));
     //Find favorite with combination of current user & coffee (based on id)
     for(var x=0;x<favorites.length;x++) {
         if (favorites[x].coffeeID === coffeeID) {
