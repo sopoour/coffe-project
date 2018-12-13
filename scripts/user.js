@@ -33,12 +33,14 @@ function authUser() {
     }
 }
 
+//the error occurred only on the index.html page and not the login.html
+//this happens because "loginSubmit" is only on login.html and therefore it is null on index.html
 //try..catch function to ignore null error
-try {
-    document.getElementById("loginSubmit").addEventListener("click", authUser);
-} catch (err) {
-    console.log("Null caught");
-}
+//try {
+//document.getElementById("loginSubmit").addEventListener("click", authUser);
+//} catch (err) {
+//  console.log("Null caught");
+//}
 
 function changePage() {
     //if currentUser exists in localStorage change my index file (adding logout button etc.)

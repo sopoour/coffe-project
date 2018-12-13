@@ -98,7 +98,7 @@ function doFilter() {
         //each of the filter function returns either 0, 1 or 2 (see filter function)
         var zeroCounter = 0;
         for (var a = 0; a < filters.length; a++) {
-            if(filters[a]==0) {
+            if (filters[a] === 0) {
                 zeroCounter++;
             }
             /*if (filters[a] >= 1) { //for 1 and 2
@@ -126,7 +126,7 @@ function doFilter() {
                 }
             }*/
         }
-        if(zeroCounter==0) {
+        if (zeroCounter === 0) {
             filteredCoffees.push(coffees[x]);
         }
     }
