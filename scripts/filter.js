@@ -67,8 +67,9 @@ function filter(dataType,operation,attributeValue,filterValue) {
         if (compare) {
                return 1;
            }
+           return 0;
     }
-    return 0;
+    
 }
 //CREATES ME A LIST OF MATCHED COFFEES
 function doFilter() {
@@ -76,10 +77,12 @@ function doFilter() {
     var filteredCoffees=[];
     //Get Input values from HTML
     var price = parseInt(document.getElementById("priceInput").value); //turn price into an actual integer
-    var typeContainer = document.getElementById("typeInput"); //the whole dropdown
-    var type = typeContainer.options[typeContainer.selectedIndex].value;//to get the exact option the user chose
-    var storenameContainer = document.getElementById("storeInput"); //the whole dropdown
-    var storeName = storenameContainer.options[storenameContainer.selectedIndex].value;//to get the exact option the user chose
+    var type = document.getElementById("typeInput").value;
+    /*var typeContainer = document.getElementById("typeInput"); //the whole dropdown
+    var type = typeContainer.options[typeContainer.selectedIndex].value;//to get the exact option the user chose */
+    var storeName = document.getElementById("storeInput").value;
+    /*var storenameContainer = document.getElementById("storeInput"); //the whole dropdown
+    var storeName = storenameContainer.options[storenameContainer.selectedIndex].value;//to get the exact option the user chose*/
     /**
      * When no price is set as input, NaN is passed when converting the number.
      * So if NaN is set, set price to string x to filter to
@@ -310,7 +313,7 @@ MODAL FUNCTIONS
 function doModal() {
     var modals = document.getElementsByClassName("modal");
     var rows = document.getElementsByTagName("row");
-    //Loop through all divs with the class name "modal"
+    //Loop through all divs with the class name "modal" || We are not allowed to name anything modal except for the modals
     for (var m = 0; m < modals.length; m++) {
         //add to each div the same id as the row (=filteredCoffee) has
         modals[m].id = rows[m].id;
