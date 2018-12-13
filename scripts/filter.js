@@ -94,7 +94,7 @@ function doFilter() {
         //Add filters (add all input fields)
         filters.push(filter("number","greaterequals",coffees[x].price,price)); //Price
         filters.push(filter("text","equals",coffees[x].type,type)); //Type
-        filters.push(filter("text","equals",coffees[x].store.name,storeName))
+        filters.push(filter("text","equals",coffees[x].store.name,storeName));
         //each of the filter function returns either 0, 1 or 2 (see filter function)
         for (var a = 0; a < filters.length; a++) {
             if (filters[a] >= 1) { //for 1 and 2
