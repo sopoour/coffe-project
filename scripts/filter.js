@@ -96,8 +96,12 @@ function doFilter() {
         filters.push(filter("text","equals",coffees[x].type,type)); //Type
         filters.push(filter("text","equals",coffees[x].store.name,storeName));
         //each of the filter function returns either 0, 1 or 2 (see filter function)
+        var zeroCounter = 0;
         for (var a = 0; a < filters.length; a++) {
-            if (filters[a] >= 1) { //for 1 and 2
+            if(filters[a]==0) {
+                zeroCounter++;
+            }
+            /*if (filters[a] >= 1) { //for 1 and 2
                 //For use case: "Locfe has only one filter"
                 //in case we have only one filter, it doesn't have to iterate through the loop and can skip the rest of the loop
                 if (filters.length === 1) {
@@ -120,7 +124,10 @@ function doFilter() {
                         break;
                     }
                 }
-            }
+            }*/        
+        }
+        if(zeroCounter==0) {
+            filteredCoffees.push(coffees[x]);
         }
     }
     //Call display function
