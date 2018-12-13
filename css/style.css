@@ -5,7 +5,6 @@ body {
     --white-faded: rgba(255, 255, 255, 0.6);
     --brown-faded: rgba(71, 60, 31, 0.6);
     --brown: #473c1f;
-
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -16,7 +15,6 @@ h1, h2, h3, h4, h5, h6 {
 p {
     font-family: 'Lato', sans-serif;
     color: var(--brown);
-
 }
 
 .container {
@@ -58,14 +56,12 @@ h6 {
 .filterItems {
     padding-top: 5%;
 }
-
 select {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     font-weight: normal;
     color: var(--brown);
 }
-
 #btnFavoriteList {
     position: absolute;
     right: 40%;
@@ -147,14 +143,14 @@ LOGIN/LOGOUT
 }
 
 #overlay {
-    position: fixed; /* Sit on top of the page content */
+    position: fixed; /* Sit in the middle of the page content */
     display: none; /* Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 20%; /* Full height (cover the whole page) */
+    width: 100%;
+    height: 20%;
     top: 50%;
     left: 0;
-    background-color: rgba(52, 129, 110, 0.8);; /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for*/
+    background-color: rgba(52, 129, 110, 0.8);
+    z-index: 2;
 }
 
 #logoutMessage {
@@ -182,5 +178,4 @@ LOGIN/LOGOUT
 
 .storeIMG {
     width: 60%;
-    background-color: red;
 }
