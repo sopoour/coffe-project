@@ -2,6 +2,8 @@
 var users = getUsers();
 
 //the function shall be activated when user clicks on login button
+
+
 function authUser() {
     var userName = document.getElementById("userName");
     var userPassword = document.getElementById("userPassword");
@@ -34,11 +36,11 @@ function authUser() {
 }
 
 //try..catch function to ignore null error
-try {
+/*try {
     document.getElementById("loginSubmit").addEventListener("click", authUser);
 } catch (err) {
     console.log("Null caught");
-}
+} */
 
 function changePage() {
     //if currentUser exists in localStorage change my index file (adding logout button etc.)
