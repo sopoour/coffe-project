@@ -40,9 +40,12 @@ function filter(dataType,operation,attributeValue,filterValue) {
             return 2;
         }
         //to have no match when typing in 0
-        if (filterValue < 0) {
+
+        //!! We figured we don't need it, because we allow "free" coffees. Initially we used this to escape from empty or invalid (string) inputs, but we decided to do this with "x"
+        /*if (filterValue < 0) {
             return 0; //No Input
-        }
+        } */
+
         //compare = True/False (True if filterValue ==attributeValue, False if not)
         var compare;
            switch(operation) {
