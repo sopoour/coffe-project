@@ -76,6 +76,8 @@ function doFilter() {
     var price = parseInt(document.getElementById("priceInput").value); //turn price into an actual integer
     var typeContainer = document.getElementById("typeInput"); //the whole dropdown
     var type = typeContainer.options[typeContainer.selectedIndex].value;//to get the exact option the user chose
+    var storenameContainer = document.getElementById("storeInput"); //the whole dropdown
+    var storeName = storenameContainer.options[storenameContainer.selectedIndex].value;//to get the exact option the user chose
     /**
      * When no price is set as input, NaN is passed when converting the number.
      * So if NaN is set, set price to string x to filter to
@@ -92,6 +94,7 @@ function doFilter() {
         //Add filters (add all input fields)
         filters.push(filter("number","greaterequals",coffees[x].price,price)); //Price
         filters.push(filter("text","equals",coffees[x].type,type)); //Type
+        filters.push(filter("text","equals",coffees[x].store.name,storeName));
         //each of the filter function returns either 0, 1 or 2 (see filter function)
         for (var a = 0; a < filters.length; a++) {
             if (filters[a] >= 1) { //for 1 and 2
