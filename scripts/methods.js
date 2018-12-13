@@ -3,7 +3,7 @@ Global Arrays
 */
 var coffees = [];
 var stores = [];
-var favorites = [];
+var favorites = JSON.parse(localStorage.getItem("favorites"));
 var users = [];
 /*
 ADD FUNCTIONS
@@ -24,21 +24,27 @@ function addStore(name, homepage, picture) {
 }
 
 function addFavorite(coffeeID) {
-    //Get Favorites from LS
-    var favorites = JSON.parse(localStorage.getItem("favorites"));
-    //in case there is no favorites array in LS
-    if(!favorites) {
-        var favorites = [];
+
+    //Gibts schon Fav in ls?
+    if(favorites) {
         var favorite = new Favorite(currentUser.id, coffeeID);
         favorites.push(favorite);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
     else {
-        //Save Favorite
+        favorites = []; //Overrite
         var favorite = new Favorite(currentUser.id, coffeeID);
         favorites.push(favorite);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
+        //Yes?
+            //neuen fav erzeugen
+            //in bestehenden array schreiben (überschreiben)
+        //No
+            //neuen fav erzeugen
+            //favorites initialisieren
+            //in ls schreiben
+
     alert('Favorite is added successfully. Yey so happy.');
     location.reload();
 }

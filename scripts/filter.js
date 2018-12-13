@@ -141,7 +141,7 @@ function showCoffees(filteredCoffees) {
     //Get div container
         var container = document.getElementById('resultsTable');
         container.innerHTML = '';
-    //Check if fC = 0, display message
+    //Check if filteredCoffees = 0, display message
     if (filteredCoffees.length === 0) {
         container.innerHTML = '<h6>No matching coffees :( Try again!</h6>';
             return;
