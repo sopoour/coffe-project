@@ -68,7 +68,7 @@ function getFavorites() {
     var output = [];
     //Get Favorites from Local Storage
     //var favorites = JSON.parse(localStorage.getItem("favorites"));
-    if (!favorites) {
+    if (!favorites || !getCurrentUser() ) {
         return output;
     }
     for (var x = 0; x < favorites.length; x++) {
@@ -120,4 +120,30 @@ function getCurrentUser() {
 
 var currentUser = getCurrentUser();
 
+/**
+ * Popup/Modal for the filter
+ */
+$('#coffeeModal').on('show.bs.modal', function (event) {
+    //Trigger Button
+    var button = $(event.relatedTarget);
+    //Identify coffee | Try/Catch to prevent false coffee ids (might have been removed or sth else)
+    try{
+        var coffeeID = button.data('cid');
+        var coffee = null;
+        getCoffees().forEach(function(c) {
+            if(c.id===coffeeID) {
+                coffee = c;
+            }
+        });
+    }
+    catch {
+
+    }
+    //Fill the modal 
+    var modal = $(this);
+    modal.find('.modal-title').text(coffee.store.name)
+    modal.find('.modal-body #storeDescription').html('<h6>Check out where to find your favorite coffee:</h6>');
+    modal.find('.modal-body #storeIMG').html("<img class='storeIMG' src=" + coffee.store.picture + " width='150px' height='auto' />");
+    modal.find('.modal-footer #homepageRef').html("<a type='button' class='btn btn-default' target='_blank' style='float: left' href='" + coffee.store.homepage + "'><i class='fa fa-eye' style='color: hotpink'></i> Visit Homepage</a>");
+  })
 
