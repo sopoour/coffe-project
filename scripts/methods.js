@@ -136,8 +136,7 @@ $('#coffeeModal').on('show.bs.modal', function (event) {
             }
         });
     }
-    catch {
-
+    catch (e) {
     }
     //Fill the modal 
     var modal = $(this);
